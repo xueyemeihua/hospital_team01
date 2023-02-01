@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kgc.mapper.StafinfoMapper">
+    <!--多条件查询-->
+    <select id="selectByCondition" resultType="org.kgc.pojo.Stafinfo">
+        select * from stafinfo
+        <where>
+            <if test="stafphone != null and stafphone != ''">
+                and stafphone = #{stafphone}
+            </if>
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+            <if test="email != null and email != ''">
+                and email = #{email}
+            </if>
+            <if test="password != null and password != ''">
+                and password = #{password}
+            </if>
+        </where>
+    </select>
+</mapper>

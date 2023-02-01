@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <%@page contentType="text/html; charset=UTF-8" isELIgnored="false" language="java" %>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -44,20 +45,24 @@
     <p class="login-box-msg">登录系统</p>
 
     <form action="/login" method="post">
+
       <div class="form-group has-feedback">
         <input type="email" class="form-control" placeholder="用户名/手机号/Email" name="email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
+
       <div class="form-group has-feedback">
         <input type="password" class="form-control" placeholder="密码" name="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+
       <div class="row">
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label><input type="checkbox" name="nextlogin"> 记住 下次自动登录</label>
           </div>
         </div>
+
         <!-- /.col -->
         <div class="col-xs-4">
           <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
