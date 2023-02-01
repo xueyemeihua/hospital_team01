@@ -43,9 +43,9 @@
   <div class="login-box-body">
     <p class="login-box-msg">登录系统</p>
 
-    <form action="/login" method="get">
+    <form action="/login" method="post">
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email" name="email">
+        <input type="email" class="form-control" placeholder="用户名/手机号/Email" name="email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">

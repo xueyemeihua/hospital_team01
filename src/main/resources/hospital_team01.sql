@@ -4,13 +4,13 @@ Navicat MySQL Data Transfer
 Source Server         : 李阳
 Source Server Version : 50736
 Source Host           : 127.0.0.1:3306
-Source Database       : hospital
+Source Database       : hospital_team01
 
 Target Server Type    : MYSQL
 Target Server Version : 50736
 File Encoding         : 65001
 
-Date: 2023-02-01 19:02:50
+Date: 2023-02-01 20:13:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -217,13 +217,16 @@ DROP TABLE IF EXISTS `stafinfo`;
 CREATE TABLE `stafinfo` (
   `stafid` int(4) NOT NULL AUTO_INCREMENT COMMENT '医院工作人员编号',
   `postid` int(4) NOT NULL COMMENT '岗位编号',
-  `mgr` int(4) NOT NULL COMMENT '领导编号',
+  `mgr` int(4) DEFAULT NULL COMMENT '领导编号',
   `deptid` int(4) NOT NULL COMMENT '科室编号',
   `stafcard` varchar(18) NOT NULL COMMENT '身份证',
   `stafname` varchar(20) NOT NULL COMMENT '姓名',
-  `rankid` int(2) NOT NULL COMMENT '职称编号',
+  `rankid` int(2) DEFAULT NULL COMMENT '职称编号',
   `stafintro` varchar(500) NOT NULL COMMENT '个人简介',
   `stafstate` int(1) NOT NULL COMMENT '职员状态(0离职,1在职)',
+  `stafphone` varchar(11) DEFAULT NULL COMMENT '手机号',
+  `username` varchar(16) NOT NULL COMMENT '登录名',
+  `email` varchar(50) DEFAULT NULL COMMENT '邮箱',
   PRIMARY KEY (`stafid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
