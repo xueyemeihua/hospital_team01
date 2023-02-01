@@ -29,7 +29,7 @@
         <ul class="treeview-menu">
 
             <li id="admin-login">
-                <a href="/pages/all-admin-login.html">
+                <a href="/login.jsp">
                     <i class="fa fa-circle-o"></i> 登录
                 </a>
             </li>
