@@ -34,10 +34,10 @@
                 sickemail = #{sickemail} and sickpwd = #{sickpwd}
             </when>
             <when test="sickcard!=null and sickcard!=''">
-                sickcard = # {sickcard} and sickpwd = #{sickpwd}
+                sickcard = #{sickcard} and sickpwd = #{sickpwd}
             </when>
             <when test="sickphone!=null and sickphone!=''">
-                sickphone = # {sickphone} and sickpwd = #{sickpwd}
+                sickphone = #{sickphone} and sickpwd = #{sickpwd}
             </when>
             <otherwise>
                 sickpwd = #{sickpwd}
