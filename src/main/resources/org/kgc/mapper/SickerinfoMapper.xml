@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kgc.mapper.SickerinfoMapper">
+
+    <select id="getSickerBySickUnameOrSickPhoneOrCardIdOrSickEmailAndPassword"
+            resultType="sickerinfo" >
+        select * from sickerinfo where
+        <choose>
+            <when test="sickuname!=null and sickuname!=''">
+                sickuname = #{sickuname}
+            </when>
+            <when test="sickemail!=null and sickemail!=''">
+                sickemail = #{sickemail}
+            </when>
+            <when test="sickcard!=null and sickcard!=''">
+                sickcard = # {sickcard}
+            </when>
+            <when test="sickphone!=null and sickphone!=''">
+                sickphone = # {sickphone}
+            </when>
+        </choose>
+        and sickpwd = #{sickpwd}
+    </select>
+
+
+</mapper>
