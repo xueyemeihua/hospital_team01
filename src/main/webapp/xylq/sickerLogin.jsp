@@ -56,7 +56,7 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div align="center">
-        <p style="color: red" name=""></p>
+        <p style="color: red">${sickerLoginMsg}</p>
       </div>
       <div class="row">
         <div class="col-xs-8">

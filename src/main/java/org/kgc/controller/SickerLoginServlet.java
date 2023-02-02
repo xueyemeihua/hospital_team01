@@ -51,6 +51,7 @@ public class SickerLoginServlet extends HttpServlet {
             request.getRequestDispatcher("/xylq/index.jsp").forward(request,response);
         } else {
             request.setAttribute("sickerLoginMsg","用户名或密码错误");
+            request.getRequestDispatcher("/xylq/sickerLogin.jsp").forward(request,response);
         }
 
 
