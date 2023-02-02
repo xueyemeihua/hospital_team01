@@ -36,7 +36,7 @@
   <div class="login-logo">
 
 
-    <a href="all-admin-index.html"><b>数据</b>后台管理系统</a>
+    <a href="all-admin-index.html"><b>sicker</b>loginSystem</a>
 
 
   </div>
