@@ -9,19 +9,21 @@
         select * from sickerinfo where
         <choose>
             <when test="sickuname!=null and sickuname!=''">
-                sickuname = #{sickuname}
+                sickuname = #{sickuname} and sickpwd = #{sickpwd}
             </when>
             <when test="sickemail!=null and sickemail!=''">
-                sickemail = #{sickemail}
+                sickemail = #{sickemail} and sickpwd = #{sickpwd}
             </when>
             <when test="sickcard!=null and sickcard!=''">
-                sickcard = # {sickcard}
+                sickcard = # {sickcard} and sickpwd = #{sickpwd}
             </when>
             <when test="sickphone!=null and sickphone!=''">
-                sickphone = # {sickphone}
+                sickphone = # {sickphone} and sickpwd = #{sickpwd}
             </when>
+            <otherwise>
+                sickpwd = #{sickpwd}
+            </otherwise>
         </choose>
-        and sickpwd = #{sickpwd}
     </select>
 
 
