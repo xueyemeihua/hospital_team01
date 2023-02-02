@@ -20,4 +20,10 @@ public class SickerinfoService {
 
         return result;
     }
+
+    public int updateSickerInfo(Sickerinfo sickerinfo) {
+        int result = mapper.updateSickerInfo(sickerinfo);
+        session.commit();
+        return result;
+    }
 }

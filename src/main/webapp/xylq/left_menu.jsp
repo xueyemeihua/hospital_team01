@@ -21,7 +21,7 @@
 
     <li class="treeview">
         <a href="#">
-            <i class="fa fa-folder"></i> <span>后台通用页面</span>
+            <i class="fa fa-folder"></i> <span>个人中心</span>
             <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -41,8 +41,8 @@
             </li>
 
             <li id="admin-404">
-                <a href="all-admin-404.html">
-                    <i class="fa fa-circle-o"></i> 404页
+                <a href="/xylq/updateInfo.jsp">
+                    <i class="fa fa-circle-o"></i> 修改个人信息
                 </a>
             </li>
 

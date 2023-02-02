@@ -8,6 +8,14 @@
         <servlet-name>SickerLoginServlet</servlet-name>
         <servlet-class>org.kgc.controller.SickerLoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateSickInfoServlet</servlet-name>
+        <servlet-class>org.kgc.controller.UpdateSickInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateSickInfoServlet</servlet-name>
+        <url-pattern>/updateSickInfo</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SickerLoginServlet</servlet-name>
         <url-pattern>/sickerLogin</url-pattern>

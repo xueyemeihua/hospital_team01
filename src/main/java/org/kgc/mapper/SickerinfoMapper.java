@@ -12,4 +12,7 @@ public interface SickerinfoMapper {
     Sickerinfo getSickerBySickUnameOrSickPhoneOrCardIdOrSickEmailAndPassword(Sickerinfo loginInfo);
 
 
+    int updateSickerInfo(Sickerinfo sickerinfo);
+
+
 }

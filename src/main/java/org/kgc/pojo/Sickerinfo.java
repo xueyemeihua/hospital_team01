@@ -3,7 +3,7 @@ package org.kgc.pojo;
 
 public class Sickerinfo {
 
-  private long sickid;
+  private Integer sickid;
   private String sickcard;
   private String sickname;
   private String sickphone;
@@ -14,6 +14,15 @@ public class Sickerinfo {
   public Sickerinfo() {
   }
 
+  public Sickerinfo(String sickphone, String sickpwd, String sickuname, String sickemail, Integer sickid) {
+    this.sickid = sickid;
+    this.sickphone = sickphone;
+    this.sickuname = sickuname;
+    this.sickpwd = sickpwd;
+    this.sickemail = sickemail;
+  }
+
+
   public Sickerinfo(String sickcard, String sickphone, String sickpwd, String sickuname, String sickemail) {
     this.sickcard = sickcard;
     this.sickphone = sickphone;
@@ -22,7 +31,7 @@ public class Sickerinfo {
     this.sickemail = sickemail;
   }
 
-  public Sickerinfo(long sickid, String sickcard, String sickname, String sickphone, String sickpwd, String sickuname, String sickemail) {
+  public Sickerinfo(Integer sickid, String sickcard, String sickname, String sickphone, String sickpwd, String sickuname, String sickemail) {
     this.sickid = sickid;
     this.sickcard = sickcard;
     this.sickname = sickname;
@@ -32,11 +41,11 @@ public class Sickerinfo {
     this.sickemail = sickemail;
   }
 
-  public long getSickid() {
+  public Integer getSickid() {
     return sickid;
   }
 
-  public void setSickid(long sickid) {
+  public void setSickid(Integer sickid) {
     this.sickid = sickid;
   }
 
