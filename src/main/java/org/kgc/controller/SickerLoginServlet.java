@@ -56,16 +56,27 @@ public class SickerLoginServlet extends HttpServlet {
             Sickerinfo sickerinfo = new Sickerinfo(card,phone,password,name,email);
             SickerinfoService service = new SickerinfoService();
             Sickerinfo loginUser = service.getSickerBySickUnameOrSickPhoneOrCardIdOrSickEmailAndPassword(sickerinfo);
-            request.getSession().setAttribute("loginSicker",loginUser);
-            request.getRequestDispatcher("/xylq/index.jsp").forward(request,response);
+            if(loginUser!=null){
+                request.getSession().setAttribute("loginSicker",loginUser);
+                request.getRequestDispatcher("/xylq/index.jsp").forward(request,response);
+            }else{
+                request.setAttribute("sickerLoginMsg","用户名或密码错误");
+                request.getRequestDispatcher("/xylq/sickerLogin.jsp").forward(request,response);
+            }
+
         }
         //工作人员登录
         else if(flag==2){
             Stafinfo stafinfo = new Stafinfo(card,phone,name,email,password);
             StafinfoService service = new StafinfoService();
             Stafinfo loginUser = service.getStaffmemberByUsernameOrstafPhoneOrStafcardOrEmailAndPassword(stafinfo);
-            request.getSession().setAttribute("loginSicker",loginUser);
-            request.getRequestDispatcher("/cgq&yjf/staffmemberIndex.jsp").forward(request,response);
+            if(loginUser!=null){
+                request.getSession().setAttribute("loginSicker",loginUser);
+                request.getRequestDispatcher("/cgq&yjf/staffmemberIndex.jsp").forward(request,response);
+            }else {
+                request.setAttribute("sickerLoginMsg","用户名或密码错误");
+                request.getRequestDispatcher("/xylq/sickerLogin.jsp").forward(request,response);
+            }
         }
         //超级管理员登录
         else if(flag==3){
