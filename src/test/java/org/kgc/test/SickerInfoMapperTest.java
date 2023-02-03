@@ -19,7 +19,7 @@ public class SickerInfoMapperTest {
     @Test
     public void testSickerinfoMapper() {
 
-        System.out.println(mapper.getSickerBySickUnameOrSickPhoneOrCardIdOrSickEmailAndPassword(new Sickerinfo(null,null,"111",null,"123")));
+
 
     }
 

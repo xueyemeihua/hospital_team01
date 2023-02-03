@@ -49,8 +49,6 @@ public class SickerLoginServlet extends HttpServlet {
         System.out.println(flag);
         //将以上四种方式和密码封装成pojo传递给mapper
         String password = request.getParameter("sickerLoginPassword");
-        //SickerinfoService service = new SickerinfoService();
-        //Sickerinfo loginSicker = service.getSickerBySickUnameOrSickPhoneOrCardIdOrSickEmailAndPassword(sickerinfo);
         //病人登录
         if (flag==1) {
             Sickerinfo sickerinfo = new Sickerinfo(card,phone,password,name,email);
@@ -63,7 +61,6 @@ public class SickerLoginServlet extends HttpServlet {
                 request.setAttribute("sickerLoginMsg","用户名或密码错误");
                 request.getRequestDispatcher("/xylq/sickerLogin.jsp").forward(request,response);
             }
-
         }
         //工作人员登录
         else if(flag==2){

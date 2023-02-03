@@ -11,7 +11,25 @@ public class Sickerinfo {
   private String sickuname;
   private String sickemail;
 
-  public Sickerinfo(String sickphone, String sickpwd, String sickuname, String sickemail, int sickid) {
+  public Sickerinfo() {
+  }
+
+  public Sickerinfo(Integer sickid, String sickcard, String sickname, String sickphone, String sickpwd, String sickuname, String sickemail) {
+    this.sickid = sickid;
+    this.sickcard = sickcard;
+    this.sickname = sickname;
+    this.sickphone = sickphone;
+    this.sickpwd = sickpwd;
+    this.sickuname = sickuname;
+    this.sickemail = sickemail;
+  }
+
+  public Sickerinfo(String sickphone, String sickpwd, String sickuname, String sickemail,Integer sickid) {
+    this.sickid = sickid;
+    this.sickphone = sickphone;
+    this.sickpwd = sickpwd;
+    this.sickuname = sickuname;
+    this.sickemail = sickemail;
   }
 
   public Sickerinfo(String sickcard, String sickphone, String sickpwd, String sickuname, String sickemail) {
