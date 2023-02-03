@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kgc.mapper.StafinfoMapper">
+
+    <update id="updateStafinfo">
+        update stafinfo
+        <set>
+            <if test="username!=null and username!=''">
+                username=#{username},
+            </if>
+            <if test="stafphone!=null and stafphone!=''">
+                stafphone=#{stafphone},
+            </if>
+            <if test="password!=null and password!=''">
+                password=#{password},
+            </if>
+            <if test="email!=null and email!=''">
+                email=#{email}
+            </if>
+        </set>
+        where stafid = #{stafid}
+    </update>
+
+    <select id="getStaffmemberByUsernameOrstafPhoneOrStafcardOrEmailAndPassword"
+            resultType="Stafinfo" >
+        select * from stafinfo where
+        <choose>
+            <when test="username!=null and username!=''">
+                username = #{username} and password = #{password}
+            </when>
+            <when test="email!=null and email!=''">
+                email = #{email} and password = #{password}
+            </when>
+            <when test="stafcard!=null and stafcard!=''">
+                stafcard = #{stafcard} and password = #{password}
+            </when>
+            <when test="stafphone!=null and stafphone!=''">
+                stafphone = #{stafphone} and  password= #{password}
+            </when>
+            <otherwise>
+                password = #{password}
+            </otherwise>
+        </choose>
+    </select>
+
+
+</mapper>

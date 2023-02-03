@@ -11,17 +11,8 @@ public class Sickerinfo {
   private String sickuname;
   private String sickemail;
 
-  public Sickerinfo() {
+  public Sickerinfo(String sickphone, String sickpwd, String sickuname, String sickemail, int sickid) {
   }
-
-  public Sickerinfo(String sickphone, String sickpwd, String sickuname, String sickemail, Integer sickid) {
-    this.sickid = sickid;
-    this.sickphone = sickphone;
-    this.sickuname = sickuname;
-    this.sickpwd = sickpwd;
-    this.sickemail = sickemail;
-  }
-
 
   public Sickerinfo(String sickcard, String sickphone, String sickpwd, String sickuname, String sickemail) {
     this.sickcard = sickcard;
@@ -31,7 +22,7 @@ public class Sickerinfo {
     this.sickemail = sickemail;
   }
 
-  public Sickerinfo(Integer sickid, String sickcard, String sickname, String sickphone, String sickpwd, String sickuname, String sickemail) {
+  public Sickerinfo(String sickcard, String sickname, String sickphone, String sickpwd) {
     this.sickid = sickid;
     this.sickcard = sickcard;
     this.sickname = sickname;
@@ -39,6 +30,20 @@ public class Sickerinfo {
     this.sickpwd = sickpwd;
     this.sickuname = sickuname;
     this.sickemail = sickemail;
+
+  }
+
+  @Override
+  public String toString() {
+    return "Sickerinfo{" +
+            "sickid=" + sickid +
+            ", sickcard='" + sickcard + '\'' +
+            ", sickname='" + sickname + '\'' +
+            ", sickphone='" + sickphone + '\'' +
+            ", sickpwd='" + sickpwd + '\'' +
+            ", sickuname='" + sickuname + '\'' +
+            ", sickemail='" + sickemail + '\'' +
+            '}';
   }
 
   public Integer getSickid() {
@@ -49,7 +54,6 @@ public class Sickerinfo {
     this.sickid = sickid;
   }
 
-
   public String getSickcard() {
     return sickcard;
   }
@@ -57,7 +61,6 @@ public class Sickerinfo {
   public void setSickcard(String sickcard) {
     this.sickcard = sickcard;
   }
-
 
   public String getSickname() {
     return sickname;
@@ -67,7 +70,6 @@ public class Sickerinfo {
     this.sickname = sickname;
   }
 
-
   public String getSickphone() {
     return sickphone;
   }
@@ -75,7 +77,6 @@ public class Sickerinfo {
   public void setSickphone(String sickphone) {
     this.sickphone = sickphone;
   }
-
 
   public String getSickpwd() {
     return sickpwd;
@@ -85,7 +86,6 @@ public class Sickerinfo {
     this.sickpwd = sickpwd;
   }
 
-
   public String getSickuname() {
     return sickuname;
   }
@@ -93,7 +93,6 @@ public class Sickerinfo {
   public void setSickuname(String sickuname) {
     this.sickuname = sickuname;
   }
-
 
   public String getSickemail() {
     return sickemail;

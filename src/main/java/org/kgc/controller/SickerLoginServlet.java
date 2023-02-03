@@ -5,7 +5,9 @@ package org.kgc.controller; /**
 
 
 import org.kgc.pojo.Sickerinfo;
+import org.kgc.pojo.Stafinfo;
 import org.kgc.service.SickerinfoService;
+import org.kgc.service.StafinfoService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,38 +27,62 @@ public class SickerLoginServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         //获取用户输入参数,转型(如需要),调用查询方法看看数据库是否存在该用户,1则跳转,0则提示注册
 
-        String sickerUname = null;
-        String sickerEmail = null;
-        String sickerPhone = null;
-        String sickerCardid = null;
+        String name = null;
+        String email = null;
+        String phone = null;
+        String card = null;
+        int flag = 0;
         String sickerLoginName = request.getParameter("sickerLoginName");
         //判断用户使用哪种方式登录
         if (sickerLoginName.indexOf("@")!=-1){
-            sickerEmail = sickerLoginName;
+            email = sickerLoginName;
+            System.out.println(email);
         }else if (sickerLoginName.length()==11){
-            sickerPhone = sickerLoginName;
+            phone = sickerLoginName;
         }else if (sickerLoginName.length()==18) {
-            sickerCardid = sickerLoginName;
+            card = sickerLoginName;
         } else {
-            sickerUname = sickerLoginName;
+            name = sickerLoginName;
         }
+        //获取flag值
+        flag= Integer.parseInt(request.getParameter("flag"));
+        System.out.println(flag);
         //将以上四种方式和密码封装成pojo传递给mapper
-        String sickerLoginPassword = request.getParameter("sickerLoginPassword");
-        Sickerinfo sickerinfo = new Sickerinfo(sickerCardid,sickerPhone,sickerLoginPassword,sickerUname,sickerEmail);
-        SickerinfoService service = new SickerinfoService();
-        Sickerinfo loginSicker = service.getSickerBySickUnameOrSickPhoneOrCardIdOrSickEmailAndPassword(sickerinfo);
-
-        if (loginSicker!=null) {
-            request.getSession().setAttribute("loginSicker",loginSicker);
+        String password = request.getParameter("sickerLoginPassword");
+        //SickerinfoService service = new SickerinfoService();
+        //Sickerinfo loginSicker = service.getSickerBySickUnameOrSickPhoneOrCardIdOrSickEmailAndPassword(sickerinfo);
+        //病人登录
+        if (flag==1) {
+            Sickerinfo sickerinfo = new Sickerinfo(card,phone,password,name,email);
+            SickerinfoService service = new SickerinfoService();
+            Sickerinfo loginUser = service.getSickerBySickUnameOrSickPhoneOrCardIdOrSickEmailAndPassword(sickerinfo);
+            request.getSession().setAttribute("loginSicker",loginUser);
             request.getRequestDispatcher("/xylq/index.jsp").forward(request,response);
-        } else {
+        }
+        //工作人员登录
+        else if(flag==2){
+            Stafinfo stafinfo = new Stafinfo(card,phone,name,email,password);
+            StafinfoService service = new StafinfoService();
+            Stafinfo loginUser = service.getStaffmemberByUsernameOrstafPhoneOrStafcardOrEmailAndPassword(stafinfo);
+            request.getSession().setAttribute("loginSicker",loginUser);
+            request.getRequestDispatcher("/cgq&yjf/staffmemberIndex.jsp").forward(request,response);
+        }
+        //超级管理员登录
+        else if(flag==3){
+            Stafinfo stafinfo = new Stafinfo(card,phone,name,email,password);
+            StafinfoService service = new StafinfoService();
+            Stafinfo loginUser = service.getStaffmemberByUsernameOrstafPhoneOrStafcardOrEmailAndPassword(stafinfo);
+            if (loginUser.getRankid()==1){
+                request.getSession().setAttribute("loginSicker",loginUser);
+                request.getRequestDispatcher("/xylq/index.jsp").forward(request,response);
+            }else {
+                request.setAttribute("sickerLoginMsg","用户名或密码错误");
+                request.getRequestDispatcher("/xylq/sickerLogin.jsp").forward(request,response);
+            }
+        }
+        else {
             request.setAttribute("sickerLoginMsg","用户名或密码错误");
             request.getRequestDispatcher("/xylq/sickerLogin.jsp").forward(request,response);
         }
-
-
-
-
-
     }
 }
