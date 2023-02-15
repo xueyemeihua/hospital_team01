@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kgc.mapper.PresicResultMapper">
+
+    <select id="getPresicByCaseid" resultType="PresicResult">
+        SELECT caseinfo.caseid,
+               sickerinfo.sickid,
+               sickerinfo.sickname,
+               prescinfo.prescid,
+               druginfo.drugname,
+               druginfo.druginven,
+               prescinfo.drugcount,
+               druginfo.drugspeci,
+               prescinfo.prescstate
+        FROM caseinfo,
+             prescinfo,
+             druginfo,
+             sickerinfo
+        WHERE prescinfo.drugid = druginfo.drugid
+          AND prescinfo.caseid = caseinfo.caseid
+          AND caseinfo.sickid = sickerinfo.sickid
+          AND caseinfo.caseid = #{caseid}
+    </select>
+
+
+</mapper>

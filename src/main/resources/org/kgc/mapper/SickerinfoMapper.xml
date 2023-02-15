@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kgc.mapper.SickerinfoMapper">
+<!--    激活id回填需要设置useGeneratedKeys和keyProperty-->
+    <insert id="addSickerInfo" useGeneratedKeys="true" keyProperty="sickid">
+        insert into sickerinfo (sickid, sickname, sickphone, sickpwd, sickcard, sickemail)
+        values (null, #{sickname}, #{sickphone}, #{sickpwd}, #{sickcard}, #{sickemail})
+    </insert>
+    <insert id="insertSicker" useGeneratedKeys="true" keyProperty="sickid">
+        insert into sickerinfo(sickid,sickpwd,sickuname) values (null,#{sickpwd},#{sickuname})
+    </insert>
+
+    <update id="updateSickerInfo">
+        update sickerinfo
+        <set>
+            <if test="sickuname!=null and sickuname!=''">
+                sickuname=#{sickuname},
+            </if>
+            <if test="sickphone!=null and sickphone!=''">
+                sickphone=#{sickphone},
+            </if>
+            <if test="sickpwd!=null and sickpwd!=''">
+                sickpwd=#{sickpwd},
+            </if>
+            <if test="sickemail!=null and sickemail!=''">
+                sickemail=#{sickemail}
+            </if>
+        </set>
+        where sickid = #{sickid}
+    </update>
+
+    <select id="getSickerBySickUnameOrSickPhoneOrCardIdOrSickEmailAndPassword"
+            resultType="sickerinfo">
+        select * from sickerinfo where
+        <choose>
+            <when test="sickuname!=null and sickuname!=''">
+                sickuname = #{sickuname} and sickpwd = #{sickpwd}
+            </when>
+            <when test="sickemail!=null and sickemail!=''">
+                sickemail = #{sickemail} and sickpwd = #{sickpwd}
+            </when>
+            <when test="sickcard!=null and sickcard!=''">
+                sickcard = #{sickcard} and sickpwd = #{sickpwd}
+            </when>
+            <when test="sickphone!=null and sickphone!=''">
+                sickphone = #{sickphone} and sickpwd = #{sickpwd}
+            </when>
+            <otherwise>
+                sickpwd = #{sickpwd}
+            </otherwise>
+        </choose>
+    </select>
+
+
+</mapper>

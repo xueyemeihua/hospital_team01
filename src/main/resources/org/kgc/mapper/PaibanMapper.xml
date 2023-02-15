@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kgc.mapper.PaibanMapper">
+
+    <select id="getStafsByPaibanOneAndDeptid" resultType="hashmap">
+        SELECT stafinfo.stafid,
+               stafinfo.stafname
+        FROM paiban,
+             stafinfo,
+             rankinfo,
+             deptinfo
+        WHERE paiban.stafid = stafinfo.stafid
+          AND deptinfo.deptid = stafinfo.deptid
+          AND rankinfo.rankid = stafinfo.rankid
+          AND stafinfo.rankid IN (25, 26, 27, 28, 29)
+          AND paiban.one!='无班'
+          AND deptinfo.deptid = #{deptid}
+    </select>
+
+    <select id="getStafsByPaibanTwoAndDeptid" resultType="java.util.HashMap">
+        SELECT stafinfo.stafid,
+               stafinfo.stafname
+        FROM paiban,
+             stafinfo,
+             rankinfo,
+             deptinfo
+        WHERE paiban.stafid = stafinfo.stafid
+          AND deptinfo.deptid = stafinfo.deptid
+          AND rankinfo.rankid = stafinfo.rankid
+          AND stafinfo.rankid IN (25, 26, 27, 28, 29)
+          AND paiban.two!='无班'
+          AND deptinfo.deptid = #{deptid}
+    </select>
+
+    <select id="getStafsByPaibanThreeAndDeptid" resultType="java.util.HashMap">
+        SELECT stafinfo.stafid,
+               stafinfo.stafname
+        FROM paiban,
+             stafinfo,
+             rankinfo,
+             deptinfo
+        WHERE paiban.stafid = stafinfo.stafid
+          AND deptinfo.deptid = stafinfo.deptid
+          AND rankinfo.rankid = stafinfo.rankid
+          AND stafinfo.rankid IN (25, 26, 27, 28, 29)
+          AND paiban.three!='无班'
+          AND deptinfo.deptid = #{deptid}
+    </select>
+
+    <select id="getStafsByPaibanFourAndDeptid" resultType="java.util.HashMap">
+        SELECT stafinfo.stafid,
+               stafinfo.stafname
+        FROM paiban,
+             stafinfo,
+             rankinfo,
+             deptinfo
+        WHERE paiban.stafid = stafinfo.stafid
+          AND deptinfo.deptid = stafinfo.deptid
+          AND rankinfo.rankid = stafinfo.rankid
+          AND stafinfo.rankid IN (25, 26, 27, 28, 29)
+          AND paiban.four!='无班'
+          AND deptinfo.deptid = #{deptid}
+    </select>
+
+    <select id="getStafsByPaibanFiveAndDeptid" resultType="java.util.HashMap">
+        SELECT stafinfo.stafid,
+               stafinfo.stafname
+        FROM paiban,
+             stafinfo,
+             rankinfo,
+             deptinfo
+        WHERE paiban.stafid = stafinfo.stafid
+          AND deptinfo.deptid = stafinfo.deptid
+          AND rankinfo.rankid = stafinfo.rankid
+          AND stafinfo.rankid IN (25, 26, 27, 28, 29)
+          AND paiban.five!='无班'
+          AND deptinfo.deptid = #{deptid}
+    </select>
+
+    <select id="getStafsByPaibanSixAndDeptid" resultType="java.util.HashMap">
+        SELECT stafinfo.stafid,
+               stafinfo.stafname
+        FROM paiban,
+             stafinfo,
+             rankinfo,
+             deptinfo
+        WHERE paiban.stafid = stafinfo.stafid
+          AND deptinfo.deptid = stafinfo.deptid
+          AND rankinfo.rankid = stafinfo.rankid
+          AND stafinfo.rankid IN (25, 26, 27, 28, 29)
+          AND paiban.six!='无班'
+          AND deptinfo.deptid = #{deptid}
+    </select>
+
+    <select id="getStafsByPaibanSevenAndDeptid" resultType="java.util.HashMap">
+        SELECT stafinfo.stafid,
+               stafinfo.stafname
+        FROM paiban,
+             stafinfo,
+             rankinfo,
+             deptinfo
+        WHERE paiban.stafid = stafinfo.stafid
+          AND deptinfo.deptid = stafinfo.deptid
+          AND rankinfo.rankid = stafinfo.rankid
+          AND stafinfo.rankid IN (25, 26, 27, 28, 29)
+          AND paiban.seven!='无班'
+          AND deptinfo.deptid = #{deptid}
+    </select>
+
+
+    <select id="getStafsByGroupOnDept" resultType="java.util.HashMap">
+        SELECT deptinfo.deptid,
+               deptinfo.deptname,
+               stafinfo.stafid,
+               stafinfo.stafname,
+               paiban.one,
+               paiban.two,
+               paiban.three,
+               paiban.four,
+               paiban.five,
+               paiban.six,
+               paiban.seven
+        FROM deptinfo,
+             paiban,
+             stafinfo,
+             rankinfo
+        WHERE rankinfo.rankid IN (25, 26, 27, 28, 29)
+          AND rankinfo.rankid = stafinfo.rankid
+          AND stafinfo.deptid = deptinfo.deptid
+          AND paiban.stafid = stafinfo.stafid
+        ORDER BY deptinfo.deptid
+    </select>
+
+
+</mapper>

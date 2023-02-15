@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kgc.mapper.ApplicantidMapper">
+    <insert id="insertApplicant">
+        INSERT INTO applicant
+        (
+            applicantid,
+            applicantname,
+            applicantsex,
+            applicantcarid,
+            applicantphone,
+            email,
+            deptname,
+            applicantage,
+            salary,
+            myself,
+            agowork,
+            deptid,
+            postid,
+            postname,
+            applicantstatus
+        )
+        VALUES
+	    (
+            default ,
+            #{applicantName},
+            #{applicantSex},
+            #{applicantCarid},
+            #{applicantPhone},
+            #{email},
+            #{deptname},
+            #{applicantAge},
+            #{salary},
+            #{myself},
+            #{agowork},
+            #{deptid},
+            #{postid},
+            #{postname},
+            #{applicantstatus}
+	    )
+    </insert>
+    <select id="selectDeptName" resultType="String">
+        select deptname from deptinfo where deptid=#{deptid}
+    </select>
+    <select id="selectApplicants" resultType="org.kgc.pojo.Applicant">
+        select * from applicant
+    </select>
+    <select id="selectCarid" resultType="int">
+        SELECT COUNT(*) FROM applicant WHERE applicantCarid=#{applicantcarid}
+    </select>
+    <select id="selectDeptApplicants" resultType="Applicant">
+        select * from applicant where postid=#{postid}
+    </select>
+</mapper>
+
+
+

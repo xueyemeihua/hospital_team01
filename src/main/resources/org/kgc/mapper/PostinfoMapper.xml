@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kgc.mapper.PostinfoMapper">
+
+    <select id="getPostinfoBydeptid" resultType="Postinfo">
+        select * from postinfo where  deptid = #{deptid}
+    </select>
+    <insert id="addPostinfo">
+        insert into postinfo values (default,#{postname},#{deptid})
+    </insert>
+    <select id="getPostinfo" resultType="Postinfo">
+        select * from postinfo
+    </select>
+    <select id="getPostinfoByPostname" resultType="Postinfo">
+        select * from postinfo where postname = #{postname}
+    </select>
+    <select id="getPostinfoLikePostname" resultType="Postinfo">
+        select * from postinfo where postname like concat("%",#{postname},"%")
+    </select>
+    <select id="getPostidByPostname">
+        select postid from postinfo where postname=#{postname}
+    </select>
+    <select id="getPostNameByPostid" resultType="String">
+        select postname from postinfo where postid=#{postid}
+    </select>
+
+</mapper>

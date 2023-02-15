@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kgc.mapper.DeptinfoMapper">
+
+
+    <select id="getAllDeptinfo" resultType="org.kgc.pojo.Deptinfo">
+        select * from deptinfo
+    </select>
+    <select id="getDeptinfo" resultType="Deptinfo">
+        select * from deptinfo
+    </select>
+    <select id="getDeptCount" resultType="HashMap">
+        select count(*) from deptinfo,stafinfo,rankid
+        where dept.deptid = stafinfo.deptid
+        and stafinfo.rankid = rankinfo.rankid
+        and
+
+    </select>
+    <select id="getDeptinfoLikeDeptname" resultType="Deptinfo">
+        select * from deptinfo where deptname like concat ("%",#{deptname},"%")
+    </select>
+    <select id="getDeptinfoByDeptname" resultType="Deptinfo">
+       select * from deptinfo where deptname = #{deptname}
+    </select>
+    <insert id="addDeptinfo">
+        insert into deptinfo values(default,#{deptname})
+    </insert>
+    <select id="getDeptidByDeptname" >
+        select deptid from deptinfo where deptname = #{deptname}
+    </select>
+    <select id="getDeptinfoByPostid" resultType="Deptinfo">
+        select deptinfo.* from deptinfo,postinfo where deptinfo.deptid = postinfo.deptid and postid = #{postid}
+    </select>
+
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kgc.mapper.CaseinfoMapper">
+
+    <select id="getCaseinfoBySickid" resultType="caseResult">
+        SELECT caseinfo.caseid,
+               sickerinfo.sickname,
+               deptinfo.deptname,
+               stafinfo.stafname,
+               caseinfo.diagnosis,
+               caseinfo.curescheme,
+               caseinfo.curetime,
+               caseinfo.casestate
+        FROM caseinfo,
+             sickerinfo,
+             stafinfo,
+             deptinfo
+        WHERE caseinfo.sickid = sickerinfo.sickid
+          AND caseinfo.stafid = stafinfo.stafid
+          AND stafinfo.deptid = deptinfo.deptid
+          AND sickerinfo.sickid = #{sickid}
+    </select>
+
+
+
+
+</mapper>

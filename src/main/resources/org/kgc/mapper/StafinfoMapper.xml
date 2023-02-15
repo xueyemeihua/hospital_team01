@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kgc.mapper.StafinfoMapper">
+
+    <update id="updateStafinfo">
+        update stafinfo
+        <set>
+            <if test="username!=null and username!=''">
+                username=#{username},
+            </if>
+            <if test="stafphone!=null and stafphone!=''">
+                stafphone=#{stafphone},
+            </if>
+            <if test="password!=null and password!=''">
+                password=#{password},
+            </if>
+            <if test="email!=null and email!=''">
+                email=#{email}
+            </if>
+        </set>
+        where stafid = #{stafid}
+    </update>
+
+    <select id="getStaffmemberByUsernameOrstafPhoneOrStafcardOrEmailAndPassword"
+            resultType="Stafinfo">
+        select * from stafinfo where
+        <choose>
+            <when test="username!=null and username!=''">
+                username = #{username} and password = #{password}
+            </when>
+            <when test="email!=null and email!=''">
+                email = #{email} and password = #{password}
+            </when>
+            <when test="stafcard!=null and stafcard!=''">
+                stafcard = #{stafcard} and password = #{password}
+            </when>
+            <when test="stafphone!=null and stafphone!=''">
+                stafphone = #{stafphone} and password= #{password}
+            </when>
+            <otherwise>
+                password = #{password}
+            </otherwise>
+        </choose>
+    </select>
+    <insert id="addStafInfo" >
+        insert into stafinfo values(default,#{postid},#{deptid},#{stafcard},#{stafname},#{rankid},#{stafintro},#{stafstate},#{stafphone},#{username},#{email},#{password})
+    </insert>
+    <select id="getStafinfos" resultType="HashMap">
+        select stafid,postname,deptname,stafcard,stafname,rankname,stafstate,stafphone,username,email
+        from stafinfo,deptinfo,postinfo,rankinfo
+        where stafinfo.deptid = deptinfo.deptid
+        and stafinfo.postid = postinfo.postid
+        and stafinfo.rankid = rankinfo.rankid
+    </select>
+    <select id="getStafinfoLikeDeptnameOrPostnameOrStafname" resultType="HashMap">
+        select stafid,postname,deptname,stafcard,stafname,rankname,stafstate,stafphone,username,email
+        from stafinfo,deptinfo,postinfo,rankinfo
+        <where>
+            stafinfo.deptid = deptinfo.deptid and
+            stafinfo.postid = postinfo.postid and
+            stafinfo.rankid = rankinfo.rankid and
+            <choose>
+                <when test="deptname!=null and deptname!=''">
+                    deptname like concat ("%",#{deptname},"%")
+                </when>
+                <when test="postname!=null and postname!=;;">
+                    postname like concat ("%",#{postname},"%")
+                </when>
+                <when test="stafname!=null and stafname!=''">
+                    stafname like concat ("%",#{stafname},"%")
+                </when>
+                <otherwise>
+                    1=1
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+    <update id="firedStafinfo">
+        update stafinfo set stafstate = 0 where stafid = #{stafid}
+    </update>
+
+    <select id="getStafmemberByDeptid" resultType="org.kgc.pojo.Stafinfo">
+        select *
+        from stafinfo
+        where deptid = #{deptid}
+    </select>
+
+
+    <select id="getStafinfoByStafid" resultType="stafinfo">
+        select *
+        from stafinfo
+        where stafid = #{stafid}
+    </select>
+
+
+
+</mapper>

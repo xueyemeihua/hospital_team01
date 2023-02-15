@@ -1,0 +1,34 @@
+package org.kgc.controller; /**
+ * @author 雪夜梅花香_ly
+ * @create 2023-02-11-17:41
+ */
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.kgc.pojo.PresicResult;
+import org.kgc.service.PresicResultService;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.IOException;
+import java.util.List;
+
+public class GetPresicByCaseidServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        int caseid = Integer.parseInt(request.getParameter("caseid"));
+        PresicResultService service = new PresicResultService();
+        List<PresicResult> presics = service.getPresicByCaseid(caseid);
+//        System.out.println(presics);
+        ObjectMapper mapper = new ObjectMapper();
+        String s = mapper.writeValueAsString(presics);
+//        System.out.println(s);
+        response.getWriter().println(s);
+    }
+}
