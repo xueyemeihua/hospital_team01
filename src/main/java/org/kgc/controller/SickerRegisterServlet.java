@@ -23,10 +23,13 @@ public class SickerRegisterServlet extends HttpServlet {
         String sickerUserName = request.getParameter("sickerUserName");
         String sickerpwd1 = request.getParameter("sickerpwd1");
         String sickerpwd2 = request.getParameter("sickerpwd2");
-
+        String sickername = request.getParameter("sickername");
+        String sickercard = request.getParameter("sickercard");
+        String sickerphone = request.getParameter("sickerphone");
+        String sickeremail = request.getParameter("sickeremail");
         SickerinfoService service = new SickerinfoService();
         if(sickerpwd1.equals(sickerpwd2)){
-            Sickerinfo sickerinfo = new Sickerinfo(null,sickerpwd1,sickerUserName);
+            Sickerinfo sickerinfo = new Sickerinfo(null,sickercard,sickername,sickerphone,sickerpwd1,sickerUserName,sickeremail);
             int i = service.insertSicker(sickerinfo);
             if (i == 1) {
                 request.getSession().setAttribute("loginSicker",sickerinfo);

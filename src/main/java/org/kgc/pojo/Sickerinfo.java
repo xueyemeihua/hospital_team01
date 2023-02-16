@@ -14,10 +14,14 @@ public class Sickerinfo {
   public Sickerinfo() {
   }
 
-  public Sickerinfo(Integer sickid, String sickpwd, String sickuname) {
+  public Sickerinfo(Integer sickid, String sickcard, String sickname, String sickphone, String sickpwd, String sickuname, String sickemail) {
     this.sickid = sickid;
+    this.sickcard = sickcard;
+    this.sickname = sickname;
+    this.sickphone = sickphone;
     this.sickpwd = sickpwd;
     this.sickuname = sickuname;
+    this.sickemail = sickemail;
   }
 
   public Sickerinfo(Integer sickid, String sickphone, String sickpwd, String sickuname, String sickemail) {

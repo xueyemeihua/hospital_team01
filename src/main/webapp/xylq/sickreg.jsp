@@ -57,28 +57,24 @@
                         <form action="/sickReg" method="get">
                             <table>
                                 <tr>
-                                    <td align="right">姓名*</td>
-                                    <td><input type="text" name="sickname"></td>
+                                    <td align="right">用户名</td>
+                                    <td><input type="text" name="sickuname" value="${loginSicker.sickuname}" readonly></td>
                                 </tr>
                                 <tr>
-                                    <td align="right">身份证*</td>
-                                    <td><input type="text" name="sickcard"></td>
+                                    <td align="right">姓名</td>
+                                    <td><input type="text" name="sickname" value="${loginSicker.sickname}" readonly></td>
                                 </tr>
                                 <tr>
-                                    <td align="right">电话*</td>
-                                    <td><input type="text" name="sickphone"></td>
+                                    <td align="right">身份证</td>
+                                    <td><input type="text" name="sickcard" value="${loginSicker.sickcard}" readonly></td>
+                                </tr>
+                                <tr>
+                                    <td align="right">电话</td>
+                                    <td><input type="text" name="sickphone" value="${loginSicker.sickphone}" readonly></td>
                                 </tr>
                                 <tr>
                                     <td align="right">邮箱</td>
-                                    <td><input type="text" name="sickemail"></td>
-                                </tr>
-                                <tr>
-                                    <td align="right">密码</td>
-                                    <td><input type="text" name="sickpwd"></td>
-                                </tr>
-                                <tr>
-                                    <td align="right">再次输入密码</td>
-                                    <td><input type="text" name="sickpwd1"></td>
+                                    <td><input type="text" name="sickemail" value="${loginSicker.sickemail}" readonly></td>
                                 </tr>
                                 <tr>
                                     <td align="right">日期</td>

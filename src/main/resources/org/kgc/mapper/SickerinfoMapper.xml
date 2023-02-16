@@ -3,13 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kgc.mapper.SickerinfoMapper">
-<!--    激活id回填需要设置useGeneratedKeys和keyProperty-->
+    <!--    激活id回填需要设置useGeneratedKeys和keyProperty-->
     <insert id="addSickerInfo" useGeneratedKeys="true" keyProperty="sickid">
         insert into sickerinfo (sickid, sickname, sickphone, sickpwd, sickcard, sickemail)
         values (null, #{sickname}, #{sickphone}, #{sickpwd}, #{sickcard}, #{sickemail})
     </insert>
     <insert id="insertSicker" useGeneratedKeys="true" keyProperty="sickid">
-        insert into sickerinfo(sickid,sickpwd,sickuname) values (null,#{sickpwd},#{sickuname})
+        insert into sickerinfo
+        values (null, #{sickcard}, #{sickname}, #{sickphone}, #{sickpwd}, #{sickuname}, #{sickemail})
     </insert>
 
     <update id="updateSickerInfo">

@@ -8,7 +8,6 @@
 
     <title>病人注册</title>
 
-
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -44,23 +43,34 @@
         <p class="login-box-msg">登录系统</p>
 
         <form action="/sickerRegister" method="get">
-
             <div class="form-group has-feedback">
                 <input id="sickerUserName" class="form-control" placeholder="用户名" name="sickerUserName">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
-
             <div class="form-group has-feedback">
                 <input id="sickerpwd1" type="password" class="form-control" placeholder="密码" name="sickerpwd1">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
-
-
             <div class="form-group has-feedback">
                 <input id="sickerpwd2" class="form-control" placeholder="再次输入密码" name="sickerpwd2">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
-
+            <div class="form-group has-feedback">
+                <input id="sickername" class="form-control" placeholder="姓名" name="sickername">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input id="sickercard" class="form-control" placeholder="身份证" name="sickercard">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input id="sickerphone" class="form-control" placeholder="电话" name="sickerphone">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input id="sickeremail" class="form-control" placeholder="邮箱" name="sickeremail">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
             <div align="center">
                 <button type="submit" class="btn btn-primary btn-block btn-flat">注册</button>
             </div>
