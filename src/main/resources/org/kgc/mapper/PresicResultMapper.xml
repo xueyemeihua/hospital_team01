@@ -10,8 +10,8 @@
                sickerinfo.sickname,
                prescinfo.prescid,
                druginfo.drugname,
-               druginfo.druginven,
                prescinfo.drugcount,
+               druginfo.drugprice,
                druginfo.drugspeci,
                prescinfo.prescstate
         FROM caseinfo,

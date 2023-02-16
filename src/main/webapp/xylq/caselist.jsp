@@ -123,6 +123,9 @@
                         <th>治疗方案</th>
                         <th>诊断时间</th>
                         <th>病例状态</th>
+                        <th>挂号时间</th>
+                        <th>挂号等级</th>
+                        <th>挂号费</th>
                         <th>操作</th>
                         </thead>
                         <c:forEach var="cr" items="${caseResults}">
@@ -130,6 +133,7 @@
                                 <td>${cr.caseid}</td>
                                 <td>${cr.sickname}</td>
                                 <td>${cr.deptname}</td>
+                                <td hidden>${cr.stafid}</td>
                                 <td>${cr.stafname}</td>
                                 <td>${cr.diagnosis}</td>
                                 <td>${cr.curescheme}</td>
@@ -140,8 +144,11 @@
                                 <c:if test="${cr.casestate==0}">
                                     <td>未接诊</td>
                                 </c:if>
+                                <td>${cr.regdate}</td>
+                                <td>${cr.regdesc}</td>
+                                <td>${cr.regfee}</td>
                                 <td>
-                                    <a onclick="getPresicByCaseid(${cr.caseid})">查看药品详情</a>
+                                    <a onclick="getPresicByCaseid(${cr.caseid},)">查看药品详情</a>
                                     <a onclick="leaveWords(${cr.caseid})">评价</a></td>
                             </tr>
                         </c:forEach>

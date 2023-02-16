@@ -14,6 +14,4 @@ public interface CaseinfoMapper {
 
     List<CaseResult> getCaseinfoBySickid(@Param("sickid") int sickid);
 
-
-
 }

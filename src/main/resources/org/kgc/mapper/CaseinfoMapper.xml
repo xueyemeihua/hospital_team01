@@ -8,22 +8,31 @@
         SELECT caseinfo.caseid,
                sickerinfo.sickname,
                deptinfo.deptname,
+               stafinfo.stafid,
                stafinfo.stafname,
                caseinfo.diagnosis,
                caseinfo.curescheme,
                caseinfo.curetime,
-               caseinfo.casestate
+               caseinfo.casestate,
+               reginfo.regdate,
+               regfeestander.regdesc,
+               regfeestander.regfee
         FROM caseinfo,
              sickerinfo,
              stafinfo,
-             deptinfo
+             deptinfo,
+             reginfo,
+             regfeestander
         WHERE caseinfo.sickid = sickerinfo.sickid
           AND caseinfo.stafid = stafinfo.stafid
           AND stafinfo.deptid = deptinfo.deptid
+          and caseinfo.regid = reginfo.regid
+          and reginfo.stafid = stafinfo.stafid
+          and regfeestander.regfeeid = reginfo.regfeeid
           AND sickerinfo.sickid = #{sickid}
+        ORDER BY reginfo.regdate
+                DESC
     </select>
-
-
 
 
 </mapper>

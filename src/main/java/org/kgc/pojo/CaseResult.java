@@ -1,18 +1,24 @@
 package org.kgc.pojo;
 
+import java.awt.print.PrinterGraphics;
+
 /**
  * @author 雪夜梅花香_ly
  * @create 2023-02-12-14:17
  */
 public class CaseResult {
-    private int caseid;
+    private Integer caseid;
     private String sickname;
     private String deptname;
+    private Integer stafid;
     private String stafname;
     private String diagnosis;
     private String curescheme;
     private String curetime;
-    private String casestate;
+    private Integer casestate;
+    private String regdate;
+    private String regdesc;
+    private Double regfee;
 
     @Override
     public String toString() {
@@ -20,19 +26,23 @@ public class CaseResult {
                 "caseid=" + caseid +
                 ", sickname='" + sickname + '\'' +
                 ", deptname='" + deptname + '\'' +
+                ", stafid=" + stafid +
                 ", stafname='" + stafname + '\'' +
                 ", diagnosis='" + diagnosis + '\'' +
                 ", curescheme='" + curescheme + '\'' +
                 ", curetime='" + curetime + '\'' +
-                ", casestate='" + casestate + '\'' +
+                ", casestate=" + casestate +
+                ", regdate='" + regdate + '\'' +
+                ", regdesc='" + regdesc + '\'' +
+                ", regfee=" + regfee +
                 '}';
     }
 
-    public int getCaseid() {
+    public Integer getCaseid() {
         return caseid;
     }
 
-    public void setCaseid(int caseid) {
+    public void setCaseid(Integer caseid) {
         this.caseid = caseid;
     }
 
@@ -50,6 +60,14 @@ public class CaseResult {
 
     public void setDeptname(String deptname) {
         this.deptname = deptname;
+    }
+
+    public Integer getStafid() {
+        return stafid;
+    }
+
+    public void setStafid(Integer stafid) {
+        this.stafid = stafid;
     }
 
     public String getStafname() {
@@ -84,23 +102,51 @@ public class CaseResult {
         this.curetime = curetime;
     }
 
-    public String getCasestate() {
+    public Integer getCasestate() {
         return casestate;
     }
 
-    public void setCasestate(String casestate) {
+    public void setCasestate(Integer casestate) {
         this.casestate = casestate;
     }
 
-    public CaseResult(int caseid, String sickname, String deptname, String stafname, String diagnosis, String curescheme, String curetime, String casestate) {
+    public String getRegdate() {
+        return regdate;
+    }
+
+    public void setRegdate(String regdate) {
+        this.regdate = regdate;
+    }
+
+    public String getRegdesc() {
+        return regdesc;
+    }
+
+    public void setRegdesc(String regdesc) {
+        this.regdesc = regdesc;
+    }
+
+    public Double getRegfee() {
+        return regfee;
+    }
+
+    public void setRegfee(Double regfee) {
+        this.regfee = regfee;
+    }
+
+    public CaseResult(Integer caseid, String sickname, String deptname, Integer stafid, String stafname, String diagnosis, String curescheme, String curetime, Integer casestate, String regdate, String regdesc, Double regfee) {
         this.caseid = caseid;
         this.sickname = sickname;
         this.deptname = deptname;
+        this.stafid = stafid;
         this.stafname = stafname;
         this.diagnosis = diagnosis;
         this.curescheme = curescheme;
         this.curetime = curetime;
         this.casestate = casestate;
+        this.regdate = regdate;
+        this.regdesc = regdesc;
+        this.regfee = regfee;
     }
 
     public CaseResult() {
