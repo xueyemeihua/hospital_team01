@@ -4,6 +4,7 @@ package org.kgc.controller;
 import com.alibaba.fastjson.JSON;
 import org.kgc.pojo.PageBean;
 import org.kgc.pojo.Patient;
+import org.kgc.pojo.Stafinfo;
 import org.kgc.service.PatientService;
 import org.kgc.service.impl.PatientServiceImpl;
 
@@ -55,7 +56,7 @@ public class PatientController extends BaseServlet {
 
         int currentPage = Integer.parseInt(_currentPage);
         int pageSize = Integer.parseInt(_pageSize);
-
+        Stafinfo loginSicker = (Stafinfo) request.getSession().getAttribute("loginSicker");
         // 获取查询条件对象
         BufferedReader br = request.getReader();
         String params = br.readLine();//json字符串
@@ -65,7 +66,7 @@ public class PatientController extends BaseServlet {
 
 
         //2. 调用service查询
-        PageBean<Patient> pageBean = service.selectByPageAndCondition(currentPage,pageSize,patient);
+        PageBean<Patient> pageBean = service.selectByPageAndCondition(loginSicker.getStafid(),currentPage,pageSize,patient);
 
         //2. 转为JSON
         String jsonString = JSON.toJSONString(pageBean);

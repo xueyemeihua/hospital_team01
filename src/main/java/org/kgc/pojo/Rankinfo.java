@@ -5,15 +5,15 @@ public class Rankinfo {
 
   private Integer rankid;
   private String rankname;
-  private double regfeeid;
+  private int regfeeid;
 
-  public Rankinfo(Integer rankid, String rankname, double regfeeid) {
-    this.rankid = rankid;
-    this.rankname = rankname;
-    this.regfeeid = regfeeid;
-  }
-
-  public Rankinfo() {
+  @Override
+  public String toString() {
+    return "Rankinfo{" +
+            "rankid=" + rankid +
+            ", rankname='" + rankname + '\'' +
+            ", regfeeid=" + regfeeid +
+            '}';
   }
 
   public Integer getRankid() {
@@ -24,7 +24,6 @@ public class Rankinfo {
     this.rankid = rankid;
   }
 
-
   public String getRankname() {
     return rankname;
   }
@@ -33,21 +32,20 @@ public class Rankinfo {
     this.rankname = rankname;
   }
 
-
-  public double getRegfeeid() {
+  public int getRegfeeid() {
     return regfeeid;
   }
 
-  public void setRegfeeid(double regfeeid) {
+  public void setRegfeeid(int regfeeid) {
     this.regfeeid = regfeeid;
   }
 
-  @Override
-  public String toString() {
-    return "Rankinfo{" +
-            "rankid=" + rankid +
-            ", rankname='" + rankname + '\'' +
-            ", regfeeid=" + regfeeid +
-            '}';
+  public Rankinfo() {
+  }
+
+  public Rankinfo(Integer rankid, String rankname, int regfeeid) {
+    this.rankid = rankid;
+    this.rankname = rankname;
+    this.regfeeid = regfeeid;
   }
 }

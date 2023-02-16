@@ -60,7 +60,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     //分页条件查询
-    public PageBean<Patient> selectByPageAndCondition(int currentPage, int pageSize, Patient patient) {
+    public PageBean<Patient> selectByPageAndCondition(int stafid,int currentPage, int pageSize, Patient patient) {
         //获取 SqlSession 对象
         SqlSession sqlSession = SqlSessionUtil.getSqlSession();
         //3. 获取BrandMapper
@@ -84,7 +84,7 @@ public class PatientServiceImpl implements PatientService {
         }
 
         //5. 查询当前页数据
-        List<Patient> rows = mapper.selectByPageAndCondition(begin, size, patient);
+        List<Patient> rows = mapper.selectByPageAndCondition(stafid,begin, size, patient);
 
         //6. 查询总记录数
         int totalCount = mapper.selectTotalCountByCondition(patient);

@@ -13,7 +13,7 @@ public interface PatientMapper {
     //查询总记录数
     int selectTotalCount();
     //分页条件查询
-    List<Patient> selectByPageAndCondition(@Param("begin") int begin, @Param("size") int size, @Param("patient") Patient patient);
+    List<Patient> selectByPageAndCondition(@Param("stafid")int stafid,@Param("begin") int begin, @Param("size") int size, @Param("patient") Patient patient);
     //根据条件查询总记录数
     int selectTotalCountByCondition(Patient patient);
 }

@@ -54,12 +54,14 @@
         reginfo.regid
         FROM
         sickerinfo,
-        reginfo
+        reginfo,
+        stafinfo
         WHERE
         sickerinfo.sickid = reginfo.sickid
-        order by
-        reginfo.regdate
-        desc
+        AND stafinfo.stafid = reginfo.stafid
+        AND stafinfo.stafid = #{stafid}
+        ORDER BY
+        reginfo.regdate DESC
     </select>
     <!--根据条件查询总记录数-->
     <select id="selectTotalCountByCondition" resultType="java.lang.Integer">

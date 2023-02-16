@@ -11,6 +11,6 @@ public interface PatientService {
     //分页查询
     PageBean<Patient> selectByPage(int currentPage, int pageSize);
     //分页条件查询
-    PageBean<Patient>  selectByPageAndCondition(int currentPage, int pageSize, Patient patient);
+    PageBean<Patient>  selectByPageAndCondition(int stafid,int currentPage, int pageSize, Patient patient);
 
 }
