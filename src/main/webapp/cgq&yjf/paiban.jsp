@@ -2,7 +2,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-  <!-- 页面meta -->
+
+  <title>js实现弹出提交表单 </title>
   <meta charset="utf-8">
   <style type="text/css">
     #all_light { /*整个弹窗的页面*/
@@ -33,8 +34,52 @@
     }
 
   </style>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .date-box {
+      padding: 10px 100px;
+    }
+
+    .date-box h2 {
+      margin-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table tr {
+      display: -webkit-flex;
+      display: flex;
+    }
+
+    table tr th,
+    table tr td {
+      flex: 1;
+      padding: 10px 0;
+      text-align: center;
+      border: 1px solid #e1e8f6;
+    }
+
+    table tr th {
+      background-color: #dddddd;
+    }
+
+    table tr td.active {
+      background-color: #7087f4;
+      color: #ffffff;
+    }
+  </style>
+  <!-- 页面meta -->
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>药品信息</title>
+  <title>岗位信息</title>
   <meta name="description" content="药品信息">
   <meta name="keywords" content="药品信息">
 
@@ -337,6 +382,7 @@
 
   <!-- 导航侧栏 -->
   <aside class="main-sidebar">
+
     <!-- 侧边栏：样式可以在sidebar.less中找到 -->
     <section class="sidebar">
       <!-- 侧边栏用户面板 -->
@@ -353,8 +399,8 @@
       <!-- 搜索表单 -->
 
       <!-- 侧边栏菜单：：style可以在sidebar.les中找到 -->
-        <!-- 菜单 -->
-        <jsp:include page="/cgq&yjf/manager_left_menu.jsp"/>
+
+      <jsp:include page="/cgq&yjf/manager_left_menu.jsp"/>
     </section>
     <!-- /.侧边栏 -->
   </aside>
@@ -367,175 +413,18 @@
   <div class="content-wrapper">
 
     <!-- 内容头部 -->
-    <section class="content-header">
-      <h1>
-        员工管理
-        <small>员工列表</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-        <li><a href="#">员工管理</a></li>
-        <li class="active">员工列表</li>
-      </ol>
-    </section>
+
     <!-- 内容头部 /-->
 
     <!-- 正文区域 -->
-    <section class="content">
 
-      <!-- .box-body -->
-      <div class="box box-primary">
-        <div class="box-header with-border">
-          <h3 class="box-title">列表</h3>
-        </div>
-
-        <div class="box-body">
-
-          <!-- 数据表格 -->
-          <div class="table-box">
-
-            <!--工具栏-->
-            <div class="pull-left">
-              <div class="form-group form-inline">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default" title="新建" id="add" ><i class="fa fa-file-o"></i> 新建</button>
-                  <button type="button" class="btn btn-default" title="刷新"><i class="fa fa-refresh"></i> 刷新</button>
-                </div>
-              </div>
-            </div>
-            <div class="box-tools pull-right">
-              <form action="/getStafinfoLikeDeptnameOrPostnameOrStafname">
-                科室名<input name="deptname">
-                岗位名<input name="postname">
-                员工姓名<input name="stafname">
-                <input type="submit" value="查询">
-              </form>
-<%--              <div class="has-feedback">--%>
-<%--                <input type="text" class="form-control input-sm" placeholder="输入药品名称">--%>
-<%--                <span class="glyphicon glyphicon-search form-control-feedback"></span>--%>
-<%--              </div>--%>
-            </div>
-            <!--工具栏/-->
-
-            <!--数据列表-->
-            <table id="dataList" class="table table-bordered table-striped table-hover dataTable" width="900px">
-
-              <tr>
-                <th>医院工作人员编号</th>
-                <th>岗位名称</th>
-                <th>科室名称</th>
-                <th>身份证</th>
-                <th>姓名</th>
-                <th>职称</th>
-                <th>职员状态</th>
-                <th>手机号</th>
-                <th>登录名</th>
-                <th>邮箱</th>
-                <th>
-                    操作
-                </th>
-              </tr>
-
-
-                <c:forEach items="${stafinfos}" var="stafinfo">
-                    <tr >
-                    <td>${stafinfo.stafid}</td>
-                    <td>${stafinfo.postname}</td>
-                    <td>${stafinfo.deptname}</td>
-                    <td>${stafinfo.stafcard}</td>
-                    <td>${stafinfo.stafname}</td>
-                    <td>${stafinfo.rankname}</td>
-                    <td>
-                      <c:if test="${stafinfo.stafstate==1}">
-                        在职
-                      </c:if>
-                      <c:if test="${stafinfo.stafstate==0}">
-                        离职
-                      </c:if>
-                    </td>
-                    <td>${stafinfo.stafphone}</td>
-                    <td>${stafinfo.username}</td>
-                    <td>${stafinfo.email}</td>
-                      <td>
-                        <button id="change" onclick="change()" >转岗</button>
-                        <form >
-                        <div id="contes" >
-                          <div>
-                            转岗
-                            <hr>
-                            岗位名称
-                            <select name="postid" id="post" onchange="selectDept()">
-                              <option value="0">请选择</option>
-                              <c:forEach items="${postinfos}" var="postinfo">
-                                <c:if test="${postinfo.postid!=12}">
-                                  <option value="${postinfo.postid}">${postinfo.postname}</option>
-                                </c:if>
-                              </c:forEach>
-                            </select><br>
-                            所属科室
-                            <select id="postinfos" name="postid"></select>
-                          </div>
-                        </div>
-                        <div id="all_light"></div>
-                        </form>
-                        <input type="button" onclick="void fired(${stafinfo.stafid})" value="开除">
-                      </td>
-
-
-              </tr>
-              </c:forEach>
-              <a href="/getAllStafinfo">显示所有</a>
-
-<%--              <a href="/deleteDrugInfoServlet?drugid=${druginfo.drugid}">删除</a>--%>
-            </table>
-            <!--数据列表/-->
-
-
-          </div>
-          <!-- 数据表格 /-->
-        </div>
-        <!-- /.box-body -->
-
-        <!-- .box-footer-->
-        <div class="box-footer">
-          <div class="pull-left">
-            <div class="form-group form-inline">
-              总共2 页，共14 条数据。 每页
-              <select class="form-control">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select> 条
-            </div>
-          </div>
-
-          <div class="box-tools pull-right">
-            <ul class="pagination">
-              <li>
-                <a href="#" aria-label="Previous">首页</a>
-              </li>
-              <li><a href="#">上一页</a></li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">下一页</a></li>
-              <li>
-                <a href="#" aria-label="Next">尾页</a>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-        <!-- /.box-footer-->
-
-      </div>
-
-    </section>
     <!-- 正文区域 /-->
+    <section>
+      <div class="date-box">
+        <h2>四周排班</h2>
+        <table id="fourWeekDate"></table>
+      </div>
+    </section>
 
   </div>
   <!-- @@close -->
@@ -599,25 +488,141 @@
 <script src="../plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
 <script src="../plugins/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 
-<script>
-  function fired(stafid){
-    var flag = window.confirm("是否开除该员工？")
-    if (flag){
-      window.location='/firedStafinfo?stafid='+stafid
+<script >
+
+  /*
+     * 通过参数动态获取排班时间
+     * @author：kevinInsight 20180411
+     */
+
+  /*
+   * 获取当天及之后的排班时间
+   * @param dayCount:相对于今天的天数，形如：0,1,2.......
+   */
+  function getDateData(dayCount) {
+    var d = new Date();
+    d.setDate(d.getDate() + dayCount);
+    var y = d.getFullYear();
+    var m = (d.getMonth() + 1) > 9 ? d.getMonth() + 1 : '0' + (d.getMonth() + 1);
+    var d = d.getDate() > 9 ? d.getDate() : '0' + d.getDate();
+    return y + "-" + m + "-" + d;
+  }
+  /*
+   * 获取日期对应的星期名称
+   * @param date:待转换日期,形如：'2018-04-11' 或 '2018-4-11'
+   */
+  function dateToDay(date) {
+    var dayNo = new Date(date).getDay();
+    switch (dayNo) {
+      case 0:
+        return '星期日';
+        break;
+      case 1:
+        return '星期一';
+        break;
+      case 2:
+        return '星期二';
+        break;
+      case 3:
+        return '星期三';
+        break;
+      case 4:
+        return '星期四';
+        break;
+      case 5:
+        return '星期五';
+        break;
+      case 6:
+        return '星期六';
+        break;
+      default:
+        break;
     }
   }
+  /*
+   * 获取排班日期
+   * @param weekCount:排班周数，int型
+   * @param domId: 输出DomId
+   */
+  function initWeekData(weekCount, domId) {
+    var weekDateTempl = '',
+            tableTempl = '',
+            tableTh = '',
+            tableTd = '',
+            tableTdArr = [],
+            weekData = [],
+            weekDataFinal = [],
+            weekDateEle;
+    for (var i = 0; i < weekCount * 7; i++) {
+      weekData[i] = getDateData(i);
+    }
+    for (var i = 0; i < weekData.length; i = i + 7) {
+      weekDataFinal.push(weekData.slice(i, i + 7));
+    }
+    weekDataFinal.forEach(function(item, index) {
+      if (index === 0) {
+        for (var i = 0; i < item.length; i++) {
+          tableTh += '<th>' + dateToDay(item[i]) + '</th>'
+        }
+        tableTh = '<tr>' + tableTh + '</tr>';
+        //firstWeek
+        for (var j = 0; j < item.length; j++) {
+          if (j === 0) {
+            tableTd += '<td attr-date=' + item[j] + ' class="active">今天</td>';
+          } else {
+            tableTd += '<td attr-date=' + item[j] + '>' + new Date(item[j]).getDate() + '</td>';
+            console.log(tableTd+"111111")
+          }
+        }
+        tableTd = '<tr>' + tableTd + '</tr>';
+        tableTdArr[index] = tableTd;
+        tableTd = '';
+      } else {
+        for (var k = 0; k < item.length; k++) {
+          tableTd += '<td attr-date=' + item[k] + '>' + new Date(item[k]).getDate() + '</td>';
+        }
+        tableTd = '<tr>' + tableTd + '</tr>';
+        tableTdArr[index] = tableTd;
+        tableTd = '';
+      }
+    });
+    tableTempl = tableTh + tableTdArr.join('');
+    weekDateEle = document.querySelector('#' + domId);
+    weekDateEle.innerHTML = tableTempl;
+    weekDateEle.querySelectorAll('tr>td').forEach(function(item, index) {
+      item.addEventListener("click", function() {
+        weekDateEle.querySelectorAll('tr>td').forEach(function(item, index) {
+          item.classList.remove('active');
+        });
+        this.classList.add('active');
+        <%--var date=this.getAttribute('attr-date')--%>
+        <%--var name=""--%>
+        <%--for (var i = 0; i <${paibans}.size(); i++){--%>
+        <%--  name+=${paibans}[i]+"\n";--%>
+        <%--}--%>
 
-  function change() {
-    document.getElementById('all_light').style.display = 'block';
-    document.getElementById('contes').style.display = 'block';
+        alert(name)
+        window.location.href="/showStafOnDay?date="+date
+      });
+    });
   }
 
+  //调用实例
+
+  //两周
+  initWeekData(4, 'fourWeekDate');
 
 
-  document.getElementById("add").onclick=function () {
-    location.href="cgq&yjf/addStafInfo.jsp";
-  }
 
+
+
+
+
+
+
+  // document.getElementById("add").onclick=function () {
+  //   location.href="/doctor/addDrugInfos.jsp";
+  // }
   $(document).ready(function() {
     // 选择框
     $(".select2").select2();
@@ -627,26 +632,7 @@
       locale: 'zh-CN'
     });
   });
-//ajax科室和岗位的二级联动
-  function selectDept() {
-    $.get("http://localhost:8080/getDeptinfoByPostid","postid="+$("#post").val(),function (data){
-      var jsonData=eval("("+data+")")
-      var s = ''
-      if (jsonData.length != 0) {
-        for (var i = 0; i < jsonData.length; i++) {
-          $("#deptinfos").children().remove();
-          s += "<option value='" +
-                  jsonData[i].deptid +
-                  "'>" +
-                  jsonData[i].deptname +
-                  "</option>"
-        }
-        $("#deptinfos").append(s)
-      } else {
-        $("#deptinfos").children().remove();
-      }
-    })
-  }
+
 
   // 设置激活菜单
   function setSidebarActive(tagUri) {

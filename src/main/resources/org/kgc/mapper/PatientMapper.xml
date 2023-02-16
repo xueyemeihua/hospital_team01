@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kgc.mapper.PatientMapper">
+    <!--查询全部病人信息-->
+    <select id="selectAll" resultType="org.kgc.pojo.Patient">
+        SELECT
+        sickerinfo.sickid,
+        sickerinfo.sickname,
+        sickerinfo.sickphone,
+        sickerinfo.sickcard,
+        reginfo.regdate,
+        sickerinfo.sickuname,
+        sickerinfo.sickemail
+        FROM
+        sickerinfo,
+        reginfo
+        WHERE
+        sickerinfo.sickid = reginfo.sickid
+
+    </select>
+    <!--分页查询-->
+    <select id="selectByPage" resultType="org.kgc.pojo.Patient">
+        select *
+        from reginfo, sickerinfo, stafinfo, caseinfo, druginfo, prescinfo
+        WHERE sickerinfo.sickid = caseinfo.sickid
+        AND caseinfo.stafid = stafinfo.stafid
+        and druginfo.drugid = prescinfo.drugid
+        and caseinfo.caseid = prescinfo.caseid
+        and reginfo.stafid = caseinfo.stafid
+        limit #{begin} , #{size}
+    </select>
+    <!--查询总记录数-->
+    <select id="selectTotalCount" resultType="java.lang.Integer">
+        select count(*)
+        from reginfo, sickerinfo, stafinfo, caseinfo, druginfo, prescinfo
+        WHERE sickerinfo.sickid = caseinfo.sickid
+        and caseinfo.stafid = stafinfo.stafid
+        and druginfo.drugid = prescinfo.drugid
+        and caseinfo.caseid = prescinfo.caseid
+        and reginfo.stafid = caseinfo.stafid
+    </select>
+    <!--分页条件查询-->
+    <select id="selectByPageAndCondition" resultType="org.kgc.pojo.Patient">
+        SELECT
+        sickerinfo.sickid,
+        sickerinfo.sickname,
+        sickerinfo.sickphone,
+        sickerinfo.sickcard,
+        reginfo.regdate,
+        sickerinfo.sickuname,
+        sickerinfo.sickemail,
+        reginfo.regid
+        FROM
+        sickerinfo,
+        reginfo
+        WHERE
+        sickerinfo.sickid = reginfo.sickid
+        order by
+        reginfo.regdate
+        desc
+    </select>
+    <!--根据条件查询总记录数-->
+    <select id="selectTotalCountByCondition" resultType="java.lang.Integer">
+        select count(*)
+        from reginfo, sickerinfo, stafinfo, caseinfo, druginfo, prescinfo
+        <where>
+            and sickerinfo.sickid = caseinfo.sickid
+            and caseinfo.stafid = stafinfo.stafid
+            and druginfo.drugid = prescinfo.drugid
+            and caseinfo.caseid = prescinfo.caseid
+            and reginfo.stafid = caseinfo.stafid
+            <if test="sickname != null and sickname != '' ">
+                and sickname like #{sickname}
+            </if>
+
+            <if test="sickphone != null and sickphone != '' ">
+                and sickphone like #{sickphone}
+            </if>
+
+        </where>
+    </select>
+</mapper>

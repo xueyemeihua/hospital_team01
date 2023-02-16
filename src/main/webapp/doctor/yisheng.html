@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>病人管理</title>
+  <!-- 谷歌字体：来源：Sans Pro : Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../doctorStatic/plugins/fontawesome-free/css/all.min.css">
+  <!-- 数据表 DataTables -->
+  <link rel="stylesheet" href="../doctorStatic/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../doctorStatic/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../doctorStatic/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- 主题样式 Theme style -->
+  <link rel="stylesheet" href="../doctorStatic/dist/css/adminlte.min.css">
+  <!--隔行变色颜色-->
+  <style>
+    .el-table .warning-row {
+      background: oldlace;
+    }
+    .el-table .success-row {
+      background: #f0f9eb;
+    }
+  </style>
+  <!-- ./ 隔行变色颜色-->
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+
+<div id="app" class="wrapper">
+
+  <!-- 名称 Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- 左侧导航栏链接 Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="yisheng.html" class="nav-link">首页</a>
+      </li>
+<!--      <li class="nav-item d-none d-sm-inline-block">-->
+<!--        <a href="#" class="nav-link">联系</a>-->
+<!--      </li>-->
+    </ul>
+    <!-- 右侧导航栏链接 Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- 名称搜索 Navbar Search -->
+      <li class="nav-item">
+        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+          <i class="fas fa-search"></i>
+        </a>
+        <div class="navbar-search-block">
+          <form class="form-inline">
+            <div class="input-group input-group-sm">
+              <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                     aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </li>
+
+      <!-- 右侧导航栏链接 Right navbar links -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-comments"></i>
+          <span class="badge badge-danger navbar-badge">3</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="#" class="dropdown-item">
+            <!-- 消息结束 Message End -->
+            <div class="media">
+              <img src="../doctorStatic/dist/img/user1-128x128.jpg" alt="User Avatar"
+                   class="img-size-50 mr-3 img-circle">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Brad Diesel
+                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">Call me whenever you can...</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- ��Ϣ���� -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- ��Ϣ��ʼʱ�� -->
+            <div class="media">
+              <img src="../doctorStatic/dist/img/user8-128x128.jpg" alt="User Avatar"
+                   class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  John Pierce
+                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">I got your message bro</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- ��Ϣ���� -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- ��Ϣ��ʼʱ�� -->
+            <div class="media">
+              <img src="../doctorStatic/dist/img/user3-128x128.jpg" alt="User Avatar"
+                   class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Nora Silvester
+                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">The subject goes here</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- ��Ϣ���� -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+        </div>
+      </li>
+      <!--  名称搜索 Navbar Search  -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+          <i class="fas fa-th-large"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.名称 navbar -->
+
+  <!-- 主体 侧边栏 容器 Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- 图标logo -->
+    <a href="yisheng.html" class="brand-link">
+      <img src="../doctorStatic/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+           class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">医院后台管理系统</span>
+    </a>
+    <!-- 图标logo -->
+
+    <!-- 侧边栏 Sidebar  -->
+    <div class="sidebar">
+      <!-- 侧边栏用户（可选） Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="../doctorStatic/dist/img/user2-160x160.jpg" class="img-circle elevation-2"
+               alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">张仲景</a>
+        </div>
+      </div>
+      <!-- ./侧边栏用户（可选） Sidebar user (optional) -->
+
+      <!-- 侧边栏搜索表单 SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="搜索" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- ./侧边栏搜索表单 SidebarSearch Form -->
+
+      <!-- 侧边栏菜单 Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+            data-accordion="false">
+          <!-- 使用字体很棒的.nav图标类或任何其他图标字体库将图标添加到链接
+            Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                医生功能
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="yisheng.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>病人管理</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="personal.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>个人中心</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.侧边栏菜单 Sidebar Menu -->
+    </div>
+    <!-- /.侧边栏 sidebar -->
+  </aside>
+  <!-- ./ 主体 侧边栏 容器 Main Sidebar Container -->
+
+  <!-- 内容包装器 content-wrapper -->
+  <div class="content-wrapper">
+    <!-- 内容标题 content-header -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>病人管理</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">首页</a></li>
+              <li class="breadcrumb-item active">病人管理</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.容器流体 container-fluid -->
+    </section>
+
+    <!-- 内容 content -->
+    <section class="content">
+      <el-dialog
+              title="修改品牌"
+              :visible.sync="dialogVisibleUpdate"
+              width="30%">
+
+        <el-form ref="form" :model="bingli" label-width="80px">
+          <!--<el-form-item label="编号">
+            <el-input v-model="bingli.prescid"></el-input>
+          </el-form-item>-->
+
+          <el-form-item label="医生">
+            <el-col :span="10"></el-col>
+            <el-input v-model="bingli.stafname"></el-input>
+            </el-col>
+          </el-form-item>
+
+          <el-form-item label="挂号类别">
+
+            <el-select v-model="bingli.regdesc" placeholder="请选择">
+              <el-option label="非医生" value="1"></el-option>
+              <el-option label="普通号" value="2"></el-option>
+              <el-option label="专家号" value="3"></el-option>
+            </el-select>
+
+          </el-form-item>
+          <el-form-item label="挂号费">
+
+
+          <el-col :span="10">
+              <el-input v-model="bingli.regfee"></el-input>
+
+          </el-col>
+          </el-form-item>
+
+          <el-form-item label="诊断结果">
+            <el-input type="textarea" v-model="bingli.diagnosis"></el-input>
+          </el-form-item>
+
+          <el-form-item label="治疗方案">
+            <el-input type="textarea" v-model="bingli.curescheme"></el-input>
+          </el-form-item>
+
+          <!--<el-form-item label="治疗时间">
+            <el-col :span="11">
+              <el-date-picker type="datetime" placeholder="选择日期" v-model="bingli.curetime" style="width: 100%;"></el-date-picker>
+            </el-col>
+          </el-form-item>-->
+
+          <el-form-item label="病例状态">
+            <el-switch v-model=" bingli.casestate"
+                       active-text="已接诊"
+                       inactive-text="未接诊"
+                       active-value="1"
+                       inactive-value="0">
+            </el-switch>
+          </el-form-item>
+
+          <el-form-item>
+            <el-button type="primary" @click="updateBingliEnd">修改</el-button>
+            <el-button @click="dialogVisibleUpdate = false">取消</el-button>
+          </el-form-item>
+        </el-form>
+
+      </el-dialog>
+
+
+      <el-card class="box-card">
+        <div slot="header" class="clearfix">
+          <span>病人信息</span>
+          <!--<el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>-->
+        </div>
+        <!-- 病人搜索表单 -->
+        <el-form :inline="true" :model="bingren" class="demo-form-inline">
+
+          <el-form-item label="病人姓名">
+            <el-input v-model="bingren.sickname" placeholder="姓名"></el-input>
+          </el-form-item>
+
+          <el-form-item label="手机号">
+            <el-input v-model="bingren.sickphone" placeholder="手机号"></el-input>
+          </el-form-item>
+
+          <el-form-item>
+            <el-button type="primary" @click="onSubmit">查询</el-button>
+          </el-form-item>
+        </el-form>
+
+
+        <template>
+          <!-- 病人表格 -->
+        <el-table :data="bingrenTable" style="width: 100%"
+                  :row-class-name="tableRowClassName"
+                  :visible.sync="dialogVisible">
+          <!-- 选择框 -->
+          <!--<el-table-column type="selection" width="55"> </el-table-column>-->
+          <!-- index -->
+          <!-- 如果设置了 type=index，可以通过传递 index 属性来自定义索引 -->
+          <el-table-column type="index" label="序号" align="center"></el-table-column>
+          <!-- prop 对应列内容的字段名，也可以使用 property 属性 -->
+          <!-- label 显示的标题 -->
+          <!-- width 对应列的宽度 -->
+          <!-- type对应列的类型 selection/index/expand -->
+          <!-- align 对齐方式 left/center/right -->
+          <el-table-column prop="sickid" label="病人编号" align="center">
+          </el-table-column>
+          <el-table-column prop="sickname" label="姓名" align="center">
+          </el-table-column>
+          <el-table-column prop="sickphone" label="手机号" align="center">
+          </el-table-column>
+          <el-table-column prop="sickcard" label="身份证" align="center">
+          </el-table-column>
+          <el-table-column prop="sex" label="性别" align="center">
+          </el-table-column>
+          <el-table-column prop="age" label="年龄" align="center">
+          </el-table-column>
+          <el-table-column prop="regdate" label="挂号时间" align="center">
+          </el-table-column>
+          <el-table-column prop="sickuname" label="用户名" align="center">
+          </el-table-column>
+          <el-table-column prop="sickemail" label="邮箱" align="center">
+          </el-table-column>
+          <el-table-column prop="regid" label="挂号单号" align="center">
+          </el-table-column>
+          <el-table-column label="病例" width="150" align="center">
+            <template slot-scope="scope">
+              <el-button @click="handleClick(scope.row.sickid,scope.row.regid)" type="primary">查看</el-button>
+            </template>
+            <!--<el-button type="danger">删除</el-button>-->
+          </el-table-column>
+        </el-table>
+          <!--分页工具条-->
+          <el-pagination
+                  @size-change="handleSizeChange"
+                  @current-change="handleCurrentChange"
+                  :current-page="currentPage"
+                  :page-sizes="[3, 6, 9, 12]"
+                  :page-size="3"
+                  layout="total, sizes, prev, pager, next, jumper"
+                  :total="totalCount">
+          </el-pagination>
+      </template>
+      </el-card>
+
+      <!--病例信息卡片-->
+      <el-card class="box-card">
+        <!--卡片头-->
+        <div slot="header" class="clearfix">
+          <span>病例信息</span>
+        </div>
+
+        <!-- 病例搜索表单 -->
+        <el-form :inline="true" :model="bingli" class="demo-form-inline">
+          <el-form-item label="诊断结果">
+            <el-input v-model="bingli.diagnosis" placeholder="诊断结果"></el-input>
+          </el-form-item>
+          <el-form-item label="治疗方案">
+            <el-input v-model="bingli.curescheme" placeholder="治疗方案"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary"  @click="onBingliSubmit">查询</el-button>
+          </el-form-item>
+        </el-form>
+        <!-- ./病例搜索表单 -->
+
+        <!--查看处方单-->
+        <el-dialog title="处方单信息" :visible.sync="viewChuFangDan" >
+          <!--处方单的表格-->
+          <el-table :data="chufangTable" :row-class-name="tableRowClassName">
+            <el-table-column property="prescid" label="编号"></el-table-column>
+            <el-table-column property="drugname" label="药品名称"></el-table-column>
+            <el-table-column property="drugcount" label="数量"></el-table-column>
+            <el-table-column property="drugprice" label="售价"></el-table-column>
+            <el-table-column property="drugunit" label="单位"></el-table-column>
+            <el-table-column property="drugSubtotal" label="小计"></el-table-column>
+            <el-table-column property="prescstateStr" label="状态"></el-table-column>
+          </el-table>
+          <!--处方单的添加表单-->
+          <el-form :model="chufang">
+            <el-form-item label="处方单编号">
+              <el-input v-model="chufang.prescid" placeholder="处方单编号"></el-input>
+            </el-form-item>
+            <el-form-item label="病人姓名">
+              <el-input v-model="chufang.drugname" placeholder="药品名称"></el-input>
+            </el-form-item>
+            <el-form-item label="数量">
+              <el-input v-model="chufang.drugcount" placeholder="数量"></el-input>
+            </el-form-item>
+            <el-form-item label="单位">
+              <el-input v-model="chufang.drugunit" placeholder="单位"></el-input>
+            </el-form-item>
+            <el-form-item label="数量">
+              <el-input v-model="chufang.drugcount" placeholder="状态"></el-input>
+            </el-form-item>
+            <el-form-item label="状态">
+              <el-switch v-model=" chufang.prescstate"
+                         active-text="已抓药"
+                         inactive-text="未抓药"
+                         active-value="1"
+                         inactive-value="0">
+              </el-switch>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" @click="onAddChuFangSubmit">添加</el-button>
+              <el-button @click="viewChuFangDan = false">取 消</el-button>
+            </el-form-item>
+          </el-form>
+        </el-dialog>
+        <!--./查看处方单-->
+
+        <!-- 病例表格 -->
+        <template >
+          <el-table
+                  :data="bingliTable"
+                  style="width: 100%"
+                  :row-class-name="tableRowClassName"
+                  >
+            <!-- 选择框 -->
+            <!--<el-table-column type="selection" width="55"> </el-table-column>-->
+            <!-- index -->
+            <!-- 如果设置了 type=index，可以通过传递 index 属性来自定义索引 -->
+            <el-table-column type="index"  label="序号"> </el-table-column>
+            <!-- prop 对应列内容的字段名，也可以使用 property 属性 -->
+            <!-- label 显示的标题 -->
+            <!-- width 对应列的宽度 -->
+            <!-- type对应列的类型 selection/index/expand -->
+            <!-- align 对齐方式 left/center/right -->
+            <el-table-column prop="caseid" label="病例编号" align="center">
+            </el-table-column>
+            <el-table-column prop="stafname" label="医生" align="center">
+            </el-table-column>
+            <el-table-column prop="regdesc" label="挂号类别" align="center">
+            </el-table-column>
+            <el-table-column prop="diagnosis" label="诊断结果" align="center">
+            </el-table-column>
+            <el-table-column prop="curescheme" label="治疗方案" align="center">
+            </el-table-column>
+            <el-table-column prop="casestateStr" label="病例状态" align="center">
+            </el-table-column>
+            <el-table-column label="处方" width="150" align="center">
+              <template slot-scope="scope">
+              <el-button type="primary" @click="viewChufang(scope.row.caseid)">查看</el-button>
+              <!--<el-button type="danger">删除</el-button>-->
+              </template>
+            </el-table-column>
+            <el-table-column prop="curetime" label="治疗时间" align="center">
+            </el-table-column>
+            <el-table-column prop="regfee" label="挂号费" align="center">
+            </el-table-column>
+
+            <el-table-column label="操作" width="150" align="center">
+              <template slot-scope="scope">
+                <el-row>
+                  <el-button type="primary" @click="updateBingli(scope.$index, scope.row)">修改</el-button>
+                </el-row>
+              </template>
+              <!--<el-button type="danger">删除</el-button>-->
+            </el-table-column>
+          </el-table>
+        </template>
+        <!-- ./病例表格 -->
+
+        <!-- 病例表格分页工具条 -->
+        <el-pagination
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+                :current-page="currentPage"
+                :page-sizes="[5, 10, 15, 20]"
+                :page-size="5"
+                layout="total, sizes, prev, pager, next, jumper"
+                :total="totalCount">
+        </el-pagination>
+        <!-- ./病例表格分页工具条 -->
+      </el-card>
+
+
+
+    </section>
+    <!-- /. 内容 content -->
+  </div>
+  <!-- /.内容包装 content-wrapper -->
+
+  <!--容器底部-->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>版本</b> 0.0.1
+    </div>
+    <strong>版权 &copy; 2014-2023 <a href="#">某某医院</a>.</strong> 保留所有权利
+  </footer>
+  <!--./容器底部-->
+
+  <!-- 控件侧边栏 Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- 此处显示控件侧边栏内容 Control sidebar content goes here -->
+  </aside>
+  <!-- /.控件侧边栏 control-sidebar -->
+
+</div>
+<!-- ./ 包装 wrapper -->
+
+<!-- 页面特定脚本 -->
+<!-- Page specific script -->
+<!-- jQuery -->
+<script src="../doctorStatic/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../doctorStatic/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- 数据表和插件 -->
+<script src="../doctorStatic/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../doctorStatic/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../doctorStatic/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../doctorStatic/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../doctorStatic/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../doctorStatic/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../doctorStatic/plugins/jszip/jszip.min.js"></script>
+<script src="../doctorStatic/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="../doctorStatic/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="../doctorStatic/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="../doctorStatic/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="../doctorStatic/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- Adminlte应用程序 -->
+<script src="../doctorStatic/dist/js/adminlte.min.js"></script>
+<!-- 用于演示的AdminLTE -->
+<script src="../doctorStatic/dist/js/demo.js"></script>
+<script src="../js/vue.js"></script>
+<script src="../element-ui/lib/index.js"></script>
+<link rel="stylesheet" href="../element-ui/lib/theme-chalk/index.css">
+<script src="../js/axios-0.18.0.js"></script>
+<script>
+  new Vue({
+    el: "#app",
+    //安装
+    mounted(){
+      //当页面加载完成后，发送异步请求，获取数据
+      this.selectAll();
+    },
+    //方法的集合
+    methods: {
+      handleChange(value) {
+        console.log(value);
+      },
+      //修改病例单
+      updateBingliEnd(){
+        axios({
+          method:'post',
+          url:'http://localhost:8080/case/updateCase',
+          data:this.bingli
+        }).then( resp => {
+          // 判断响应数据是否为 success
+          if (resp.data == "success") {
+            this.dialogVisibleUpdate = false;
+            //this.selectAll();
+            this.$message({
+              showClose: true,
+              message: '恭喜你，修改成功',
+              type: 'success'
+            });
+          }
+        })
+
+      },
+      // 查询分页数据
+      selectAll(){
+        axios({
+          method:"post",
+          url:"http://localhost:8080//patient/selectByPageAndCondition?currentPage="+this.currentPage+"&pageSize="+this.pageSize,
+          data:this.bingren
+        }).then(resp =>{
+          //设置表格数据
+          this.bingrenTable = resp.data.rows; // {rows:[],totalCount:100}
+          //设置总记录
+          this.totalCount = resp.data.totalCount;
+        })
+
+
+      },
+      //根据病人编号(后端获取医生编号)查看病人的病例
+      handleClick(sickid,regid) {
+        var _this = this;
+        axios({
+          method:"get",
+          url:"http://localhost:8080/case/selectByIdCase?sickid="+sickid+"&regid="+regid
+        }).then(function (resp){
+          _this.bingliTable = resp.data;
+        })
+      },
+      //根据病人的病例编号查看病人的处方信息
+      viewChufang(caseid){
+        this.viewChuFangDan = true;
+        var _this = this;
+        axios({
+          method:"get",
+          url:"http://localhost:8080/prescription/getPrescByCaseid?caseid=" + caseid
+        }).then(function (resp){
+          _this.chufangTable = resp.data;
+        })
+      },
+      //修改病人的处方信息
+      updateBingli(index, row){
+        this.dialogVisibleUpdate = true;
+        this.bingli = row;
+      },
+      //隔行变色
+      tableRowClassName({row, rowIndex}) {
+        if (rowIndex === 1) {
+          return 'warning-row';
+        } else if (rowIndex === 3) {
+          return 'success-row';
+        }
+        return '';
+      },
+      // 查询方法
+      onSubmit() {
+        //console.log(this.brand);
+        this.selectAll();
+
+      },
+      // 查询方法
+      onBingliSubmit() {
+        //console.log(this.brand);
+        this.handleClick(sickid,regid);
+
+      },
+      //添加处方单数据
+      onAddChuFangSubmit(){
+        var _this = this;
+        // 发送ajax请求，添加数据
+        axios({
+          method:"post",
+          url:"http://localhost:8080/prescription/addPresc",
+          data:_this.chufang
+        }).then(function (resp) {
+          if(resp.data == "success"){
+            //添加成功
+            //关闭窗口
+            _this.viewChuFangDan = false;
+            // 重新查询数据
+            // 弹出消息提示
+            _this.$message({
+              message: '恭喜你，添加成功',
+              type: 'success'
+            });
+          }
+        })
+      },
+
+      //分页
+      handleSizeChange(val) {
+        //console.log(`每页 ${val} 条`);
+        // 重新设置每页显示的条数
+        this.pageSize  = val;
+        this.selectAll();
+      },
+      handleCurrentChange(val) {
+        //console.log(`当前页: ${val}`);
+        // 重新设置当前页码
+        this.currentPage  = val;
+        this.selectAll();
+      },
+
+    },
+    data() {
+      return {
+        // 每页显示的条数
+        pageSize:3,
+        // 总记录数
+        totalCount:100,
+        //当前页码
+        currentPage: 1,
+        // 添加数据对话框是否展示的标记
+        dialogVisible: false,
+        dialogVisibleUpdate:false,
+        viewChuFangDan:false,
+        //病人模型数据:form表单
+        bingren: {
+          sickid: "",
+          sickname: "",
+          sickphone: "",
+          sickcard: "",
+          sex: "",
+          age: "",
+          regdate: "",
+          sickuname: "",
+          sickemail: ""
+        },
+        //病例模型数据
+        bingli:{
+          caseid:"",
+          stafname:"",
+          regdesc:"",
+          diagnosis:"",
+          curescheme:"",
+          casestateStr:"",
+          curetime:"",
+          regfee:""
+        },
+        //处方单模型数据
+        chufang:{
+          prescid:"",
+          drugname:"",
+          drugcount:"",
+          drugprice:"",
+          drugunit:"",
+          drugSubtotal:"",
+          prescstate:"",
+        },
+        // 添加数据对话框是否展示的标记
+        dialogVisible: false,
+        //病人表格数据
+        bingrenTable: [
+          // {
+          //   sickid: 1,
+          //   sickname: "张三",
+          //   sickphone: 11111111111,
+          //   sickcard: "320981202020083000",
+          //   sex: "男",
+          //   age: 18,
+          //   regdate: "2020/1/1",
+          //   sickuname: "zhangsan",
+          //   sickemail: "zhangsan@qq.com",
+          // },
+          // {
+          //   sickid: 2,
+          //   sickname: "张三",
+          //   sickphone: 11111111111,
+          //   sickcard: "320981202020083000",
+          //   sex: "男",
+          //   age: 18,
+          //   regdate: "2020/1/1",
+          //   sickuname: "zhangsan",
+          //   sickemail: "zhangsan@qq.com",
+          // },
+        ],
+        //病例表格数据
+        bingliTable:[
+          /*{
+            caseid:1,
+            stafname:"张仲景",
+            regdesc:"专家号",
+            diagnosis:"发烧",
+            curescheme:"吃退烧药",
+            casestateStr:"已接诊",
+            curetime:"2020/1/1",
+            regfee:20,
+          },{
+            caseid:2,
+            stafname:"张仲景",
+            regdesc:"专家号",
+            diagnosis:"发烧",
+            curescheme:"吃退烧药",
+            casestateStr:"已接诊",
+            curetime:"2020/1/1",
+            regfee:20,
+          }*/
+        ],
+        //处方单表格数据
+        chufangTable:[
+          {
+            prescid:"",
+            drugname:"",
+            drugcount:"",
+            drugprice:"",
+            drugunit:"",
+            drugSubtotal:"",
+            prescstate:"",
+          }
+        ]
+      }
+    }
+  })
+
+</script>
+
+</body>
+</html>

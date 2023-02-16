@@ -42,4 +42,12 @@ public class Rankinfo {
     this.regfeeid = regfeeid;
   }
 
+  @Override
+  public String toString() {
+    return "Rankinfo{" +
+            "rankid=" + rankid +
+            ", rankname='" + rankname + '\'' +
+            ", regfeeid=" + regfeeid +
+            '}';
+  }
 }

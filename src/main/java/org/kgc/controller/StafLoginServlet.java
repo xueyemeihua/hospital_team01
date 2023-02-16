@@ -70,9 +70,9 @@ public class StafLoginServlet extends HttpServlet {
             Stafinfo stafinfo = new Stafinfo(card, phone, uname, email, password);
             StafinfoService service = new StafinfoService();
             Stafinfo loginUser = service.getStaffmemberByUsernameOrstafPhoneOrStafcardOrEmailAndPassword(stafinfo);
-            if (loginUser != null) {
+            if (stafinfo != null) {
                 request.getSession().setAttribute("loginSicker", loginUser);
-                request.getRequestDispatcher("/cgq&yjf/staffmemberIndex.jsp").forward(request, response);
+                response.sendRedirect("doctor/yisheng.html");
             } else {
                 request.setAttribute("sickerLoginMsg", "用户名或密码错误");
                 request.getRequestDispatcher("/xylq/sickerLogin.html").forward(request, response);

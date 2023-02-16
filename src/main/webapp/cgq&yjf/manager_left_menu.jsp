@@ -120,8 +120,8 @@
             </li>
 
             <li id="charts-inline">
-                <a href="all-charts-inline.html">
-                    <i class="fa fa-circle-o"></i> Inline Charts
+                <a href="cgq&yjf/paiban.jsp">
+                    <i class="fa fa-circle-o"></i> 排班管理
                 </a>
             </li>
 

@@ -271,6 +271,14 @@
         <servlet-name>SickerRegisterServlet</servlet-name>
         <servlet-class>org.kgc.controller.SickerRegisterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowStafOnDayServlet</servlet-name>
+        <servlet-class>org.kgc.controller.ShowStafOnDayServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowStafOnDayServlet</servlet-name>
+        <url-pattern>/showStafOnDay</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SickerRegisterServlet</servlet-name>
         <url-pattern>/sickerRegister</url-pattern>

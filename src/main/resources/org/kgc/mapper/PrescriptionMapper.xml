@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kgc.mapper.PrescriptionMapper">
+    <!--根据药品名称查询药品信息-->
+    <select id="selectByNameDrug" resultType="org.kgc.pojo.DrugInfo">
+        select * from druginfo where drugname = #{drugname}
+    </select>
+    <!--根据处方编号查询病例信息-->
+    <select id="selectByIdPresc" resultType="org.kgc.pojo.Prescription">
+        select prescinfo.prescid, druginfo.drugname, prescinfo.caseid, druginfo.drugspeci, prescinfo.prescstate
+        FROM caseinfo,druginfo,prescinfo
+        where caseinfo.caseid = prescinfo.caseid and prescinfo.drugid = druginfo.drugid and prescinfo.prescid =
+        #{prescid}
+    </select>
+    <select id="selectByIdBingli" resultType="org.kgc.pojo.Prescription">
+        select *
+        FROM caseinfo,druginfo,prescinfo
+        where caseinfo.caseid = prescinfo.caseid and prescinfo.drugid = druginfo.drugid and caseinfo.caseid = #{caseid}
+    </select>
+    <!--根据处方单编号查询药品信息-->
+    <select id="selectByPrescid" resultType="org.kgc.pojo.Prescription">
+        select *
+        from druginfo,prescinfo,caseinfo
+        where druginfo.drugid = prescinfo.drugid
+        and caseinfo.caseid = prescinfo.caseid
+        and prescinfo.prescid = #{prescid}
+    </select>
+    <!--添加处方单数据-->
+    <insert id="addPresc">
+        insert into prescinfo(prescid, drugid, caseid, drugcount, prescstate)
+        VALUES
+        <foreach collection="prescinfos" item="prescinfo" separator=",">
+            (null, #{drugid}, #{caseid}, #{drugcount}, #{prescstate})
+        </foreach>
+    </insert>
+
+    <!--    Prescription getPrescByCaseid(int caseid);-->
+    <select id="getPrescByCaseid" resultType="prescription">
+        SELECT
+        prescinfo.prescid,
+        druginfo.drugname,
+        prescinfo.drugcount,
+        druginfo.drugprice,
+        druginfo.drugspeci,
+        prescinfo.prescstate
+        FROM
+        prescinfo,
+        druginfo,
+        caseinfo
+        WHERE
+        prescinfo.caseid = caseinfo.caseid
+        AND prescinfo.drugid = druginfo.drugid
+        AND caseinfo.caseid = #{caseid}
+    </select>
+
+</mapper>
