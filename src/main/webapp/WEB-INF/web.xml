@@ -13,6 +13,14 @@
 <!--    </filter-mapping>-->
 
     <servlet>
+        <servlet-name>GetLeaveWordServlet</servlet-name>
+        <servlet-class>org.kgc.controller.GetLeaveWordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetLeaveWordServlet</servlet-name>
+        <url-pattern>/getLeaveWord</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>SickerLoginServlet</servlet-name>
         <servlet-class>org.kgc.controller.SickerLoginServlet</servlet-class>
     </servlet>

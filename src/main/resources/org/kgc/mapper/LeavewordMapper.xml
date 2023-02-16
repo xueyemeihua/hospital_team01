@@ -7,7 +7,9 @@
     <insert id="addLeaveWord">
         insert into leaveword values (default,#{lwname},#{lwphone},#{lwemail},#{leaveword},#{caseid})
     </insert>
-
+    <select id="getAllLeavewords" resultType="hashmap">
+        select lwname,leaveword from leaveword
+    </select>
 
 
 </mapper>

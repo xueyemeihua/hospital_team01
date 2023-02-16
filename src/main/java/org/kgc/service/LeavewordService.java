@@ -5,6 +5,9 @@ import org.kgc.mapper.LeavewordMapper;
 import org.kgc.pojo.Leaveword;
 import org.kgc.utils.SqlSessionUtil;
 
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * @author 雪夜梅花香_ly
  * @create 2023-02-04-10:23
@@ -24,4 +27,9 @@ public class LeavewordService {
         }
         return i;
     }
+
+    public List<HashMap> getAllLeavewords() {
+        return mapper.getAllLeavewords();
+    }
+
 }
