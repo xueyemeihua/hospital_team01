@@ -10,4 +10,18 @@ public class DateUtil {
 //        System.out.println(dateFormat.format(date));
         return dateFormat.format(date);
     }
+
+    public static String format (Date date, String format) {
+        String result = "";
+        try {
+            if (date != null) {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+                result = dateFormat.format(date);
+            }
+        }catch(Exception e){
+        }
+        return result;
+    }
+
+
 }

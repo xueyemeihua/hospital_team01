@@ -25,10 +25,8 @@ public class GetPresicByCaseidServlet extends HttpServlet {
         int caseid = Integer.parseInt(request.getParameter("caseid"));
         PresicResultService service = new PresicResultService();
         List<PresicResult> presics = service.getPresicByCaseid(caseid);
-//        System.out.println(presics);
         ObjectMapper mapper = new ObjectMapper();
         String s = mapper.writeValueAsString(presics);
-//        System.out.println(s);
         response.getWriter().println(s);
     }
 }
