@@ -1,18 +1,17 @@
 package org.kgc.pojo;
 
-import java.util.Date;
 
 public class Paiban {
     private int paibanid;
     private int stafid;
-    private Date date;
+    private String date;
 
     @Override
     public String toString() {
         return "Paiban{" +
                 "paibanid=" + paibanid +
                 ", stafid=" + stafid +
-                ", date=" + date +
+                ", date='" + date + '\'' +
                 '}';
     }
 
@@ -32,18 +31,18 @@ public class Paiban {
         this.stafid = stafid;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
     public Paiban() {
     }
 
-    public Paiban(int paibanid, int stafid, Date date) {
+    public Paiban(int paibanid, int stafid, String date) {
         this.paibanid = paibanid;
         this.stafid = stafid;
         this.date = date;

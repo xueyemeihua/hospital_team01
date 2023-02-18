@@ -25,11 +25,14 @@ public class LeavewordService {
         } else {
             sqlSession.rollback();
         }
+        sqlSession.close();
         return i;
     }
 
     public List<HashMap> getAllLeavewords() {
-        return mapper.getAllLeavewords();
+        List<HashMap> allLeavewords = mapper.getAllLeavewords();
+        sqlSession.close();
+        return allLeavewords;
     }
 
 }

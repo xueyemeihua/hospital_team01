@@ -17,7 +17,9 @@ public class PresicResultService {
     PresicResultMapper mapper = session.getMapper(PresicResultMapper.class);
 
     public List<PresicResult> getPresicByCaseid(int caseid) {
-        return mapper.getPresicByCaseid(caseid);
+        List<PresicResult> presicByCaseid = mapper.getPresicByCaseid(caseid);
+        session.close();
+        return presicByCaseid;
     }
 
 }
