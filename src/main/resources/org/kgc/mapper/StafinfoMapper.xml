@@ -94,6 +94,17 @@
         where stafid = #{stafid}
     </select>
 
+    <select id="getStafinfoByNotIn" resultType="stafinfo">
+        select * from stafinfo where
+             stafid not in
+                <foreach collection="ids" item="stafid" open="(" separator="," close=")" index="0">
+                      #{stafid}
+                </foreach>
+
+    </select>
+    <select id="getAllStafinfos" resultType="stafinfo">
+        select * from stafinfo
+    </select>
 
 
 </mapper>

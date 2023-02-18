@@ -15,30 +15,42 @@ public class ApplicantidService {
     public int insertApplicantid(Applicant applicant){
 
         int i = mapper.insertApplicant(applicant);
-        sqlSession.commit();
+        if(i!=0){
+            sqlSession.commit();
+        }else {
+            sqlSession.rollback();
+        }
+        sqlSession.close();
         return i;
     }
 
     //根据id查科室
     public String selectDeptName(int deptid){
-        return mapper.selectDeptName(deptid);
+        String s = mapper.selectDeptName(deptid);
+        sqlSession.close();
+        return s;
     }
 
     //查所有应聘信息
     public List<Applicant> selectApplicants(){
-
-        return mapper.selectApplicants();
+        List<Applicant> applicants = mapper.selectApplicants();
+        sqlSession.close();
+        return applicants;
     }
 
 
     public int selectCarid(String carid){
-        return mapper.selectCarid(carid);
+        int i = mapper.selectCarid(carid);
+        sqlSession.close();
+        return i;
     }
 
 
     //根据岗位id查询应聘人信息
     public List<Applicant> selectDeptApplicants(int postid){
-        return mapper.selectDeptApplicants(postid);
+        List<Applicant> applicants = mapper.selectDeptApplicants(postid);
+        sqlSession.close();
+        return applicants;
     }
 
 

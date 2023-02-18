@@ -17,10 +17,12 @@ public class PostinfoService {
     //查询某部门下的所有岗位
     public List<Postinfo> getPostinfoBydeptid(int deptid){
         List<Postinfo> postinfos = mapper.getPostinfoBydeptid(deptid);
+        session.close();
         return postinfos;
     }
     public List<Postinfo> getPostinfoByPostname(@Param("postname") String postname){
         List<Postinfo> postinfos = mapper.getPostinfoByPostname(postname);
+        session.close();
         return postinfos;
 
     }
@@ -31,23 +33,29 @@ public class PostinfoService {
         }else {
             session.rollback();
         }
+        session.close();
         return i;
     }
     public List<Postinfo> getPostinfo(){
         List<Postinfo> postinfos = mapper.getPostinfo();
+        session.close();
         return postinfos;
     }
 
     public List<Postinfo> getPostinfoLikePostname(@Param("postname") String postname){
         List<Postinfo> postinfos = mapper.getPostinfoLikePostname(postname);
+        session.close();
         return postinfos;
     }
     public int getPostidByPostname(@Param("postname")String postname){
         int postid = mapper.getPostidByPostname(postname);
+        session.close();
         return postid;
     }
     public String getPostNameByPostid(@Param("postid") int postid){
-        return mapper.getPostNameByPostid(postid);
+        String postNameByPostid = mapper.getPostNameByPostid(postid);
+        session.close();
+        return postNameByPostid;
     }
 
 

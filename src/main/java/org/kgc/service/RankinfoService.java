@@ -15,7 +15,9 @@ public class RankinfoService {
     RankinfoMapper mapper = session.getMapper(RankinfoMapper.class);
 
     public HashMap getRegfeeidByRankid(Integer rankid) {
-        return mapper.getRegfeeidByRankid(rankid);
+        HashMap regfeeidByRankid = mapper.getRegfeeidByRankid(rankid);
+        session.close();
+        return regfeeidByRankid ;
     }
 
 }

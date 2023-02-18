@@ -23,6 +23,7 @@ public class ReginfoService {
         } else {
             session.rollback();
         }
+        session.close();
         return i;
     }
 

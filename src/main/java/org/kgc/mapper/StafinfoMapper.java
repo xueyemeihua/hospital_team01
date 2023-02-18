@@ -27,5 +27,8 @@ public interface StafinfoMapper {
     List<HashMap> getStafinfos();
     List<HashMap> getStafinfoLikeDeptnameOrPostnameOrStafname(@Param("deptname") String deptname, @Param("postname") String postname, @Param("stafname") String stafname);
     int firedStafinfo(@Param("stafid") int stafid);
+    List<Stafinfo> getStafinfoByDeptid(@Param("deptid")int deptid);
+    List<Stafinfo> getStafinfoByNotIn(@Param("ids") List ids);
+    List<Stafinfo> getAllStafinfos();
 
 }

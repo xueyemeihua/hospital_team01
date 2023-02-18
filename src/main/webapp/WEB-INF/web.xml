@@ -279,14 +279,38 @@
         <servlet-name>SickerRegisterServlet</servlet-name>
         <servlet-class>org.kgc.controller.SickerRegisterServlet</servlet-class>
     </servlet>
+<!--    <servlet>-->
+<!--        <servlet-name>ShowStafOnDayServlet</servlet-name>-->
+<!--        <servlet-class>org.kgc.controller.ShowStafOnDayServlet</servlet-class>-->
+<!--    </servlet>-->
     <servlet>
-        <servlet-name>ShowStafOnDayServlet</servlet-name>
-        <servlet-class>org.kgc.controller.ShowStafOnDayServlet</servlet-class>
+        <servlet-name>AddSchedulingServlet</servlet-name>
+        <servlet-class>org.kgc.controller.AddSchedulingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddDutyServlet</servlet-name>
+        <servlet-class>org.kgc.controller.AddDutyServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteDutyServlet</servlet-name>
+        <servlet-class>org.kgc.controller.DeleteDutyServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ShowStafOnDayServlet</servlet-name>
-        <url-pattern>/showStafOnDay</url-pattern>
+        <servlet-name>DeleteDutyServlet</servlet-name>
+        <url-pattern>/deleteDuty</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddDutyServlet</servlet-name>
+        <url-pattern>/addDuty</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddSchedulingServlet</servlet-name>
+        <url-pattern>/addScheduling</url-pattern>
+    </servlet-mapping>
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>ShowStafOnDayServlet</servlet-name>-->
+<!--        <url-pattern>/showStafOnDay</url-pattern>-->
+<!--    </servlet-mapping>-->
     <servlet-mapping>
         <servlet-name>SickerRegisterServlet</servlet-name>
         <url-pattern>/sickerRegister</url-pattern>

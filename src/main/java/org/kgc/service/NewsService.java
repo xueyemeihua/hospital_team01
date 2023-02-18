@@ -19,7 +19,12 @@ public class NewsService implements NewsMapper{
     @Override
     public int addNews(News news) {
         int i = mapper.addNews(news);
-        session.commit();
+        if(i!=0){
+            session.commit();
+        }else {
+            session.rollback();
+        }
+        session.close();
         return i;
     }
 
@@ -27,19 +32,26 @@ public class NewsService implements NewsMapper{
     @Override
     public List<News> getNewsByNewsstate() {
         List<News> newsByNewsstate = mapper.getNewsByNewsstate();
+        session.close();
         return newsByNewsstate;
     }
 
     @Override
     public News getNewsByNewsid(int newsid) {
         News newsByNewsid = mapper.getNewsByNewsid(newsid);
+        session.close();
         return newsByNewsid;
     }
 
     @Override
     public int updateNews(News news) {
         int i = mapper.updateNews(news);
-        session.commit();
+        if(i!=0){
+            session.commit();
+        }else {
+            session.rollback();
+        }
+        session.close();
         return i;
     }
 }

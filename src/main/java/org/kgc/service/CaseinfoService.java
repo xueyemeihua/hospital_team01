@@ -20,7 +20,9 @@ public class CaseinfoService {
     CaseinfoMapper mapper = session.getMapper(CaseinfoMapper.class);
 
     public List<CaseResult> getCaseinfoBySickid(int sickid) {
-        return mapper.getCaseinfoBySickid(sickid);
+        List<CaseResult> caseinfoBySickid = mapper.getCaseinfoBySickid(sickid);
+        session.close();
+        return caseinfoBySickid;
     }
 
 }

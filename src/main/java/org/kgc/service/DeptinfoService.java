@@ -16,18 +16,24 @@ public class DeptinfoService {
 
     public List<Deptinfo> getDeptinfo(){
         List<Deptinfo> deptinfos = mapper.getDeptinfo();
+        session.close();
         return deptinfos;
     }
 
     public List<HashMap> getDeptCount(){
         List<HashMap> counts = mapper.getDeptCount();
+        session.close();
         return counts;
     }
     public List<Deptinfo> getDeptinfoByDeptname(@Param("deptname") String deptname){
-        return mapper.getDeptinfoByDeptname(deptname);
+        List<Deptinfo> deptinfoByDeptname = mapper.getDeptinfoByDeptname(deptname);
+        session.close();
+        return deptinfoByDeptname;
     }
     public List<Deptinfo> getDeptinfoLikeDeptname(@Param("deptname") String deptname){
-        return mapper.getDeptinfoLikeDeptname(deptname);
+        List<Deptinfo> deptinfoLikeDeptname = mapper.getDeptinfoLikeDeptname(deptname);
+        session.close();
+        return deptinfoLikeDeptname;
     }
     public int addDeptinfo(@Param("deptname") String deptname){
         int i = mapper.addDeptinfo(deptname);
@@ -36,16 +42,19 @@ public class DeptinfoService {
         }else {
             session.rollback();
         }
+        session.close();
         return i;
     }
 
     public int getDeptidByDeptname(@Param("deptname") String deptname){
         int deptid = mapper.getDeptidByDeptname(deptname);
+        session.close();
         return deptid;
     }
 
     public List<Deptinfo> getDeptinfoByPostid(@Param("postid") int postid){
         List<Deptinfo> deptinfoByPostid = mapper.getDeptinfoByPostid(postid);
+        session.close();
         return deptinfoByPostid;
     }
 

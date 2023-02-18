@@ -595,14 +595,11 @@
           item.classList.remove('active');
         });
         this.classList.add('active');
-        <%--var date=this.getAttribute('attr-date')--%>
-        <%--var name=""--%>
-        <%--for (var i = 0; i <${paibans}.size(); i++){--%>
-        <%--  name+=${paibans}[i]+"\n";--%>
-        <%--}--%>
+        var date=this.getAttribute('attr-date')
+        alert(date)
+        console.log(typeof(date))
 
-        alert(name)
-        window.location.href="/showStafOnDay?date="+date
+        window.location.href="http://localhost:8080/addScheduling?date="+date
       });
     });
   }

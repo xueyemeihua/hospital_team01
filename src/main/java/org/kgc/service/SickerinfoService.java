@@ -18,6 +18,7 @@ public class SickerinfoService {
 
         Sickerinfo result = mapper.getSickerBySickUnameOrSickPhoneOrCardIdOrSickEmailAndPassword(loginInfo);
 
+        session.close();
         return result;
     }
 
@@ -28,7 +29,7 @@ public class SickerinfoService {
         } else {
             session.rollback();
         }
-
+        session.close();
         return result;
     }
 
@@ -39,6 +40,7 @@ public class SickerinfoService {
         } else {
             session.rollback();
         }
+        session.close();
         return result;
     }
 
@@ -49,6 +51,7 @@ public class SickerinfoService {
         } else {
             session.rollback();
         }
+        session.close();
         return result;
     }
 }

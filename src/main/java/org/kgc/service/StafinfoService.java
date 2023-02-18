@@ -63,10 +63,30 @@ public class StafinfoService {
 
     public List<Stafinfo> getStafmemberByDeptid(Integer deptid) {
         List<Stafinfo> doctorsInDept = mapper.getStafmemberByDeptid(deptid);
+        session.close();
         return doctorsInDept;
     }
 
     public Stafinfo getStafinfoByStafid(Integer stafid) {
-        return mapper.getStafinfoByStafid(stafid);
+        Stafinfo stafinfoByStafid = mapper.getStafinfoByStafid(stafid);
+        session.close();
+        return stafinfoByStafid;
     }
+
+    public List<Stafinfo> getStafinfoByDeptid(@Param("deptid")int deptid){
+        List<Stafinfo> stafinfoByDeptid = mapper.getStafinfoByDeptid(deptid);
+        session.close();
+        return stafinfoByDeptid;
+    }
+    public List<Stafinfo> getStafinfoByNotIn(@Param("ids")List ids){
+        List<Stafinfo> stafinfoByNotIn = mapper.getStafinfoByNotIn(ids);
+        session.close();
+        return stafinfoByNotIn;
+    }
+    public List<Stafinfo> getAllStafinfos(){
+        List<Stafinfo> allStafinfos = mapper.getAllStafinfos();
+        session.close();
+        return allStafinfos;
+    }
+
 }

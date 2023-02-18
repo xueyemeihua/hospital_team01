@@ -1,28 +1,33 @@
 package org.kgc.controller;
 
-import org.kgc.pojo.Paiban;
 import org.kgc.service.PaibanService;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
+import java.util.Date;
 
-public class ShowStafOnDayServlet extends HttpServlet {
+public class AddDutyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int stafid = Integer.parseInt(request.getParameter("stafid"));
         String date = request.getParameter("date");
+        System.out.println(date);
         PaibanService paibanService = new PaibanService();
-        List<HashMap> paibans = paibanService.getStafsByGroupOnDept();
-        HttpSession session = request.getSession();
-        session.setAttribute("paibans",paibans);
+        int i = paibanService.addDuty(stafid, date);
+        System.out.println(i);
+        if(i!=0){
+            System.out.println("值班成功");
+        }else {
+            System.out.println("值班失败");
+        }
+        request.getRequestDispatcher("/addScheduling").forward(request,response);
 
     }
 }
