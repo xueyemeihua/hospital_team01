@@ -13,7 +13,7 @@
         <!--开启驼峰映射规则-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
 
-        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <setting name="logImpl" value="LOG4J"/>
 
     </settings>
 

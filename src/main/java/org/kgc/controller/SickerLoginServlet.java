@@ -3,7 +3,6 @@ package org.kgc.controller; /**
  * @create 2023-02-02-10:55
  */
 
-
 import org.kgc.pojo.Sickerinfo;
 import org.kgc.service.SickerinfoService;
 
@@ -24,7 +23,6 @@ public class SickerLoginServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         //获取用户输入参数,转型(如需要),调用查询方法看看数据库是否存在该用户,1则跳转,0则提示注册
-
         String uname = null;
         String email = null;
         String phone = null;

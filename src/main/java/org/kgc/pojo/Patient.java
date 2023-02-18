@@ -13,7 +13,29 @@ public class Patient {
     private String regdate;
     private String sickuname;
     private String sickemail;
+
+    public Patient(Integer stafid) {
+        this.stafid = stafid;
+    }
+
     private Integer regid;
+
+    public Patient(Integer sickid, String sickname, String sickcard, String sickphone, String sex, Integer age, String regdate, String sickuname, String sickemail, Integer regid, Integer stafid) {
+        this.sickid = sickid;
+        this.sickname = sickname;
+        this.sickcard = sickcard;
+        this.sickphone = sickphone;
+        this.sex = sex;
+        this.age = age;
+        this.regdate = regdate;
+        this.sickuname = sickuname;
+        this.sickemail = sickemail;
+        this.regid = regid;
+        this.stafid = stafid;
+    }
+
+    private Integer stafid;
+
 
 
     public String getSex() {
