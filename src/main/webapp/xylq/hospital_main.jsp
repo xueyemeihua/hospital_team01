@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>深圳市人民医院</title>
-    <meta name="keywords" content="深圳市人民医院">
-    <meta name="description" content="深圳市人民医院">
+    <title>北大青鸟人民医院</title>
+    <meta name="keywords" content="北大青鸟人民医院">
+    <meta name="description" content="北大青鸟人民医院">
     <meta name="applicable-device" content="pc,mobile">
     <link href="src/css/bootstrap.css" rel="stylesheet">
     <link href="src/css/bxslider.css" rel="stylesheet">
@@ -46,7 +46,7 @@
                     <div class="top_tel">
                         <img src="src/picture/tel.jpg" alt="服务热线">
                         <span>全国服务热线：</span>
-                        <p>021-57478888</p>
+                        <p>000-00008888</p>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-2 col-md-3 tel_box2">
@@ -90,8 +90,8 @@
                     <div class="items" style="background-image: url(src/picture/banner.jpg);"></div>
                     <div class="inner">
                         <div class="block_txt">
-                            <h2>暨南大学医学院第二附属医院</h2>
-                            <h4>The Second Affiliated Hospital of Medical College of Jinan University</h4>
+                            <h2>青鸟大学医学院第一附属医院</h2>
+                            <h4>First Affiliated Hospital of Qingniao University Medical College</h4>
                             <p><a href="aboutus.html" class="btn btn-primary btn-lg">了解更多</a></p>
                         </div>
                     </div>
@@ -103,8 +103,8 @@
                     <div class="items" style="background-image: url(src/picture/banner.jpg);"></div>
                     <div class="inner">
                         <div class="block_txt">
-                            <h2>暨南大学医学院第二附属医院</h2>
-                            <h4>The Second Affiliated Hospital of Medical College of Jinan University</h4>
+                            <h2>青鸟大学医学院第一附属医院</h2>
+                            <h4>First Affiliated Hospital of Qingniao University Medical College</h4>
                             <p><a href="aboutus.html" class="btn btn-primary btn-lg">了解更多</a></p>
                         </div>
                     </div>
@@ -115,8 +115,8 @@
                     <div class="items" style="background-image: url(src/picture/banner.jpg);"></div>
                     <div class="inner">
                         <div class="block_txt">
-                            <h2>暨南大学医学院第二附属医院</h2>
-                            <h4>The Second Affiliated Hospital of Medical College of Jinan University</h4>
+                            <h2>青鸟大学医学院第一附属医院</h2>
+                            <h4>First Affiliated Hospital of Qingniao University Medical College</h4>
                             <p><a href="aboutus.html" class="btn btn-primary btn-lg">了解更多</a></p>
                         </div>
                     </div>
@@ -191,10 +191,10 @@
                     <a href="detail1.html"><img src="src/picture/about-01.jpg" border="0" width="100%"></a>
                 </div>
                 <div class="col-xs-12 col-sm-7 col-md-7 js_about_left" data-move-y="40px">
-                    <h3 class="about_h3">深圳市人民医院</h3>
-                    <p class="about_p">SHENZHEN PEOPLE’S HOSPITAL</p>
+                    <h3 class="about_h3">北大青鸟人民医院</h3>
+                    <p class="about_p">BEIDA QINGNIAO PEOPLE’S HOSPITAL</p>
                     <div class="about_content">
-                        深圳市人民医院始建于1946年，前身系宝安县卫生院，解放后更名为宝安县人民医院，亦称“留医部”，1979年更名为深圳市人民医院。1994年被评为深圳首家“三级甲等”医院，1996年经国务院侨办批准成为暨南大学医学院第二附属医院，2005年升格为暨南大学第二临床医学院，2018年挂牌南方科技大学第一附属医院。医院共有院本部、龙华分院、坂田院区、一门诊“四个院区”和一个科研基地，现已发展成为一个功能齐全、设备先进、人才结构合理、技术力量雄厚，集医疗、科研、教学、住院医师规培、保健为一体的深圳市最大的现代化综合性医院。<br>
+                        北大青鸟人民医院始建于1946年，前身系宝安县卫生院，解放后更名为宝安县人民医院，亦称“留医部”，1979年更名为深圳市人民医院。1994年被评为深圳首家“三级甲等”医院，1996年经国务院侨办批准成为暨南大学医学院第二附属医院，2005年升格为暨南大学第二临床医学院，2018年挂牌南方科技大学第一附属医院。医院共有院本部、龙华分院、坂田院区、一门诊“四个院区”和一个科研基地，现已发展成为一个功能齐全、设备先进、人才结构合理、技术力量雄厚，集医疗、科研、教学、住院医师规培、保健为一体的深圳市最大的现代化综合性医院。<br>
                         <br>
                         医院占地面积167708平方米，建筑面积353041平方米，开放床位3043张，在岗员工5110人，其中具有高级职称971余人，中级职称1384人，博士生导师28人，硕士生导师162人。2020年出院病人10.9万人次，诊疗人次308.9万人次。
                     </div>
@@ -448,10 +448,10 @@
             <div class="row">
 
                 <div class="col-xs-12 col-sm-5 col-md-5 footer_contact">
-                    <p>主办：深圳市人民医院</p>
-                    <p>电话：0755-2553xxxx</p>
-                    <p>传真：0755-2553xxxx</p>
-                    <p>地址：深圳市罗湖区东门北路1017号</p>
+                    <p>主办：北大青鸟人民医院</p>
+                    <p>电话：0000-00000000</p>
+                    <p>传真：0000-00000000</p>
+                    <p>地址：XX市XX区XX路XXXX号</p>
                 </div>
 
                 <div class="col-xs-12 col-sm-3 col-md-5">
@@ -469,11 +469,11 @@
             <span class="link_title">友情链接</span><button id="link_btn" class="glyphicon glyphicon-plus"
                 aria-hidden="true"></button>
             <span class="link_list">
-                <a href="javascript:;" target="_self">济南邦哲雕塑艺术有限公司</a>
-                <a href="javascript:;" target="_self">武汉贝升科技有限公司</a>
-                <a href="javascript:;" target="_self">蚂蚁搬家运输有限公司昆明分公司</a>
-                <a href="javascript:;" target="_self">朝阳钢材市场洪源保温材料加工厂</a>
-                <a href="javascript:;" target="_self">芜湖艾尚新材料科技有限公司</a>
+                 <a href="javascript:;" target="_self">某某有限公司</a>
+                <a href="javascript:;" target="_self">某某有限公司</a>
+                <a href="javascript:;" target="_self">某某有限公司</a>
+                <a href="javascript:;" target="_self">某某有限公司</a>
+                <a href="javascript:;" target="_self">某某有限公司</a>
             </span>
         </div>
     </div>

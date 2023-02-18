@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>深圳市人民医院</title>
-    <meta name="keywords" content="深圳市人民医院">
-    <meta name="description" content="深圳市人民医院">
+    <title>北大青鸟人民医院</title>
+    <meta name="keywords" content="北大青鸟人民医院">
+    <meta name="description" content="北大青鸟人民医院">
     <meta name="applicable-device" content="pc,mobile">
     <link href="src/css/bootstrap.css" rel="stylesheet">
     <link href="src/css/bxslider.css" rel="stylesheet">
@@ -45,7 +45,7 @@
                 <div class="top_tel">
                     <img src="src/picture/tel.jpg" alt="服务热线">
                     <span>全国服务热线：</span>
-                    <p>021-5747xxxx</p>
+                    <p>000-0000xxxx</p>
                 </div>
             </div>
         </div>
@@ -63,10 +63,12 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class=""><a href="hospital_main.html">首 页</a>
-                    <li><a href="news.html">新闻资讯</a></li>
-                    <li><a href="article.html">招贤纳士</a></li>
-                    <li><a href="leaveword.html">留言反馈</a></li>
+                    <li class=""><a href="hospital_main.jsp">首 页</a></li>
+                    <li><a href="/toSickView">个人中心</a><li>
+                    <li><a href="/selectNews" >新闻资讯</a></li>
+                    <li><a href="article.jsp">招贤纳士</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
+                    <li><a href="/getLeaveWord">留言反馈</a></li>
                 </ul>
             </div>
         </div>

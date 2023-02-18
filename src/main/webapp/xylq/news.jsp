@@ -8,9 +8,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>深圳市人民医院</title>
-    <meta name="keywords" content="深圳市人民医院">
-    <meta name="description" content="深圳市人民医院">
+    <title>北大青鸟人民医院</title>
+    <meta name="keywords" content="北大青鸟人民医院">
+    <meta name="description" content="北大青鸟人民医院">
     <meta name="applicable-device" content="pc,mobile">
     <link href="src/css/bootstrap.css" rel="stylesheet">
     <link href="src/css/bxslider.css" rel="stylesheet">
@@ -39,14 +39,14 @@
             </div>
             <div class="col-xs-12 col-sm-3 col-md-2 tel_box">
                 <div class="top_tel">
-                    <a href="#" class="btn btn-primary btn-sm">中文版</a> <a href="#" class="btn btn-primary btn-sm">English</a>
+<%--                    <a href="#" class="btn btn-primary btn-sm">中文版</a> <a href="#" class="btn btn-primary btn-sm">English</a>--%>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-2 col-md-3 tel_box2">
                 <div class="top_tel">
                     <img src="src/picture/tel.jpg" alt="服务热线">
                     <span>全国服务热线：</span>
-                    <p>021-5747xxxx</p>
+                    <p>000-0000xxxx</p>
                 </div>
             </div>
         </div>
@@ -56,32 +56,24 @@
         <div class="container">
             <div class="navbar-header">
 
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only">导航菜单</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">导航菜单</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span></button>
                 <span id="search_btn" class="glyphicon glyphicon-globe" aria-hidden="true"></span>
                 <a class="navbar-brand" href="#">MENU</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class=""><a href="hospital_main.jsp">首 页</a>
-                    <li class="dropdown "><a href="aboutus.html">关于我们</a>
-                        <a href="#" id="app_menudown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-menu-down btn-xs"></span></a>
-                        <ul class='dropdown-menu nav_small' role='menu'>
-
-                            <li><a href="aboutus.html">公司简介</a></li>
-
-                            <li><a href="contact.html">联系我们</a></li>
-
-                            <!--<li><a href="detail1.html">终端页面</a></li>
-                            <li><a href="category-2.html">两栏图文</a></li>
-                            <li><a href="category-4.html">四列图文</a></li>-->
-                        </ul>
-                    </li>
-                    <li><a href="category-3.html">产品展示</a></li>
-                    <li><a href="news.html">新闻资讯</a></li>
-                    <li><a href="category-4.html">案例展示</a></li>
-                    <li><a href="article.html">招贤纳士</a></li>
+                    <li class=""><a href="hospital_main.jsp">首 页</a></li>
+                    <li><a href="/toSickView">个人中心</a><li>
+                    <li><a href="/selectNews" >新闻资讯</a></li>
+                    <li><a href="article.jsp">招贤纳士</a></li>
                     <li><a href="contact.html">联系我们</a></li>
-                    <li><a href="feedback.html">留言反馈</a></li>
+                    <li><a href="/getLeaveWord">留言反馈</a></li>
                 </ul>
             </div>
         </div>
@@ -93,7 +85,8 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="bread_nav">
-                    <span>您的位置：</span><a href="/">首 页</a> &gt; <a href="">新闻资讯</a>
+                    <span>您的位置：</span>
+                    <a href="/">首 页</a> &gt; <a href="">新闻资讯</a>
                 </div>
             </div>
         </div>
@@ -107,20 +100,17 @@
             </div>
             <ul class="right_new">
                 <c:forEach items="${newss}" var="news">
-                    <li><a href="/selectNewsCont?newsid=${news.newsid}" title="${news.newstitle}">${news.newstitle}</a><span class="news_time">${news.newsdate}</span></li>
+                    <li><a href="/selectNewsCont?newsid=${news.newsid}"
+                           title="${news.newstitle}">${news.newstitle}</a>
+                        <span class="news_time">${news.newsdate}</span></li>
                 </c:forEach>
-
-
-<%--                <li><a href="detail1.html" title="暨南大学第二临床医学院博士后出站报告会">暨南大学第二临床医学院博士后出站报告会</a><span class="news_time">2021-09-07</span></li>--%>
-
-<%--                <li><a href="detail1.html" title="摘金夺银！深圳市科技进步奖颁奖礼，市人民医院放光芒">摘金夺银！深圳市科技进步奖颁奖礼，市人民医院放光芒</a><span class="news_time">2021-08-16</span></li>--%>
-
-<%--                <li><a href="detail1.html" title="国家基本公共卫生服务项目绩效考核指导方案">国家基本公共卫生服务项目绩效考核指导方案</a><span class="news_time">2020-06-25</span></li>--%>
-
-<%--                <li><a href="detail1.html" title="我院2项重大科研项目获2014年度广东省科学技术奖">我院2项重大科研项目获2014年度广东省科学技术奖</a><span class="news_time">2020-02-17</span></li>--%>
             </ul>
             <div class="page">
-                <a href="#">&laquo;</a><a href="#">1</a><a href="#">2</a><a class="current" href="#">3</a><a href="#">&raquo;</a>
+                <a href="#">&laquo;</a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a class="current" href="#">3</a>
+                <a href="#">&raquo;</a>
             </div>
         </div>
 
@@ -132,10 +122,10 @@
         <div class="row">
 
             <div class="col-xs-12 col-sm-5 col-md-5 footer_contact">
-                <p>主办：深圳市人民医院</p>
-                <p>电话：0755-2553xxxx</p>
-                <p>传真：0755-2553xxxx</p>
-                <p>地址：深圳市罗湖区东门北路1017号</p>
+                <p>主办：北大青鸟人民医院</p>
+                <p>电话：0000-00000000</p>
+                <p>传真：0000-00000000</p>
+                <p>地址：XX市XX区XX路XXXX号</p>
             </div>
 
             <div class="col-xs-12 col-sm-3 col-md-5">
@@ -152,11 +142,11 @@
     <div class="container">
         <span class="link_title">友情链接</span><button id="link_btn" class="glyphicon glyphicon-plus" aria-hidden="true"></button>
         <span class="link_list">
-                <a href="javascript:;" target="_self">济南邦哲雕塑艺术有限公司</a>
-                <a href="javascript:;" target="_self">武汉贝升科技有限公司</a>
-                <a href="javascript:;" target="_self">蚂蚁搬家运输有限公司昆明分公司</a>
-                <a href="javascript:;" target="_self">朝阳钢材市场洪源保温材料加工厂</a>
-                <a href="javascript:;" target="_self">芜湖艾尚新材料科技有限公司</a>
+                 <a href="javascript:;" target="_self">某某有限公司</a>
+                <a href="javascript:;" target="_self">某某有限公司</a>
+                <a href="javascript:;" target="_self">某某有限公司</a>
+                <a href="javascript:;" target="_self">某某有限公司</a>
+                <a href="javascript:;" target="_self">某某有限公司</a>
             </span>
     </div>
 </div>
