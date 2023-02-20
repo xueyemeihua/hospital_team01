@@ -343,6 +343,14 @@
         <servlet-name>GetDrugsServlet</servlet-name>
         <servlet-class>org.kgc.controller.GetDrugsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowPresicServlet</servlet-name>
+        <servlet-class>org.kgc.controller.ShowPresicServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowPresicServlet</servlet-name>
+        <url-pattern>/showPresic</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GetDrugsServlet</servlet-name>
         <url-pattern>/getDrugs</url-pattern>

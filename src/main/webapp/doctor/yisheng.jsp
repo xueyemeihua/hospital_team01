@@ -475,7 +475,7 @@
 
         <!-- 正文区域 -->
         <section class="content">
-            <div>
+            <div align="center">
                 <h2>病人列表</h2>
             </div>
             <div align="center">
@@ -516,10 +516,9 @@
                 </table>
             </div>
 
-            <div>
+            <div align="center">
                 <h2>病例列表</h2>
             </div>
-
             <div align="center">
                 <table border="1px" cellpadding="0px" cellspacing="0px" id="casetb">
 
@@ -527,14 +526,9 @@
                 <p id="caseList"></p>
             </div>
 
-            <div>
-                <h2>药品表</h2>
-            </div>
-            <div align="center">
-                <table border="1px" cellpadding="0px" cellspacing="0px" id="drugtb">
 
-                </table>
-                <p id="drugList"></p>
+            <div align="center" id='drugtb'>
+
             </div>
 
 
@@ -543,6 +537,15 @@
     </div>
     <!-- 内容区域 /-->
 </div>
+
+<div>
+    <input name="drugname" placeholder="模糊药品名"><br>
+    <input name="drugfunc" placeholder="模糊药品功能"><br>
+</div>
+
+
+
+
 <script>
 
     /*根据病人编号,挂号编号和医生编号(登录信息中获取)查询该医生名下该病人的病例信息*/
@@ -589,11 +592,13 @@
                 $("#durgList").html("没有数据")
             } else {
                 $("#drugList").html("")
+                $("#drugtb").children().remove()
+
+                s = "<div align='center'> <h2>药品表</h2> </div>" +
+                    "<form action='/advsDrug'><div> <input name='drugname' placeholder='模糊药品名'><br><input name='drugfunc' placeholder='模糊药品功能'><br><input type='submit' value='查询'></div>" +
+                    "<table border='1px' cellpadding='0px' cellspacing='0px'><tr><th align='center'>药品编号</th><th align='center' width='150px'>药品名称</th><th align='center' width='150px'>药品功能</th><th align='center'>药品规格</th><th align='center' width='150px'>操作</th></tr>"
+
                 for (let i = 0; i < jdata.length; i++) {
-                    $("#drugtb").children().remove()
-
-                    $("#drugtb").append("<tr><th align='center'>药品编号</th><th align='center' width='150px'>药品名称</th><th align='center' width='150px'>药品功能</th><th align='center'>药品规格</th><th align='center' width='150px'>操作</th></tr>")
-
                     s +=
                         "<tr>" +
                         "<td align='center'>" + jdata[i].drugid + "</td>" +
@@ -601,20 +606,48 @@
                         "<td align='center' width='150px'>" + jdata[i].drugfunc + "</td>" +
                         "<td align='center' width='150px'>" + jdata[i].drugspeci + "</td>" +
                         "<td align='center' width='150px'>" +
-                        "<a href='javascript:void (0)' onclick='toPrescribe(" + jdata[i].caseid + ")'>开处方单</a><br>" +
-                        "<a href='javascript:void (0)' onclick='showPresic(" + jdata[i].caseid + ")'>查看处方单</a>" +
+                        "<input name='drugcout' placeholder='开药数量'><br>" +
+                        "<a href='javascript:void (0)' onclick='addDrugToPresc(" + jdata[i].drugid + ")'>开药</a>" +
                         "</td></tr>"
-
                 }
+                s += "</table><p id='drugList'></p>"
+                $("#drugtb").append(s)
             }
-            $("#drugtb").append(s)
         })
     }
 
 
     /*查看处方单*/
     function showPresic(caseid) {
+        $.get("http://localhost:8080/showPresic", "caseid=" + caseid, function (data) {
+            var jdata = JSON.parse(data)
+            var s = ''
+            if (jdata.length == 0) {
+                $("#drugtb").children().remove()
+                $("#durgList").html("没有数据")
+            } else {
+                $("#drugList").html("")
+                $("#drugtb").children().remove()
+                s = "<div align='center'> <h2>处方单</h2> </div>"+
+                    "<table border='1px' cellpadding='0px' cellspacing='0px'>" +
+                    "<tr><th align='center'>病例编号</th><th align='center' width='150px'>病例编号</th><th align='center' width='150px'>处方单序号</th><th align='center'>药品名称</th><th align='center'>药品数量</th><th align='center'>药品价格</th><th align='center'>药品规格</th><th align='center'>抓药状态</th></tr>"
 
+                for (let i = 0; i < jdata.length; i++) {
+                    s += "<tr>" +
+                        "<td align='center'>" + jdata[i].caseid + "</td>" +
+                        "<td align='center' width='150px'>" + jdata[i].caseid + "</td>" +
+                        "<td align='center' width='150px'>" + jdata[i].prescid + "</td>" +
+                        "<td align='center' width='150px'>" + jdata[i].drugname + "</td>" +
+                        "<td align='center' width='150px'>" + jdata[i].drugcount + "</td>" +
+                        "<td align='center' width='150px'>" + jdata[i].drugprice + "</td>" +
+                        "<td align='center' width='150px'>" + jdata[i].drugspeci + "</td>" +
+                        "<td align='center' width='150px'>" + jdata[i].prescstate + "</td>" +
+                        "</td></tr>"
+                }
+                s+="</table>"
+                $("#drugtb").append(s)
+            }
+        })
 
     }
 

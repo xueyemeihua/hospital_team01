@@ -1,18 +1,18 @@
 package org.kgc.controller; /**
  * @author 雪夜梅花香_ly
- * @create 2023-02-20-19:43
+ * @create 2023-02-20-21:04
  */
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.kgc.service.DrugInfoService;
+import org.kgc.pojo.PresicResult;
+import org.kgc.service.PresicResultService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 
-public class GetDrugsServlet extends HttpServlet {
+public class ShowPresicServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
@@ -23,14 +23,10 @@ public class GetDrugsServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         int caseid = Integer.parseInt(request.getParameter("caseid"));
-
-        //查询所有药品
-        DrugInfoService service = new DrugInfoService();
-        List<HashMap> drugs = service.selectAll();
-
+        PresicResultService service = new PresicResultService();
+        List<PresicResult> presics = service.getPresicByCaseid(caseid);
         ObjectMapper mapper = new ObjectMapper();
-        String s = mapper.writeValueAsString(drugs);
+        String s = mapper.writeValueAsString(presics);
         response.getWriter().println(s);
-
     }
 }
