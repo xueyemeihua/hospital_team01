@@ -25,7 +25,7 @@ public class SelectDrugInfoServlet extends HttpServlet {
 
         String drugname = request.getParameter("drugname");
         DrugInfoService service = new DrugInfoService();
-        List<DrugInfo> drugInfos = service.selectDrugInfo(drugname);
+        List<HashMap> drugInfos = service.selectDrugInfo(drugname);
 
         HttpSession session = request.getSession();
         session.setAttribute("druginfos",drugInfos);

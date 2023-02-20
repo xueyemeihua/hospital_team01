@@ -1,6 +1,5 @@
 package org.kgc.controller;
 
-import org.kgc.pojo.DrugInfo;
 import org.kgc.service.DrugInfoService;
 
 import javax.servlet.ServletException;
@@ -9,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 public class SelectDateDrugInfoServlet extends HttpServlet {
@@ -20,7 +20,7 @@ public class SelectDateDrugInfoServlet extends HttpServlet {
 
         String drugindate = request.getParameter("drugindate");
         DrugInfoService service = new DrugInfoService();
-        List<DrugInfo> drugInfos = service.date(drugindate);
+        List<HashMap> drugInfos = service.date(drugindate);
         HttpSession session = request.getSession();
         session.setAttribute("druginfos",drugInfos);
         request.getRequestDispatcher("/doctor/drugInfos.jsp").forward(request,response);

@@ -356,7 +356,7 @@
             </li>
 
             <li id="admin-500">
-              <a href="/selectAllDrugInfoServlet">
+              <a href="/selectAllDrugInfo">
                 <i class="fa fa-circle-o"></i> 开药品
               </a>
             </li>

@@ -496,7 +496,7 @@
                     <c:forEach items="${regResults}" var="srr">
                         <tr>
                             <td align="center">${srr.regid}</td>
-                            <td align="center">${srr.regdate}</td>
+                            <td align="center">${srr.date}</td>
                             <td align="center">${srr.regdesc}</td>
                             <td align="center">${srr.regfee}</td>
                             <td align="center">${srr.sickid}</td>
@@ -553,7 +553,7 @@
             if (jdata.length == 0) {
                 $("#casetb").children().remove()
                 $("#caseList").html("没有数据")
-            }else {
+            } else {
                 $("#caseList").html("")
 
                 for (let i = 0; i < jdata.length; i++) {
@@ -562,16 +562,16 @@
                         "<th align='center' width='150px'>诊断时间</th><th align='center'>医生编号</th><th align='center'>病人编号</th><th align='center' width='150px'>操作</th></tr>")
 
                     s += "<tr>" +
-                        "<td align='center'>"+jdata[i].caseid+"</td>" +
-                        "<td align='center' width='150px'>"+jdata[i].diagnosis+"</td>" +
-                        "<td align='center' width='150px'>"+jdata[i].curescheme+"</td>" +
-                        "<td align='center' width='150px'>"+jdata[i].casestate+"</td>" +
-                        "<td align='center' width='150px'>"+jdata[i].curetime+"</td>" +
-                        "<td align='center'>"+jdata[i].stafid+"</td>" +
-                        "<td align='center'>"+jdata[i].sickid+"</td>" +
+                        "<td align='center'>" + jdata[i].caseid + "</td>" +
+                        "<td align='center' width='150px'>" + jdata[i].diagnosis + "</td>" +
+                        "<td align='center' width='150px'>" + jdata[i].curescheme + "</td>" +
+                        "<td align='center' width='150px'>" + jdata[i].casestate + "</td>" +
+                        "<td align='center' width='150px'>" + jdata[i].curetime + "</td>" +
+                        "<td align='center'>" + jdata[i].stafid + "</td>" +
+                        "<td align='center'>" + jdata[i].sickid + "</td>" +
                         "<td align='center' width='150px'>" +
-                        "<a href='javascript:void (0)' onclick='toPrescribe("+jdata[i].caseid+")'>开处方单</a><br>" +
-                        "<a href='javascript:void (0)' onclick='showPresic("+jdata[i].caseid+")'>查看处方单</a>" +
+                        "<a href='javascript:void (0)' onclick='toPrescribe(" + jdata[i].caseid + ")'>开处方单</a><br>" +
+                        "<a href='javascript:void (0)' onclick='showPresic(" + jdata[i].caseid + ")'>查看处方单</a>" +
                         "</td></tr>"
                 }
                 $("#casetb").append(s)
@@ -580,31 +580,40 @@
     }
 
     /*开处方单*/
-    function toPrescribe(caseid){
-        $.get("http://localhost:8080/getDrugs","caseid="+caseid,function (data){
+    function toPrescribe(caseid) {
+        $.get("http://localhost:8080/getDrugs", "caseid=" + caseid, function (data) {
             var jdata = JSON.parse(data)
             var s = ''
             if (jdata.length == 0) {
                 $("#drugtb").children().remove()
                 $("#durgList").html("没有数据")
-            }else {
+            } else {
                 $("#drugList").html("")
                 for (let i = 0; i < jdata.length; i++) {
                     $("#drugtb").children().remove()
 
-                    $("#drugtb").append("<tr><th align='center'>药品编号</th><th align='center' width='150px'>药品名称</th><th align='center' width='150px'>药品库存</th><th align='center'>药品</th>" +
-                        "<th align='center' width='150px'>诊断时间</th><th align='center'>医生编号</th><th align='center'>病人编号</th><th align='center' width='150px'>操作</th></tr>")
+                    $("#drugtb").append("<tr><th align='center'>药品编号</th><th align='center' width='150px'>药品名称</th><th align='center' width='150px'>药品功能</th><th align='center'>药品规格</th><th align='center' width='150px'>操作</th></tr>")
 
-
+                    s +=
+                        "<tr>" +
+                        "<td align='center'>" + jdata[i].drugid + "</td>" +
+                        "<td align='center' width='150px'>" + jdata[i].drugname + "</td>" +
+                        "<td align='center' width='150px'>" + jdata[i].drugfunc + "</td>" +
+                        "<td align='center' width='150px'>" + jdata[i].drugspeci + "</td>" +
+                        "<td align='center' width='150px'>" +
+                        "<a href='javascript:void (0)' onclick='toPrescribe(" + jdata[i].caseid + ")'>开处方单</a><br>" +
+                        "<a href='javascript:void (0)' onclick='showPresic(" + jdata[i].caseid + ")'>查看处方单</a>" +
+                        "</td></tr>"
 
                 }
-
-
+            }
+            $("#drugtb").append(s)
         })
-
     }
+
+
     /*查看处方单*/
-    function showPresic(caseid){
+    function showPresic(caseid) {
 
 
     }

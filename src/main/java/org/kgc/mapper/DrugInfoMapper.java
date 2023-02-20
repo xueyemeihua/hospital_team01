@@ -29,10 +29,10 @@ public interface DrugInfoMapper {
     void deleteById(int drugid);
 
     //模糊查询
-    List<DrugInfo> selectDrugInfo(String drugname);
+    List<HashMap> selectDrugInfo(String drugname);
 
     //查询过期药品
-    List<DrugInfo> selectDateDrugInfo(String drugindate);
+    List<HashMap> selectDateDrugInfo(String drugindate);
 
-    List<DrugInfo> SelectUnDateDrugInfo(String format);
+    List<HashMap> SelectUnDateDrugInfo(String format);
 }

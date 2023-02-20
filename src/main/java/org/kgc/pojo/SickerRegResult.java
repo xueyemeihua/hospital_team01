@@ -6,7 +6,7 @@ package org.kgc.pojo;
  */
 public class SickerRegResult {
     private int regid;
-    private String regdate;
+    private String date;
     private String regdesc;
     private int regfee;
     private int sickid;
@@ -20,7 +20,7 @@ public class SickerRegResult {
     public String toString() {
         return "SickerRegResult{" +
                 "regid=" + regid +
-                ", regdate='" + regdate + '\'' +
+                ", date='" + date + '\'' +
                 ", regdesc='" + regdesc + '\'' +
                 ", regfee=" + regfee +
                 ", sickid=" + sickid +
@@ -32,12 +32,12 @@ public class SickerRegResult {
                 '}';
     }
 
-    public String getRegdate() {
-        return regdate;
+    public String getDate() {
+        return date;
     }
 
-    public void setRegdate(String regdate) {
-        this.regdate = regdate;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getRegdesc() {
@@ -112,9 +112,9 @@ public class SickerRegResult {
         this.regid = regid;
     }
 
-    public SickerRegResult(int regid, String regdate, String regdesc, int regfee, int sickid, String sickname, String sickphone, String sickcard, String sickuname, String sickemail) {
+    public SickerRegResult(int regid, String date, String regdesc, int regfee, int sickid, String sickname, String sickphone, String sickcard, String sickuname, String sickemail) {
         this.regid = regid;
-        this.regdate = regdate;
+        this.date = date;
         this.regdesc = regdesc;
         this.regfee = regfee;
         this.sickid = sickid;

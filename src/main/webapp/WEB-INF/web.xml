@@ -339,6 +339,14 @@
         <servlet-name>GetStafinfoByDeptidServlet</servlet-name>
         <servlet-class>org.kgc.controller.GetStafinfoByDeptidServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetDrugsServlet</servlet-name>
+        <servlet-class>org.kgc.controller.GetDrugsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetDrugsServlet</servlet-name>
+        <url-pattern>/getDrugs</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GetStafinfoByDeptidServlet</servlet-name>
         <url-pattern>/getStafinfoByDeptid</url-pattern>

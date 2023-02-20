@@ -9,6 +9,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class DrugInfoService {
+
+    SqlSession session = SqlSessionUtil.getSqlSession();
+    DrugInfoMapper mapper = session.getMapper(DrugInfoMapper.class);
+
     //查询所有
     public List<HashMap> selectAll() {
         SqlSession sqlSession = SqlSessionUtil.getSqlSession();
@@ -74,17 +78,23 @@ public class DrugInfoService {
         sqlSession.close();
     }
 //模糊查询
-    public List<DrugInfo> selectDrugInfo(String drugname) {
-        return SqlSessionUtil.getSqlSession().getMapper(DrugInfoMapper.class).selectDrugInfo(drugname);
+    public List<HashMap> selectDrugInfo(String drugname) {
+        List<HashMap> drugs = mapper.selectDrugInfo(drugname);
+        session.close();
+        return drugs;
     }
 
 
     //过期药品查询
-    public List<DrugInfo> date(String drugindate) {
-        return SqlSessionUtil.getSqlSession().getMapper(DrugInfoMapper.class).selectDateDrugInfo(drugindate);
+    public List<HashMap> date(String drugindate) {
+        List<HashMap> drugsindate = mapper.selectDateDrugInfo(drugindate);
+        session.close();
+        return drugsindate;
     }
 
-    public List<DrugInfo> getDate(String format) {
-        return SqlSessionUtil.getSqlSession().getMapper(DrugInfoMapper.class).SelectUnDateDrugInfo(format);
+    public List<HashMap> getDate(String format) {
+        List<HashMap> maps = mapper.SelectUnDateDrugInfo(format);
+        session.close();
+        return maps;
     }
 }

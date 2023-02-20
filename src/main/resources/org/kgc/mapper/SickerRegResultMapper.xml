@@ -7,7 +7,7 @@
 
     <select id="getSrrByStafid" resultType="org.kgc.pojo.SickerRegResult">
         SELECT reginfo.regid,
-               reginfo.regdate,
+               reginfo.date,
                regfeestander.regdesc,
                regfeestander.regfee,
                sickerinfo.sickid,
@@ -25,7 +25,7 @@
           AND stafinfo.stafid = reginfo.stafid
           AND reginfo.regfeeid = regfeestander.regfeeid
           AND stafinfo.stafid = #{stafid}
-        ORDER BY reginfo.regdate DESC
+        ORDER BY reginfo.date DESC
     </select>
 
 

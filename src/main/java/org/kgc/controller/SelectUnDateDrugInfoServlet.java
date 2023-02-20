@@ -1,17 +1,16 @@
 package org.kgc.controller;
 
-import org.kgc.pojo.DrugInfo;
 import org.kgc.service.DrugInfoService;
 import org.kgc.utils.DateUtil;
 
 import javax.servlet.ServletException;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class SelectUnDateDrugInfoServlet extends HttpServlet {
@@ -23,7 +22,7 @@ public class SelectUnDateDrugInfoServlet extends HttpServlet {
         Date date = new Date();
         String format = DateUtil.format(date, "yyyy-MM-dd HH:mm:ss");
         DrugInfoService service = new DrugInfoService();
-        List<DrugInfo> drugInfos = service.getDate(format);
+        List<HashMap> drugInfos = service.getDate(format);
 
         HttpSession session = request.getSession();
         session.setAttribute("druginfos",drugInfos);
