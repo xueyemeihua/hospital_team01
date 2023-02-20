@@ -1,29 +1,29 @@
 package org.kgc.pojo;
 
 
-import java.sql.Timestamp;
+
 
 public class Reginfo {
 
   private Integer regid;
   private Integer deptid;
-  private java.sql.Timestamp regdate;
+  private String date;
   private Integer regfeeid;
   private Integer sickid;
   private Integer stafid;
   private Integer regstate;
 
-  public Reginfo(Integer regid, Integer deptid, Timestamp regdate, Integer regfeeid, Integer sickid, Integer stafid, Integer regstate) {
-    this.regid = regid;
-    this.deptid = deptid;
-    this.regdate = regdate;
-    this.regfeeid = regfeeid;
-    this.sickid = sickid;
-    this.stafid = stafid;
-    this.regstate = regstate;
-  }
-
-  public Reginfo() {
+  @Override
+  public String toString() {
+    return "Reginfo{" +
+            "regid=" + regid +
+            ", deptid=" + deptid +
+            ", date='" + date + '\'' +
+            ", regfeeid=" + regfeeid +
+            ", sickid=" + sickid +
+            ", stafid=" + stafid +
+            ", regstate=" + regstate +
+            '}';
   }
 
   public Integer getRegid() {
@@ -34,7 +34,6 @@ public class Reginfo {
     this.regid = regid;
   }
 
-
   public Integer getDeptid() {
     return deptid;
   }
@@ -43,15 +42,13 @@ public class Reginfo {
     this.deptid = deptid;
   }
 
-
-  public java.sql.Timestamp getRegdate() {
-    return regdate;
+  public String getDate() {
+    return date;
   }
 
-  public void setRegdate(java.sql.Timestamp regdate) {
-    this.regdate = regdate;
+  public void setDate(String date) {
+    this.date = date;
   }
-
 
   public Integer getRegfeeid() {
     return regfeeid;
@@ -61,7 +58,6 @@ public class Reginfo {
     this.regfeeid = regfeeid;
   }
 
-
   public Integer getSickid() {
     return sickid;
   }
@@ -69,7 +65,6 @@ public class Reginfo {
   public void setSickid(Integer sickid) {
     this.sickid = sickid;
   }
-
 
   public Integer getStafid() {
     return stafid;
@@ -79,7 +74,6 @@ public class Reginfo {
     this.stafid = stafid;
   }
 
-
   public Integer getRegstate() {
     return regstate;
   }
@@ -88,4 +82,16 @@ public class Reginfo {
     this.regstate = regstate;
   }
 
+  public Reginfo() {
+  }
+
+  public Reginfo(Integer regid, Integer deptid, String date, Integer regfeeid, Integer sickid, Integer stafid, Integer regstate) {
+    this.regid = regid;
+    this.deptid = deptid;
+    this.date = date;
+    this.regfeeid = regfeeid;
+    this.sickid = sickid;
+    this.stafid = stafid;
+    this.regstate = regstate;
+  }
 }

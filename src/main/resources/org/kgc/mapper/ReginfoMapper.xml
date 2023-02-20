@@ -7,8 +7,10 @@
 
     <insert id="addReginfo">
         insert into reginfo
-        values (null, #{deptid}, #{regdate}, #{regfeeid}, #{sickid}, #{stafid},#{regstate})
+        values (null, #{deptid}, #{date}, #{regfeeid}, #{sickid}, #{stafid},#{regstate})
     </insert>
+
+
 
 
 </mapper>

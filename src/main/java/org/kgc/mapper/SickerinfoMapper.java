@@ -1,5 +1,6 @@
 package org.kgc.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.kgc.pojo.Sickerinfo;
 
 /**
@@ -18,4 +19,6 @@ public interface SickerinfoMapper {
     int addSickerInfo(Sickerinfo sickerinfo);
 
     int insertSicker(Sickerinfo sickerinfo);
+
+    int selectSickidBySickuname(@Param("sickuname")String sickuname);
 }

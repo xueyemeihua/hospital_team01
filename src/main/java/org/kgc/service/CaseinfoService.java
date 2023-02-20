@@ -3,6 +3,7 @@ package org.kgc.service;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.kgc.mapper.CaseinfoMapper;
+import org.kgc.pojo.CaseInfo;
 import org.kgc.pojo.CaseResult;
 
 import org.kgc.utils.SqlSessionUtil;
@@ -23,6 +24,12 @@ public class CaseinfoService {
         List<CaseResult> caseinfoBySickid = mapper.getCaseinfoBySickid(sickid);
         session.close();
         return caseinfoBySickid;
+    }
+
+    public List<CaseInfo> getCaSeByStafidAndSickidAndRegid(int regid,int sickid,int stafid){
+        List<CaseInfo> caseinfos = mapper.getCaSeByStafidAndSickidAndRegid(regid, sickid, stafid);
+        session.close();
+        return caseinfos;
     }
 
 }

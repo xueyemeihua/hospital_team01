@@ -53,6 +53,8 @@
             </otherwise>
         </choose>
     </select>
-
+    <select id="selectSickidBySickuname" resultType="int">
+        select sickid from sickerinfo where sickuname = #{sickuname}
+    </select>
 
 </mapper>

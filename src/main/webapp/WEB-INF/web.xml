@@ -3,15 +3,32 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-<!--    <filter>-->
-<!--        <filter-name>LoginFilter</filter-name>-->
-<!--        <filter-class>org.kgc.controller.LoginFilter</filter-class>-->
-<!--    </filter>-->
-<!--    <filter-mapping>-->
-<!--        <filter-name>LoginFilter</filter-name>-->
-<!--        <url-pattern>/*</url-pattern>-->
-<!--    </filter-mapping>-->
-
+    <!--    <filter>-->
+    <!--        <filter-name>LoginFilter</filter-name>-->
+    <!--        <filter-class>org.kgc.controller.LoginFilter</filter-class>-->
+    <!--    </filter>-->
+    <!--    <filter-mapping>-->
+    <!--        <filter-name>LoginFilter</filter-name>-->
+    <!--        <url-pattern>/*</url-pattern>-->
+    <!--    </filter-mapping>-->
+    
+    <servlet>
+        <servlet-name>SelectDoctorServlet</servlet-name>
+        <servlet-class>org.kgc.controller.SelectDoctorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SelectDoctorServlet</servlet-name>
+        <url-pattern>/selectDoctor</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>GetCaseByStafidAndSickidAndRegid</servlet-name>
+        <servlet-class>org.kgc.controller.GetCaSeByStafidAndSickidAndRegidServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetCaseByStafidAndSickidAndRegid</servlet-name>
+        <url-pattern>/getCaSeByStafidAndSickidAndRegid</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>ToDoctorManagerServlet</servlet-name>
         <servlet-class>org.kgc.controller.ToDoctorManagerServlet</servlet-class>
@@ -48,7 +65,7 @@
         <servlet-name>ToSickRegServlet</servlet-name>
         <servlet-class>org.kgc.controller.ToSickRegServlet</servlet-class>
     </servlet>
-    
+
     <servlet>
         <servlet-name>GetPresicByCaseidServlet</servlet-name>
         <servlet-class>org.kgc.controller.GetPresicByCaseidServlet</servlet-class>
@@ -93,6 +110,23 @@
         <servlet-name>GetDeptInfoServletForwardStafentryServlet</servlet-name>
         <servlet-class>org.kgc.controller.GetDeptInfoServletForwardStafentryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetStafinfoOnDayServlet</servlet-name>
+        <servlet-class>org.kgc.controller.GetStafinfoOnDayServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteDutyServlet</servlet-name>
+        <servlet-class>org.kgc.controller.DeleteDutyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteDutyServlet</servlet-name>
+        <url-pattern>/deleteDuty</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>GetStafinfoOnDayServlet</servlet-name>
+        <url-pattern>/getStafinfoOnDay</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GetDeptInfoServletForwardStafentryServlet</servlet-name>
         <url-pattern>/getDeptInfoServletForwardStafentry</url-pattern>
@@ -188,7 +222,7 @@
         <servlet-name>GetPresicByCaseidServlet</servlet-name>
         <url-pattern>/getPresicByCaseid</url-pattern>
     </servlet-mapping>
-   
+
     <servlet-mapping>
         <servlet-name>ToSickRegServlet</servlet-name>
         <url-pattern>/toSickReg</url-pattern>
@@ -273,10 +307,6 @@
         <servlet-name>SickerRegisterServlet</servlet-name>
         <servlet-class>org.kgc.controller.SickerRegisterServlet</servlet-class>
     </servlet>
-<!--    <servlet>-->
-<!--        <servlet-name>ShowStafOnDayServlet</servlet-name>-->
-<!--        <servlet-class>org.kgc.controller.ShowStafOnDayServlet</servlet-class>-->
-<!--    </servlet>-->
     <servlet>
         <servlet-name>AddSchedulingServlet</servlet-name>
         <servlet-class>org.kgc.controller.AddSchedulingServlet</servlet-class>
@@ -286,12 +316,52 @@
         <servlet-class>org.kgc.controller.AddDutyServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DeleteDutyServlet</servlet-name>
-        <servlet-class>org.kgc.controller.DeleteDutyServlet</servlet-class>
+        <servlet-name>UpdateDrugInfoServlet</servlet-name>
+        <servlet-class>org.kgc.controller.UpdateDrugInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SelectUnDateDrugInfoServlet</servlet-name>
+        <servlet-class>org.kgc.controller.SelectUnDateDrugInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SelectDrugInfoServlet</servlet-name>
+        <servlet-class>org.kgc.controller.SelectDrugInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SelectDateDrugInfoServlet</servlet-name>
+        <servlet-class>org.kgc.controller.SelectDateDrugInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SelectAllDrugInfoServlet</servlet-name>
+        <servlet-class>org.kgc.controller.SelectAllDrugInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetStafinfoByDeptidServlet</servlet-name>
+        <servlet-class>org.kgc.controller.GetStafinfoByDeptidServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>DeleteDutyServlet</servlet-name>
-        <url-pattern>/deleteDuty</url-pattern>
+        <servlet-name>GetStafinfoByDeptidServlet</servlet-name>
+        <url-pattern>/getStafinfoByDeptid</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SelectAllDrugInfoServlet</servlet-name>
+        <url-pattern>/selectAllDrugInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SelectDateDrugInfoServlet</servlet-name>
+        <url-pattern>/selectDateDrugInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SelectDrugInfoServlet</servlet-name>
+        <url-pattern>/selectDrugInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SelectUnDateDrugInfoServlet</servlet-name>
+        <url-pattern>/selectUnDateDrugInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateDrugInfoServlet</servlet-name>
+        <url-pattern>/updateDrugInfo</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddDutyServlet</servlet-name>
@@ -301,10 +371,10 @@
         <servlet-name>AddSchedulingServlet</servlet-name>
         <url-pattern>/addScheduling</url-pattern>
     </servlet-mapping>
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>ShowStafOnDayServlet</servlet-name>-->
-<!--        <url-pattern>/showStafOnDay</url-pattern>-->
-<!--    </servlet-mapping>-->
+    <!--    <servlet-mapping>-->
+    <!--        <servlet-name>ShowStafOnDayServlet</servlet-name>-->
+    <!--        <url-pattern>/showStafOnDay</url-pattern>-->
+    <!--    </servlet-mapping>-->
     <servlet-mapping>
         <servlet-name>SickerRegisterServlet</servlet-name>
         <url-pattern>/sickerRegister</url-pattern>

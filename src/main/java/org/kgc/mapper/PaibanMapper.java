@@ -18,6 +18,7 @@ public interface PaibanMapper {
     List<HashMap> getPaibanStafByDate(@Param("date") String date);
     int addDuty(@Param("stafid")int stafid,@Param("date")String date);
     int deleteDuty(@Param("stafid")int stafid,@Param("date")String date);
+    List<HashMap> selectDoctorByDateAndByDeptid(@Param("date")String date,@Param("deptid")int deptid);
 
 
 }

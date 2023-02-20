@@ -33,38 +33,32 @@ public class SickRegServlet extends HttpServlet {
         String sickcard = request.getParameter("sickcard");
         String sickphone = request.getParameter("sickphone");
         String sickemail = request.getParameter("sickemail");
-        String sickpwd = request.getParameter("sickpwd");
-        String sickpwd1 = request.getParameter("sickpwd1");
         Integer deptid = Integer.parseInt(request.getParameter("deptid"));
         Integer stafid = Integer.parseInt(request.getParameter("stafid"));
-        //将病人信息封装进对象在数据库中存入,并获取新增主键,然后在挂号表中新增该病人的挂号信息(需要查挂号等级表找寻挂号费等级)
-        if (sickpwd.equals(sickpwd1)) {
-            Sickerinfo sickerinfo = new Sickerinfo(null, sickcard, sickname, sickphone, sickpwd, sickemail);
-            SickerinfoService sickerinfoService = new SickerinfoService();
-            int i = sickerinfoService.addSickerInfo(sickerinfo);
-            if (i == 1) {
-                //病人信息添加成功,根据病人选择的医生查询这个医生的个人信息
-                StafinfoService stafinfoService = new StafinfoService();
-                Stafinfo stafinfo = stafinfoService.getStafinfoByStafid(stafid);
-                //获取该医生的职称编号
-                Integer rankid = stafinfo.getRankid();
-                //根据职称编号查询挂号费
-                RankinfoService rankinfoService = new RankinfoService();
-                HashMap regfee_id = rankinfoService.getRegfeeidByRankid(rankid);
-                //挂号费编号默认为1,即0元
-                //挂号信息的修改涉及到两张表,所以添加挂号信息需要将其是为一个事务
-                Integer regfeeid = 1;
-                if (regfee_id!=null){
-                    regfeeid = (Integer) regfee_id.get("regfeeid");
-                }
-                Reginfo reginfo = new Reginfo(null, deptid, new Timestamp(System.currentTimeMillis()), regfeeid, sickerinfo.getSickid(),stafid, 1);
-                ReginfoService reginfoService = new ReginfoService();
-                int result = reginfoService.addReginfo(reginfo);
-                response.sendRedirect("xylq/hospital_main.jsp");
-            } else {
-                response.sendRedirect("xylq/hospital_main.jsp");
-            }
+        String sickuname = request.getParameter("sickuname");
+        String date = request.getParameter("date");
+        //根据sickuname获取sickid
+        SickerinfoService sickerinfoService = new SickerinfoService();
+        int sickid = sickerinfoService.selectSickidBySickuname(sickuname);
+
+        //病人信息添加成功,根据病人选择的医生查询这个医生的个人信息
+        StafinfoService stafinfoService = new StafinfoService();
+        Stafinfo stafinfo = stafinfoService.getStafinfoByStafid(stafid);
+        //获取该医生的职称编号
+        Integer rankid = stafinfo.getRankid();
+        //根据职称编号查询挂号费
+        RankinfoService rankinfoService = new RankinfoService();
+        HashMap regfee_id = rankinfoService.getRegfeeidByRankid(rankid);
+        //挂号费编号默认为1,即0元
+        //挂号信息的修改涉及到两张表,所以添加挂号信息需要将其是为一个事务
+        Integer regfeeid = 1;
+        if (regfee_id!=null){
+            regfeeid = (Integer) regfee_id.get("regfeeid");
         }
+        Reginfo reginfo = new Reginfo(null, deptid, date, regfeeid, sickid,stafid, 1);
+        ReginfoService reginfoService = new ReginfoService();
+        int result = reginfoService.addReginfo(reginfo);
+        response.sendRedirect("xylq/hospital_main.jsp");
     }
 }
 

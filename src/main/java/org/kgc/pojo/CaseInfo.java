@@ -5,11 +5,10 @@ public class CaseInfo {
     private Integer caseid;
     private String diagnosis;
     private String curescheme;
+    private Integer casestate;
     private String curetime;
     private Integer sickid;
     private Integer stafid;
-    private Integer casestate;
-    private Integer regid;
 
     @Override
     public String toString() {
@@ -21,7 +20,6 @@ public class CaseInfo {
                 ", sickid=" + sickid +
                 ", stafid=" + stafid +
                 ", casestate=" + casestate +
-                ", regid=" + regid +
                 '}';
     }
 
@@ -81,18 +79,11 @@ public class CaseInfo {
         this.casestate = casestate;
     }
 
-    public Integer getRegid() {
-        return regid;
-    }
-
-    public void setRegid(Integer regid) {
-        this.regid = regid;
-    }
 
     public CaseInfo() {
     }
 
-    public CaseInfo(Integer caseid, String diagnosis, String curescheme, String curetime, Integer sickid, Integer stafid, Integer casestate, Integer regid) {
+    public CaseInfo(Integer caseid, String diagnosis, String curescheme, String curetime, Integer sickid, Integer stafid, Integer casestate) {
         this.caseid = caseid;
         this.diagnosis = diagnosis;
         this.curescheme = curescheme;
@@ -100,7 +91,7 @@ public class CaseInfo {
         this.sickid = sickid;
         this.stafid = stafid;
         this.casestate = casestate;
-        this.regid = regid;
+
     }
 
     //逻辑视图

@@ -5,18 +5,15 @@
 <html>
 
 <head>
+
     <!-- 页面meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
-
-
     <title>doctor</title>
     <meta name="description" content="AdminLTE2定制版">
     <meta name="keywords" content="AdminLTE2定制版">
-
-
 
 
     <!-- Tell the browser to be responsive to screen width -->
@@ -52,12 +49,6 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-
-
-
-
-
 
 
     <!-- jQuery 2.2.3 -->
@@ -244,7 +235,8 @@
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-warning text-yellow"></i> Very long description here that may not
+                                            <i class="fa fa-warning text-yellow"></i> Very long description here that
+                                            may not
                                             fit into the page and may cause design problems
                                         </a>
                                     </li>
@@ -287,7 +279,9 @@
                                                 <small class="pull-right">20%</small>
                                             </h3>
                                             <div class="progress xs">
-                                                <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-aqua" style="width: 20%"
+                                                     role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                                     aria-valuemax="100">
                                                     <span class="sr-only">20% Complete</span>
                                                 </div>
                                             </div>
@@ -302,7 +296,9 @@
                                                 <small class="pull-right">40%</small>
                                             </h3>
                                             <div class="progress xs">
-                                                <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-green" style="width: 40%"
+                                                     role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                                     aria-valuemax="100">
                                                     <span class="sr-only">40% Complete</span>
                                                 </div>
                                             </div>
@@ -317,7 +313,9 @@
                                                 <small class="pull-right">60%</small>
                                             </h3>
                                             <div class="progress xs">
-                                                <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-red" style="width: 60%"
+                                                     role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                                     aria-valuemax="100">
                                                     <span class="sr-only">60% Complete</span>
                                                 </div>
                                             </div>
@@ -332,7 +330,9 @@
                                                 <small class="pull-right">80%</small>
                                             </h3>
                                             <div class="progress xs">
-                                                <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-yellow" style="width: 80%"
+                                                     role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                                     aria-valuemax="100">
                                                     <span class="sr-only">80% Complete</span>
                                                 </div>
                                             </div>
@@ -412,7 +412,8 @@
             <ul class="sidebar-menu">
                 <li class="header">菜单</li>
 
-                <li id="admin-index"><a href="all-admin-index.html"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
+                <li id="admin-index"><a href="all-admin-index.html"><i class="fa fa-dashboard"></i> <span>首页</span></a>
+                </li>
 
                 <!-- 菜单 -->
 
@@ -479,33 +480,35 @@
             </div>
             <div align="center">
                 <table border="1px" cellpadding="0px" cellspacing="0px">
-                    <tr>
-                        <th>挂号编号</th>
-                        <th>挂号日期</th>
-                        <th>挂号等级</th>
-                        <th>挂号费</th>
-                        <th>病人编号</th>
-                        <th>病人姓名</th>
-                        <th>病人电话</th>
-                        <th>病人身份证</th>
-                        <th>病人账户名</th>
-                        <th>邮箱</th>
-                        <th>操作</th>
+                    <tr align="center">
+                        <th align="center">挂号编号</th>
+                        <th align="center" width="150px">挂号日期</th>
+                        <th align="center">挂号等级</th>
+                        <th align="center">挂号费</th>
+                        <th align="center">病人编号</th>
+                        <th align="center">病人姓名</th>
+                        <th align="center" width="150px">病人电话</th>
+                        <th align="center" width="150px">病人身份证</th>
+                        <th align="center">病人账户名</th>
+                        <th align="center" width="150px">邮箱</th>
+                        <th align="center" width="150px">操作</th>
                     </tr>
                     <c:forEach items="${regResults}" var="srr">
                         <tr>
-                            <td>${srr.regid}</td>
-                            <td>${srr.regdate}</td>
-                            <td>${srr.regdesc}</td>
-                            <td>${srr.regfee}</td>
-                            <td>${srr.sickid}</td>
-                            <td>${srr.sickname}</td>
-                            <td>${srr.sickphone}</td>
-                            <td>${srr.sickcard}</td>
-                            <td>${srr.sickuname}</td>
-                            <td>${srr.sickemail}</td>
-                            <td>
-                                <a href="/getCaseByStafidAndSickidAndRegid?sickid=${srr.sickid}&regid=${srr.regid}">查看病例
+                            <td align="center">${srr.regid}</td>
+                            <td align="center">${srr.regdate}</td>
+                            <td align="center">${srr.regdesc}</td>
+                            <td align="center">${srr.regfee}</td>
+                            <td align="center">${srr.sickid}</td>
+                            <td align="center">${srr.sickname}</td>
+                            <td align="center">${srr.sickphone}</td>
+                            <td align="center">${srr.sickcard}</td>
+                            <td align="center">${srr.sickuname}</td>
+                            <td align="center">${srr.sickemail}</td>
+                            <td align="center">
+                                <a href="javascript:void (0)"
+                                   onclick="getCaseForDoctor(${srr.regid},${srr.sickid})"
+                                >查看病例
                                 </a>
                             </td>
                         </tr>
@@ -513,46 +516,101 @@
                 </table>
             </div>
 
-<%--            <div>--%>
-<%--                <h2>病例列表</h2>--%>
-<%--            </div>--%>
+            <div>
+                <h2>病例列表</h2>
+            </div>
 
-<%--            <div align="center">--%>
-<%--                <table border="1px" cellpadding="0px" cellspacing="0px">--%>
-<%--                    <tr>--%>
-<%--                        <th>病例编号</th>--%>
-<%--                        <th>诊断结果</th>--%>
-<%--                        <th>治疗方案</th>--%>
-<%--                        <th>病例状态</th>--%>
-<%--                        <th>诊断时间</th>--%>
-<%--                        <th>医生编号</th>--%>
-<%--                        <th>病人编号</th>--%>
-<%--                        <th>操作</th>--%>
-<%--                    </tr>--%>
-<%--                    <c:forEach items="${cases}" var="case">--%>
-<%--                        <tr>--%>
-<%--                            <td>${case.caseid}</td>--%>
-<%--                            <td>${case.diagnosis}</td>--%>
-<%--                            <td>${case.curescheme}</td>--%>
-<%--                            <td>${case.casestate}</td>--%>
-<%--                            <td>${case.curetime}</td>--%>
-<%--                            <td>${case.stafid}</td>--%>
-<%--                            <td>${case.sickid}</td>--%>
-<%--                            <td>--%>
-<%--                                <a href="#">处方单</a>--%>
-<%--                            </td>--%>
-<%--                        </tr>--%>
-<%--                    </c:forEach>--%>
-<%--                </table>--%>
-<%--            </div>--%>
+            <div align="center">
+                <table border="1px" cellpadding="0px" cellspacing="0px" id="casetb">
+
+                </table>
+                <p id="caseList"></p>
+            </div>
+
+            <div>
+                <h2>药品表</h2>
+            </div>
+            <div align="center">
+                <table border="1px" cellpadding="0px" cellspacing="0px" id="drugtb">
+
+                </table>
+                <p id="drugList"></p>
+            </div>
+
 
         </section>
         <!-- 正文区域 /-->
     </div>
     <!-- 内容区域 /-->
-
-
 </div>
+<script>
+
+    /*根据病人编号,挂号编号和医生编号(登录信息中获取)查询该医生名下该病人的病例信息*/
+    function getCaseForDoctor(regid, sickid) {
+        $.get("http://localhost:8080/getCaSeByStafidAndSickidAndRegid", "regid=" + regid + "&sickid=" + sickid, function (data) {
+            var jdata = JSON.parse(data)
+            var s = ''
+            if (jdata.length == 0) {
+                $("#casetb").children().remove()
+                $("#caseList").html("没有数据")
+            }else {
+                $("#caseList").html("")
+
+                for (let i = 0; i < jdata.length; i++) {
+                    $("#casetb").children().remove()
+                    $("#casetb").append("<tr><th align='center'>病例编号</th><th align='center' width='150px'>诊断结果</th><th align='center' width='150px'>治疗方案</th><th align='center'>病例状态</th>" +
+                        "<th align='center' width='150px'>诊断时间</th><th align='center'>医生编号</th><th align='center'>病人编号</th><th align='center' width='150px'>操作</th></tr>")
+
+                    s += "<tr>" +
+                        "<td align='center'>"+jdata[i].caseid+"</td>" +
+                        "<td align='center' width='150px'>"+jdata[i].diagnosis+"</td>" +
+                        "<td align='center' width='150px'>"+jdata[i].curescheme+"</td>" +
+                        "<td align='center' width='150px'>"+jdata[i].casestate+"</td>" +
+                        "<td align='center' width='150px'>"+jdata[i].curetime+"</td>" +
+                        "<td align='center'>"+jdata[i].stafid+"</td>" +
+                        "<td align='center'>"+jdata[i].sickid+"</td>" +
+                        "<td align='center' width='150px'>" +
+                        "<a href='javascript:void (0)' onclick='toPrescribe("+jdata[i].caseid+")'>开处方单</a><br>" +
+                        "<a href='javascript:void (0)' onclick='showPresic("+jdata[i].caseid+")'>查看处方单</a>" +
+                        "</td></tr>"
+                }
+                $("#casetb").append(s)
+            }
+        })
+    }
+
+    /*开处方单*/
+    function toPrescribe(caseid){
+        $.get("http://localhost:8080/getDrugs","caseid="+caseid,function (data){
+            var jdata = JSON.parse(data)
+            var s = ''
+            if (jdata.length == 0) {
+                $("#drugtb").children().remove()
+                $("#durgList").html("没有数据")
+            }else {
+                $("#drugList").html("")
+                for (let i = 0; i < jdata.length; i++) {
+                    $("#drugtb").children().remove()
+
+                    $("#drugtb").append("<tr><th align='center'>药品编号</th><th align='center' width='150px'>药品名称</th><th align='center' width='150px'>药品库存</th><th align='center'>药品</th>" +
+                        "<th align='center' width='150px'>诊断时间</th><th align='center'>医生编号</th><th align='center'>病人编号</th><th align='center' width='150px'>操作</th></tr>")
+
+
+
+                }
+
+
+        })
+
+    }
+    /*查看处方单*/
+    function showPresic(caseid){
+
+
+    }
+
+
+</script>
 
 
 <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -601,7 +659,7 @@
 <script src="../plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
 <script src="../plugins/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         // 选择框
         $(".select2").select2();
 
@@ -622,7 +680,7 @@
     }
 
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         // 激活导航位置
         setSidebarActive("admin-index");
     });

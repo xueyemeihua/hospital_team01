@@ -4,11 +4,11 @@ import org.kgc.pojo.DrugInfo;
 import org.kgc.service.DrugInfoService;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebServlet;
+
 import javax.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet("/updateDrugInfoServlet")
+
 public class UpdateDrugInfoServlet extends HttpServlet {
     private DrugInfoService service = new DrugInfoService();
     @Override

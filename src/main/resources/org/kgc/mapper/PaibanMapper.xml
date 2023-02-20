@@ -13,6 +13,11 @@
     <delete id="deleteDuty">
         delete from paiban where stafid=#{stafid} and date =#{date}
     </delete>
+    <select id="selectDoctorByDateAndByDeptid" resultType="HashMap">
+        select * from paiban,stafinfo,deptinfo
+        where paiban.stafid = stafinfo.stafid and stafinfo.deptid = deptinfo.deptid
+        and date = #{date} and deptinfo.deptid = #{deptid}
+    </select>
 
 
 </mapper>

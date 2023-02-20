@@ -1,5 +1,6 @@
 package org.kgc.service;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.kgc.mapper.SickerinfoMapper;
 import org.kgc.pojo.Sickerinfo;
@@ -54,4 +55,12 @@ public class SickerinfoService {
         session.close();
         return result;
     }
+
+    public int selectSickidBySickuname(@Param("sickuname") String sickuname){
+        int sickid = mapper.selectSickidBySickuname(sickuname);
+        session.close();
+        return sickid;
+    }
+
+
 }

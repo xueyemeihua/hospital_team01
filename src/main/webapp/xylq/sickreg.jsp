@@ -9,6 +9,7 @@
     <meta name="keywords" content="AdminLTE2定制版">
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
     <!--[if lt IE 9]>
+    <script src="src/laydate/laydate.js"></script>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -79,15 +80,9 @@
                                 <tr>
                                     <td align="right">日期</td>
                                     <td>
-                                        <select name="weeknum" id="weeknum" onchange="selectDoctor()">
-                                            <option value="1">周一</option>
-                                            <option value="2">周二</option>
-                                            <option value="3">周三</option>
-                                            <option value="4">周四</option>
-                                            <option value="5">周五</option>
-                                            <option value="6">周六</option>
-                                            <option value="7">周日</option>
-                                        </select>
+                                            <div>
+                                                <input value="请选择日期" name="date" type="text"  id="datepicker" >
+                                            </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -113,14 +108,15 @@
                             <input type="submit" value="提交">
                         </form>
                     </div>
-
                     <script>
+
                         function selectDoctor() {
-                            $.get("http://localhost:8080/selectDoctor", "deptid=" + $("#dept").val()+"&weeknum="+$("#weeknum").val(), function (data) {
-                                var jsonData = eval("(" + data + ")")
+                            $.get("http://localhost:8080/selectDoctor", "deptid=" + $("#dept").val()+"&date="+$("#datepicker").val(), function (data) {
+                                var jsonData = JSON.parse(data)
+                                console.log(jsonData)
                                 var s = ''
                                 if (jsonData.length != 0) {
-                                    for (let i = 0; i < jsonData.length; i++) {
+                                    for (var i = 0; i < jsonData.length; i++) {
                                         $("#doctors").children().remove();
                                         s += "<option value='" +
                                             jsonData[i].stafid +
@@ -141,6 +137,8 @@
                     <script>
                         $.widget.bridge('uibutton', $.ui.button);
                     </script>
+                    <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
+                    <script src="../plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
                     <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
                     <script src="../plugins/raphael/raphael-min.js"></script>
                     <script src="../plugins/morris/morris.min.js"></script>
@@ -192,6 +190,11 @@
                             });
                         });
 
+
+                        $('#datepicker').datepicker({
+                            autoclose: true,
+                            format: 'yyyy-mm-dd'
+                        });
 
                         // 设置激活菜单
                         function setSidebarActive(tagUri) {

@@ -33,6 +33,23 @@
         ORDER BY reginfo.regdate
                 DESC
     </select>
+    <select id="getCaSeByStafidAndSickidAndRegid" resultType="org.kgc.pojo.CaseInfo">
+        SELECT caseinfo.caseid,
+               caseinfo.diagnosis,
+               caseinfo.curescheme,
+               caseinfo.casestate,
+               caseinfo.curetime,
+               caseinfo.stafid,
+               caseinfo.sickid
+        FROM stafinfo,
+             caseinfo,
+             reginfo
+        WHERE stafinfo.stafid = caseinfo.stafid
+          AND reginfo.regid = caseinfo.regid
+          AND reginfo.regid = #{regid}
+          AND caseinfo.sickid = #{sickid}
+          AND stafinfo.stafid = #{stafid}
+    </select>
 
 
 </mapper>

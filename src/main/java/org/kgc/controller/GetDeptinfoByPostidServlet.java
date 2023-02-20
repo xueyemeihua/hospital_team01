@@ -1,10 +1,9 @@
 package org.kgc.controller;
 
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.kgc.pojo.Deptinfo;
-import org.kgc.pojo.Postinfo;
 import org.kgc.service.DeptinfoService;
-import org.kgc.service.PostinfoService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

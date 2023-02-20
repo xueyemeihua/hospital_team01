@@ -46,6 +46,12 @@ public class PaibanService {
         return i;
     }
 
+    public List<HashMap> selectDoctorByDateAndByDeptid(@Param("date")String date,@Param("deptid")int deptid){
+        List<HashMap> hashMaps = mapper.selectDoctorByDateAndByDeptid(date, deptid);
+        session.close();
+        return hashMaps;
+    }
+
 
 
 }
