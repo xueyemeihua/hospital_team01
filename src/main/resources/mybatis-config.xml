@@ -8,12 +8,10 @@
     <properties resource="jdbc.properties"/>
 
     <settings>
-        
-        <setting name="useGeneratedKeys" value="true"/>
         <!--开启驼峰映射规则-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
 
-        <setting name="logImpl" value="LOG4J"/>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
 
     </settings>
 

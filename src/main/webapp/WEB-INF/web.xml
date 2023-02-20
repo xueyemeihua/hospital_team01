@@ -13,6 +13,14 @@
 <!--    </filter-mapping>-->
 
     <servlet>
+        <servlet-name>ToDoctorManagerServlet</servlet-name>
+        <servlet-class>org.kgc.controller.ToDoctorManagerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ToDoctorManagerServlet</servlet-name>
+        <url-pattern>/toDoctorManager</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>GetLeaveWordServlet</servlet-name>
         <servlet-class>org.kgc.controller.GetLeaveWordServlet</servlet-class>
     </servlet>
@@ -40,14 +48,7 @@
         <servlet-name>ToSickRegServlet</servlet-name>
         <servlet-class>org.kgc.controller.ToSickRegServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>SelectDoctorServlet</servlet-name>
-        <servlet-class>org.kgc.controller.SelectDoctorServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GetDoctorPaibanServlet</servlet-name>
-        <servlet-class>org.kgc.controller.GetDoctorPaibanServlet</servlet-class>
-    </servlet>
+    
     <servlet>
         <servlet-name>GetPresicByCaseidServlet</servlet-name>
         <servlet-class>org.kgc.controller.GetPresicByCaseidServlet</servlet-class>
@@ -187,14 +188,7 @@
         <servlet-name>GetPresicByCaseidServlet</servlet-name>
         <url-pattern>/getPresicByCaseid</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>GetDoctorPaibanServlet</servlet-name>
-        <url-pattern>/getDoctorPaiban</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SelectDoctorServlet</servlet-name>
-        <url-pattern>/selectDoctor</url-pattern>
-    </servlet-mapping>
+   
     <servlet-mapping>
         <servlet-name>ToSickRegServlet</servlet-name>
         <url-pattern>/toSickReg</url-pattern>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kgc.mapper.SickerRegResultMapper">
+
+
+    <select id="getSrrByStafid" resultType="org.kgc.pojo.SickerRegResult">
+        SELECT reginfo.regid,
+               reginfo.regdate,
+               regfeestander.regdesc,
+               regfeestander.regfee,
+               sickerinfo.sickid,
+               sickerinfo.sickname,
+               sickerinfo.sickphone,
+               sickerinfo.sickcard,
+               sickerinfo.sickuname,
+               sickerinfo.sickemail
+
+        FROM sickerinfo,
+             reginfo,
+             stafinfo,
+             regfeestander
+        WHERE sickerinfo.sickid = reginfo.sickid
+          AND stafinfo.stafid = reginfo.stafid
+          AND reginfo.regfeeid = regfeestander.regfeeid
+          AND stafinfo.stafid = #{stafid}
+        ORDER BY reginfo.regdate DESC
+    </select>
+
+
+
+</mapper>
