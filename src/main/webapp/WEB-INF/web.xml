@@ -347,6 +347,14 @@
         <servlet-name>ShowPresicServlet</servlet-name>
         <servlet-class>org.kgc.controller.ShowPresicServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddDrugToPrescServlet</servlet-name>
+        <servlet-class>org.kgc.controller.AddDrugToPrescServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddDrugToPrescServlet</servlet-name>
+        <url-pattern>/addDrugToPresc</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ShowPresicServlet</servlet-name>
         <url-pattern>/showPresic</url-pattern>

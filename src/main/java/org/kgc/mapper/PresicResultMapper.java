@@ -1,6 +1,7 @@
 package org.kgc.mapper;
 
 import org.apache.ibatis.annotations.Param;
+import org.kgc.pojo.Prescinfo;
 import org.kgc.pojo.PresicResult;
 
 import java.util.List;
@@ -12,5 +13,7 @@ import java.util.List;
 public interface PresicResultMapper {
 
     List<PresicResult> getPresicByCaseid(@Param("caseid") int caseid);
+
+
 
 }
