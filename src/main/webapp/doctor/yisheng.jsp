@@ -264,36 +264,31 @@
                 <p id="caseList"></p>
             </div>
 
-            <div align="center" id="cure">
-
+            <div align="center" id="cureform" hidden="true">
+                <h2>诊断信息填写</h2>
+                <form action="/cure" method="get">
+                    <input id="curecaseid" name="caseid"><br>
+                    <input name='diagnosis' placeholder='诊断结果'><br>
+                    <input name='curescheme' placeholder='治疗方案'><br>
+                    <input type='submit' value='提交'>
+                </form>
             </div>
 
             <div align="center" id='drugtb'>
 
             </div>
-
-
-
-
         </section>
         <!-- 正文区域 /-->
     </div>
     <!-- 内容区域 /-->
 </div>
 
-<%--<div>--%>
-<%--    <input name="drugname" placeholder="模糊药品名"><br>--%>
-<%--    <input name="drugfunc" placeholder="模糊药品功能"><br>--%>
-<%--</div>--%>
-
-
-
-
 <script>
 
     /*根据病人编号,挂号编号和医生编号(登录信息中获取)查询该医生名下该病人的病例信息*/
     function getCaseForDoctor(regid, sickid) {
         $.get("http://localhost:8080/getCaSeByStafidAndSickidAndRegid", "regid=" + regid + "&sickid=" + sickid, function (data) {
+            $("#cureform").attr("hidden",true)
             var jdata = JSON.parse(data)
             var s = ''
             if (jdata.length == 0) {
@@ -317,7 +312,8 @@
                         "<td align='center' hidden>" + jdata[i].stafid + "</td>" +
                         "<td align='center' hidden>" + jdata[i].sickid + "</td>" +
                         "<td align='center' width='150px'>" +
-                        "<a href='javascript:void (0)' onclick='cure(" + jdata[i].caseid + ")'>诊断信息填写</a><br>" +
+                        "<a href='javascript:void (0)' onclick='cure(" + jdata[i].caseid+","+jdata[i].casestate +
+                            ")'>诊断</a><br>" +
                         "<a href='javascript:void (0)' onclick='toPrescribe(" + jdata[i].caseid + ")'>开处方单</a><br>" +
                         "<a href='javascript:void (0)' onclick='showPresic(" + jdata[i].caseid + ")'>查看处方单</a>" +
                         "</td></tr>"
@@ -326,17 +322,22 @@
             }
         })
     }
-    </script>
+</script>
+
 
 <script>
-
     /*诊断信息填写*/
-    function cure(caseid) {
-        $.get("http://localhost:8080/cure","caseid=" + caseid, function (data) {
+    function cure(caseid,casestate) {
+        if (casestate==0){
+            $("#drugtb").children().remove()
+            $("#cureform").attr("hidden",false)
+            $("#curecaseid").val(caseid)
+            $("#curecaseid").attr("hidden",false)
+        } else {
+            alert("病例已诊断")
+        }
 
 
-
-        })
     }
 </script>
 
@@ -344,12 +345,15 @@
     /*开处方单*/
     function toPrescribe(caseid) {
         $.get("http://localhost:8080/getDrugs", "caseid=" + caseid, function (data) {
+            $("#cureform").attr("hidden",true)
             var jdata = JSON.parse(data)
             var s = ''
             if (jdata.length == 0) {
                 $("#drugtb").children().remove()
+
                 $("#durgList").html("没有数据")
             } else {
+
                 $("#drugList").html("")
                 $("#drugtb").children().remove()
 
@@ -358,7 +362,7 @@
                     "<table border='1px' cellpadding='0px' cellspacing='0px'><tr><th align='center'>药品编号</th><th align='center' width='150px'>药品名称</th><th align='center' width='150px'>药品功能</th><th align='center'>药品规格</th><th align='center' width='150px'>操作</th></tr>"
 
                 for (let i = 0; i < jdata.length; i++) {
-                    var drugcout = 'dcout'+i
+                    var drugcout = 'dcout' + i
                     s +=
                         "<tr>" +
                         "<td align='center'>" + jdata[i].drugid + "</td>" +
@@ -366,8 +370,8 @@
                         "<td align='center' width='150px'>" + jdata[i].drugfunc + "</td>" +
                         "<td align='center' width='150px'>" + jdata[i].drugspeci + "</td>" +
                         "<td align='center' width='150px'>" +
-                        "<input type='number' id='dcout"+i+"' name='dcout' placeholder='开药数量'><br>" +
-                        "<a href='javascript:void (0)' onclick='addDrugToPresc(" + jdata[i].drugid+","+caseid+","+drugcout+ ")'>开药</a><br>" +
+                        "<input type='number' id='dcout" + i + "' name='dcout' placeholder='开药数量'><br>" +
+                        "<a href='javascript:void (0)' onclick='addDrugToPresc(" + jdata[i].drugid + "," + caseid + "," + drugcout + ")'>开药</a><br>" +
                         "</td></tr>"
                 }
                 s += "</table><p id='drugList'></p>"
@@ -379,14 +383,14 @@
 
 <script>
     /*医生开药方*/
-    function addDrugToPresc(drugid,caseid,drugcout){
+    function addDrugToPresc(drugid, caseid, drugcout) {
 
-        $.get("http://localhost:8080/addDrugToPresc","drugid="+drugid+"&caseid="+caseid+"&dcout="+drugcout.value,function
-            (data){
-            if (data==1){
-               alert("开药成功")
+        $.get("http://localhost:8080/addDrugToPresc", "drugid=" + drugid + "&caseid=" + caseid + "&dcout=" + drugcout.value, function
+            (data) {
+            if (data == 1) {
+                alert("开药成功")
             } else {
-               alert("开药失败")
+                alert("开药失败")
             }
         })
     }
@@ -397,15 +401,18 @@
     /*查看处方单*/
     function showPresic(caseid) {
         $.get("http://localhost:8080/showPresic", "caseid=" + caseid, function (data) {
+            $("#cureform").attr("hidden",true)
             var jdata = JSON.parse(data)
             var s = ''
             if (jdata.length == 0) {
+
                 $("#drugtb").children().remove()
                 $("#durgList").html("没有数据")
             } else {
+
                 $("#drugList").html("")
                 $("#drugtb").children().remove()
-                s = "<div align='center'> <h2>处方单</h2> </div>"+
+                s = "<div align='center'> <h2>处方单</h2> </div>" +
                     "<table border='1px' cellpadding='0px' cellspacing='0px'>" +
                     "<tr><th align='center' hidden>病例编号</th><th align='center' hidden>处方单序号</th><th align='center'>药品名称</th><th align='center'>药品数量</th><th align='center'>药品价格</th><th align='center'>药品规格</th><th align='center'>抓药状态</th></tr>"
 
@@ -420,7 +427,7 @@
                         "<td align='center' width='150px'>" + jdata[i].prescstate + "</td>" +
                         "</td></tr>"
                 }
-                s+="</table>"
+                s += "</table>"
                 $("#drugtb").append(s)
             }
         })

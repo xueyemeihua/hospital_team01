@@ -6,6 +6,7 @@ import org.kgc.mapper.CaseinfoMapper;
 import org.kgc.pojo.CaseInfo;
 import org.kgc.pojo.CaseResult;
 
+import org.kgc.pojo.Reginfo;
 import org.kgc.utils.SqlSessionUtil;
 
 import java.util.HashMap;

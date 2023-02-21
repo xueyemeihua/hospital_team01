@@ -50,7 +50,7 @@ public class SickRegServlet extends HttpServlet {
         RankinfoService rankinfoService = new RankinfoService();
         HashMap regfee_id = rankinfoService.getRegfeeidByRankid(rankid);
         //挂号费编号默认为1,即0元
-        //挂号信息的修改涉及到两张表,所以添加挂号信息需要将其是为一个事务
+        //挂号信息的修改涉及到两张表,所以添加挂号信息需要将其视为一个事务
         Integer regfeeid = 1;
         if (regfee_id!=null){
             regfeeid = (Integer) regfee_id.get("regfeeid");

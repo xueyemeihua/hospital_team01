@@ -5,12 +5,10 @@
 <mapper namespace="org.kgc.mapper.ReginfoMapper">
 
 
-    <insert id="addReginfo">
+    <insert id="addReginfo" useGeneratedKeys="true" keyProperty="regid">
         insert into reginfo
-        values (null, #{deptid}, #{date}, #{regfeeid}, #{sickid}, #{stafid},#{regstate})
+        values (null, #{deptid}, #{date}, #{regfeeid}, #{sickid}, #{stafid}, #{regstate})
     </insert>
-
-
 
 
 </mapper>
