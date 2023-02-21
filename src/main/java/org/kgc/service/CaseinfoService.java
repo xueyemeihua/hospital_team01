@@ -33,4 +33,17 @@ public class CaseinfoService {
         return caseinfos;
     }
 
+    public int updateCaseinfo(CaseInfo caseInfo){
+        int i = 0;
+        try {
+            i = mapper.updateCaseinfo(caseInfo);
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.rollback();
+        }
+        session.commit();
+        session.close();
+        return i;
+    }
+
 }

@@ -25,4 +25,7 @@ public interface CaseinfoMapper {
     /*根据挂号信息添加病例信息*/
     int addCaseinfo(Reginfo reginfo);
 
+    /*医生添加诊断信息*/
+    int updateCaseinfo(CaseInfo caseInfo);
+
 }

@@ -23,6 +23,13 @@ public class CaseInfo {
                 '}';
     }
 
+    public CaseInfo(Integer caseid, String diagnosis, String curescheme, String curetime) {
+        this.caseid = caseid;
+        this.diagnosis = diagnosis;
+        this.curescheme = curescheme;
+        this.curetime = curetime;
+    }
+
     public Integer getCaseid() {
         return caseid;
     }

@@ -266,10 +266,11 @@
 
             <div align="center" id="cureform" hidden="true">
                 <h2>诊断信息填写</h2>
-                <form action="/cure" method="get">
+                <form action="javascript:
+                      curefromDoctor($('#curecaseid').val(),$('#diagnosis').val(),$('#curescheme').val())">
                     <input id="curecaseid" name="caseid"><br>
-                    <input name='diagnosis' placeholder='诊断结果'><br>
-                    <input name='curescheme' placeholder='治疗方案'><br>
+                    <input id="diagnosis" name='diagnosis' placeholder='诊断结果'><br>
+                    <input id="curescheme" name='curescheme' placeholder='治疗方案'><br>
                     <input type='submit' value='提交'>
                 </form>
             </div>
@@ -282,9 +283,20 @@
     </div>
     <!-- 内容区域 /-->
 </div>
+<script>
+    function curefromDoctor(curecaseid,diagnosis,curescheme){
+        $.get("http://localhost:8080/cure","caseid="+curecaseid+"&diagnosis="+diagnosis+"&curescheme="+curescheme,function (data){
+            if (data==1){
+                alert("诊断信息提交成功")
+                $("#cureform").attr("hidden",true)
+            }else {
+                alert("诊断信息提交失败")
+            }
+        })
+    }
+</script>
 
 <script>
-
     /*根据病人编号,挂号编号和医生编号(登录信息中获取)查询该医生名下该病人的病例信息*/
     function getCaseForDoctor(regid, sickid) {
         $.get("http://localhost:8080/getCaSeByStafidAndSickidAndRegid", "regid=" + regid + "&sickid=" + sickid, function (data) {
@@ -312,7 +324,7 @@
                         "<td align='center' hidden>" + jdata[i].stafid + "</td>" +
                         "<td align='center' hidden>" + jdata[i].sickid + "</td>" +
                         "<td align='center' width='150px'>" +
-                        "<a href='javascript:void (0)' onclick='cure(" + jdata[i].caseid+","+jdata[i].casestate +
+                        "<a href='javascript:void (0)' onclick='cure(" + jdata[i].caseid+","+jdata[i].casestate+
                             ")'>诊断</a><br>" +
                         "<a href='javascript:void (0)' onclick='toPrescribe(" + jdata[i].caseid + ")'>开处方单</a><br>" +
                         "<a href='javascript:void (0)' onclick='showPresic(" + jdata[i].caseid + ")'>查看处方单</a>" +
@@ -335,6 +347,7 @@
             $("#curecaseid").attr("hidden",false)
         } else {
             alert("病例已诊断")
+            // getCaseForDoctor(regid,sickid)
         }
 
 

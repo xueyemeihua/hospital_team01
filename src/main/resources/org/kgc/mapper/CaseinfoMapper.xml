@@ -22,6 +22,22 @@
                 #{regid});
 
     </insert>
+    <update id="updateCaseinfo">
+        update caseinfo
+        <set>
+            <if test="diagnosis!='' and diagnosis!=null">
+                diagnosis = #{diagnosis},
+            </if>
+            <if test="curescheme!='' and curescheme!=null">
+                curescheme = #{curescheme},
+            </if>
+            <if test="curetime!='' and curetime!=null">
+                curetime = #{curetime},
+            </if>
+            casestate = 1
+        </set>
+        where caseid = #{caseid}
+    </update>
 
     <select id="getCaseinfoBySickid" resultType="caseResult">
         SELECT caseinfo.caseid,
