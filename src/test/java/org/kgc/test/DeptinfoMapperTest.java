@@ -29,7 +29,7 @@ public class DeptinfoMapperTest {
     public void test02() {
 
         try {
-            caseinfoMapper.updateCaseinfo(new CaseInfo(5,"","补钙", ""));
+            caseinfoMapper.updateCaseinfo(new CaseInfo(5,"","补钙", DateUtil.format(new Date(),"yyyy-MM-dd HH:mm:ss")));
         } catch (Exception e) {
             e.printStackTrace();
             sqlSession.rollback();

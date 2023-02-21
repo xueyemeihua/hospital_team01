@@ -19,7 +19,7 @@
                 #{sickid},
                 #{stafid},
                 0,
-                #{regid});
+                #{regid})
 
     </insert>
     <update id="updateCaseinfo">
