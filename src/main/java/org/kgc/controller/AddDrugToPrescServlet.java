@@ -24,8 +24,7 @@ public class AddDrugToPrescServlet extends HttpServlet {
         int drugid = Integer.parseInt(request.getParameter("drugid"));
         int caseid = Integer.parseInt(request.getParameter("caseid"));
         int dcout = Integer.parseInt(request.getParameter("dcout"));
-        String date = DateUtil.format(new Date(),"yyyy-MM-dd HH:mm:ss");
-        Prescinfo pre = new Prescinfo(0,drugid,caseid,dcout,0,date);
+        Prescinfo pre = new Prescinfo(0,drugid,caseid,dcout,0,null);
         PrescinfoService service = new PrescinfoService();
         int i = service.insertPresc(pre);
         response.getWriter().println(i);

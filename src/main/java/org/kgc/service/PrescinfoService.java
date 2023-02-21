@@ -16,6 +16,7 @@ public class PrescinfoService {
 
     public int insertPresc(Prescinfo pre){
         int i = mapper.insertPresc(pre);
+        session.commit();
         session.close();
         return i;
     }

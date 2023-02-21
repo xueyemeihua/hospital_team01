@@ -19,87 +19,8 @@
 
     <li id="admin-index"><a href="index.jsp"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
 
-<%--    <li class="treeview">--%>
-<%--        <a href="#">--%>
-<%--            <i class="fa fa-folder"></i> <span>个人中心</span>--%>
-<%--            <span class="pull-right-container">--%>
-<%--                        <i class="fa fa-angle-left pull-right"></i>--%>
-<%--                    </span>--%>
-<%--        </a>--%>
-<%--        <ul class="treeview-menu">--%>
-
-<%--            <li id="admin-login">--%>
-<%--                <a href="/xylq/sickerLogin.jsp">--%>
-<%--                    <i class="fa fa-circle-o"></i> 登录--%>
-<%--                </a>--%>
-<%--            </li>--%>
-
-<%--            <li id="admin-register">--%>
-<%--                <a href="/toAddStafinfo" >--%>
-<%--                    <i class="fa fa-circle-o"></i> 添加医护人员--%>
-<%--                </a>--%>
-<%--            </li>--%>
-
-<%--            <li id="admin-404">--%>
-<%--                <a href="/xylq/updateInfo.jsp">--%>
-<%--                    <i class="fa fa-circle-o"></i> 修改个人信息--%>
-<%--                </a>--%>
-<%--            </li>--%>
-
-<%--            <li id="admin-500">--%>
-<%--                <a href="all-admin-500.html">--%>
-<%--                    <i class="fa fa-circle-o"></i> 500页--%>
-<%--                </a>--%>
-<%--            </li>--%>
-
-<%--            <li id="admin-blank">--%>
-<%--                <a href="all-admin-blank.html">--%>
-<%--                    <i class="fa fa-circle-o"></i> 空白页--%>
-<%--                </a>--%>
-<%--            </li>--%>
-
-<%--            <li id="admin-datalist">--%>
-<%--                <a href="all-admin-datalist.html">--%>
-<%--                    <i class="fa fa-circle-o"></i> 数据列表页--%>
-<%--                </a>--%>
-<%--            </li>--%>
-
-<%--            <li id="admin-dataform">--%>
-<%--                <a href="all-admin-dataform.html">--%>
-<%--                    <i class="fa fa-circle-o"></i> 表单页--%>
-<%--                </a>--%>
-<%--            </li>--%>
-
-<%--            <li id="admin-profile">--%>
-<%--                <a href="all-admin-profile.html">--%>
-<%--                    <i class="fa fa-circle-o"></i> 个人中心--%>
-<%--                </a>--%>
-<%--            </li>--%>
-
-<%--            <li id="admin-invoice">--%>
-<%--                <a href="all-admin-invoice.html">--%>
-<%--                    <i class="fa fa-circle-o"></i> 发票--%>
-<%--                </a>--%>
-<%--            </li>--%>
-
-<%--            <li id="admin-invoice-print">--%>
-<%--                <a href="all-admin-invoice-print.html">--%>
-<%--                    <i class="fa fa-circle-o"></i> 发票打印--%>
-<%--                </a>--%>
-<%--            </li>--%>
-
-<%--        </ul>--%>
-<%--    </li>--%>
-
 
     <li class="treeview">
-<%--        <a href="#">--%>
-<%--            <i class="fa fa-pie-chart"></i> <span>内部管理</span>--%>
-<%--            <span class="pull-right-container">--%>
-<%--                        <i class="fa fa-angle-left pull-right"></i>--%>
-<%--                    </span>--%>
-<%--        </a>--%>
-<%--        <ul class="treeview-menu">--%>
 
             <li id="charts-chartjs">
                 <a href="/getDeptinfoAndForward">
