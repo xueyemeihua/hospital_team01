@@ -158,18 +158,11 @@
                         <div class="col-sm-4 col-md-4 col-mm-6">
                             <a href="/getCaseinfo" class="about_btn">报告查询</a>
                         </div>
-                        <div class="col-sm-4 col-md-4 col-mm-6">
-                            <a href="detail1.html" class="about_btn">就医指南</a>
-                        </div>
-                        <div class="col-sm-4 col-md-4 col-mm-6">
-                            <a href="/getDoctorPaiban" class="about_btn">门诊排班</a>
-                        </div>
-                        <div class="col-sm-4 col-md-4 col-mm-6">
-                            <a href="detail1.html" class="about_btn">患者服务</a>
-                        </div>
-                        <div class="col-sm-4 col-md-4 col-mm-6">
-                            <a href="detail1.html" class="about_btn">健康科普</a>
-                        </div>
+
+<%--                        <div class="col-sm-4 col-md-4 col-mm-6">--%>
+<%--                            <a href="/getDoctorPaiban" class="about_btn">门诊排班</a>--%>
+<%--                        </div>--%>
+
                     </div>
                 </div>
 

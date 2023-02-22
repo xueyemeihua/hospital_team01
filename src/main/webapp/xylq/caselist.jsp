@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>深圳市人民医院</title>
+    <title>北大青鸟人民医院</title>
     <meta name="keywords" content="深圳市人民医院">
     <meta name="description" content="深圳市人民医院">
     <meta name="applicable-device" content="pc,mobile">
@@ -52,7 +52,7 @@
                 <div class="top_tel">
                     <img src="src/picture/tel.jpg" alt="服务热线">
                     <span>全国服务热线：</span>
-                    <p>021-5747xxxx</p>
+                    <p>000-0000xxxx</p>
                 </div>
             </div>
         </div>
@@ -71,40 +71,12 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class=""><a href="hospital_main.jsp">首 页</a>
-                    <li class="dropdown "><a href="aboutus.html">关于我们</a>
-                        <a href="#" id="app_menudown" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-expanded="false"><span class="glyphicon glyphicon-menu-down btn-xs"></span></a>
-                        <ul class='dropdown-menu nav_small' role='menu'>
-
-                            <li><a href="aboutus.html">公司简介</a></li>
-
-                            <li><a href="contact.html">联系我们</a></li>
-
-                        </ul>
-                    </li>
-                    <li><a href="category-3.html">产品展示</a></li>
-                    <li><a href="news.html">新闻资讯</a></li>
-                    <li><a href="caselist.jsp">案例展示</a></li>
-                    <li><a href="article.html">招贤纳士</a></li>
-                    <li><a href="contact.html">联系我们</a></li>
-                    <li><a href="leaveword.html">留言反馈</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 </header>
 <div class="page_bg" style="background: url(src/image/1617070665.jpg) center top no-repeat;"></div>
-<div class="bread_bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="bread_nav">
-                    <span>您的位置：</span><a href="hospital_main.jsp">首 页</a> &gt; <a href="">关于我们</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
@@ -177,11 +149,11 @@
                             if (presics.length != 0) {
                                 $("#showPresics").children().remove()
                                 $("#showPresics").append("<thead>" +
-                                    "<th>病例编号</th>" +
-                                    "<th>药品名称</th>" +
-                                    "<th>药品数量</th>" +
-                                    "<th>药品规格</th>" +
-                                    "<th>是否抓药</th>" +
+                                    "<th width='100px'>病例编号</th>" +
+                                    "<th width='100px'>药品名称</th>" +
+                                    "<th width='100px'>药品数量</th>" +
+                                    "<th width='100px'>药品规格</th>" +
+                                    "<th width='100px'>是否抓药</th>" +
                                     "</thead>")
                                 for (let i = 0; i < presics.length; i++) {
                                     if(presics[i].prescstate == 1){
@@ -216,64 +188,7 @@
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-4 col-md-3">
-            <h3 class="left_h3"><span>导航栏目</span></h3>
-            <div class="left_column">
 
-                <ul class="left_nav_ul" id="firstpane">
-
-                    <li><a class="biglink" href="aboutus.html">公司简介</a>
-                        <ul class="left_snav_ul menu_body"></ul>
-                    </li>
-
-                    <li><a class="biglink" href="contact.html">联系我们</a>
-                        <ul class="left_snav_ul menu_body"></ul>
-                    </li>
-
-                    <li><a class="biglink" href="leaveword.html">留言反馈</a>
-                        <ul class="left_snav_ul menu_body"></ul>
-                    </li>
-
-                </ul>
-            </div>
-            <div class="left_news">
-                <h3 class="left_h3"><span>通知公告</span></h3>
-
-                <ul class="left_news">
-
-                    <li><a href="detail1.html" title="新版护理进修报到通知">新版护理进修报到通知</a></li>
-
-                    <li><a href="detail1.html" title="新版护理进修申请鉴定表">新版护理进修申请鉴定表</a></li>
-
-                    <li><a href="detail1.html" title="深圳市人民医院院周会请假登记表">深圳市人民医院院周会请假登记表</a></li>
-
-                    <li><a href="detail1.html" title="进修人员申请鉴定表">进修人员申请鉴定表</a></li>
-
-                    <li><a href="detail1.html" title="深圳市人民医院医师医技人员进修须知">深圳市人民医院医师医技人员进修须知</a></li>
-
-                </ul>
-
-            </div>
-
-            <div class="left_news">
-                <h3 class="left_h3"><span>医院动态</span></h3>
-
-                <ul class="left_news">
-
-                    <li><a href="detail1.html" title="新版护理进修报到通知">新版护理进修报到通知</a></li>
-
-                    <li><a href="detail1.html" title="新版护理进修申请鉴定表">新版护理进修申请鉴定表</a></li>
-
-                    <li><a href="detail1.html" title="深圳市人民医院院周会请假登记表">深圳市人民医院院周会请假登记表</a></li>
-
-                    <li><a href="detail1.html" title="进修人员申请鉴定表">进修人员申请鉴定表</a></li>
-
-                    <li><a href="detail1.html" title="深圳市人民医院医师医技人员进修须知">深圳市人民医院医师医技人员进修须知</a></li>
-
-                </ul>
-
-            </div>
-        </div>
 
     </div>
 </div>

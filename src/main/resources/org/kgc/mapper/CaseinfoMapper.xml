@@ -49,7 +49,7 @@
                caseinfo.curescheme,
                caseinfo.curetime,
                caseinfo.casestate,
-               reginfo.regdate,
+               reginfo.date,
                regfeestander.regdesc,
                regfeestander.regfee
         FROM caseinfo,
@@ -65,7 +65,7 @@
           and reginfo.stafid = stafinfo.stafid
           and regfeestander.regfeeid = reginfo.regfeeid
           AND sickerinfo.sickid = #{sickid}
-        ORDER BY reginfo.regdate
+        ORDER BY reginfo.date
                 DESC
     </select>
     <select id="getCaSeByStafidAndSickidAndRegid" resultType="org.kgc.pojo.CaseInfo">
