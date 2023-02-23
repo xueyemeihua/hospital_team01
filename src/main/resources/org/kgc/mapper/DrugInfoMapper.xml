@@ -99,10 +99,15 @@
     <select id="mohuSearchDrug" resultType="java.util.HashMap">
         select *
         from druginfo,
-             fac
+        fac
         where druginfo.drugfac = fac.drugfac
-          and druginfo.drugname like concat("%", #{drugname}, "%")
-          and druginfo.drugfunc like concat("%", #{drugfunc}, "%")
+        <if test="drugname!='' and drugname!=null">
+            and druginfo.drugname like concat("%", #{drugname}, "%")
+        </if>
+        <if test="drugfunc!='' and drugfunc!=null">
+            and druginfo.drugfunc like concat("%", #{drugfunc}, "%")
+        </if>
+
     </select>
 
 

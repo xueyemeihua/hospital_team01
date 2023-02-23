@@ -13,6 +13,15 @@
     <!--    </filter-mapping>-->
 
     <!--    查询已经通过申请的人员-->
+
+    <servlet>
+        <servlet-name>MohusearchdrugServlet</servlet-name>
+        <servlet-class>org.kgc.controller.MohusearchdrugServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MohusearchdrugServlet</servlet-name>
+        <url-pattern>/mohusearchdrug</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>SelectSuccessfulApplicationsServlet</servlet-name>
         <servlet-class>org.kgc.controller.SelectSuccessfulApplicationsServlet</servlet-class>
