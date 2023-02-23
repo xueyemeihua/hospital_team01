@@ -69,7 +69,9 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class=""><a href="hospital_main.jsp">首 页</a></li>
+                    <c:if test="${loginSicker!=null}">
                     <li><a href="/toSickView">个人中心</a><li>
+                    </c:if>
                     <li><a href="/selectNews" >新闻资讯</a></li>
                     <li><a href="article.jsp">招贤纳士</a></li>
                     <li><a href="contact.html">联系我们</a></li>

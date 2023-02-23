@@ -4,14 +4,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 import org.kgc.mapper.CaseinfoMapper;
 import org.kgc.mapper.DeptinfoMapper;
-import org.kgc.mapper.DrugInfoMapper;
 import org.kgc.pojo.CaseInfo;
 import org.kgc.utils.DateUtil;
 import org.kgc.utils.SqlSessionUtil;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * @author 雪夜梅花香_ly
@@ -22,7 +19,6 @@ public class DeptinfoMapperTest {
     SqlSession sqlSession = SqlSessionUtil.getSqlSession();
     DeptinfoMapper mapper = sqlSession.getMapper(DeptinfoMapper.class);
     CaseinfoMapper caseinfoMapper = sqlSession.getMapper(CaseinfoMapper.class);
-    DrugInfoMapper drugInfoMapper = sqlSession.getMapper(DrugInfoMapper.class);
 
     @Test
     public void testDeptinfoMapper() {
@@ -39,13 +35,6 @@ public class DeptinfoMapperTest {
             sqlSession.rollback();
         }
         sqlSession.commit();
-
-    }
-
-    @Test
-    public void test03() {
-
-        drugInfoMapper.mohuSearchDrug("方", "解").forEach(map -> System.out.println(map));
 
     }
 }

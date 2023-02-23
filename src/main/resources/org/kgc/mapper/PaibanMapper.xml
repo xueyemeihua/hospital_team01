@@ -16,7 +16,7 @@
     <select id="selectDoctorByDateAndByDeptid" resultType="HashMap">
         select * from paiban,stafinfo,deptinfo
         where paiban.stafid = stafinfo.stafid and stafinfo.deptid = deptinfo.deptid
-        and date = #{date} and deptinfo.deptid = #{deptid}
+        and date = #{date} and deptinfo.deptid = #{deptid} and stafinfo.stafstate = 1
     </select>
 
 

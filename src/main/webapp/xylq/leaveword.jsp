@@ -47,6 +47,7 @@
                     <span>全国服务热线：</span>
                     <p>000-0000xxxx</p>
                 </div>
+                <p>${loginSicker.sickname}</p>
             </div>
         </div>
     </div>
@@ -64,7 +65,9 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class=""><a href="hospital_main.jsp">首 页</a></li>
+                    <c:if test="${loginSicker!=null}">
                     <li><a href="/toSickView">个人中心</a><li>
+                    </c:if>
                     <li><a href="/selectNews" >新闻资讯</a></li>
                     <li><a href="article.jsp">招贤纳士</a></li>
                     <li><a href="contact.html">联系我们</a></li>
@@ -107,7 +110,7 @@
 
         </div>
     </div>
-
+    <c:if test="${loginSicker!=null}">
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
             <h2 class="left_h3">在线留言</h2>
@@ -159,7 +162,7 @@
                 </form>
             </div>
         </div>
-
+        </c:if>
 
         <script src="src/js/common.js"></script>
         <script src="src/js/bootstrap.js"></script>
@@ -173,6 +176,7 @@
                 offset: '10%'
             });
         </script>
+
 </body>
 
 </html>

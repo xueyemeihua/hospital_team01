@@ -11,35 +11,7 @@
     <!--        <filter-name>LoginFilter</filter-name>-->
     <!--        <url-pattern>/*</url-pattern>-->
     <!--    </filter-mapping>-->
-
-    <!--    查询已经通过申请的人员-->
-
-    <servlet>
-        <servlet-name>MohusearchdrugServlet</servlet-name>
-        <servlet-class>org.kgc.controller.MohusearchdrugServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>MohusearchdrugServlet</servlet-name>
-        <url-pattern>/mohusearchdrug</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>SelectSuccessfulApplicationsServlet</servlet-name>
-        <servlet-class>org.kgc.controller.SelectSuccessfulApplicationsServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>FuzzySearchSuccessfulApplicationServlet</servlet-name>
-        <servlet-class>org.kgc.controller.FuzzySearchSuccessfulApplicationServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>FuzzySearchSuccessfulApplicationServlet</servlet-name>
-        <url-pattern>/fuzzySearchSuccessfulApplication</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SelectSuccessfulApplicationsServlet</servlet-name>
-        <url-pattern>/selectSuccessfulApplications</url-pattern>
-    </servlet-mapping>
-
-
+    
     <servlet>
         <servlet-name>SelectDoctorServlet</servlet-name>
         <servlet-class>org.kgc.controller.SelectDoctorServlet</servlet-class>
@@ -142,10 +114,27 @@
         <servlet-name>GetStafinfoOnDayServlet</servlet-name>
         <servlet-class>org.kgc.controller.GetStafinfoOnDayServlet</servlet-class>
     </servlet>
+
     <servlet>
         <servlet-name>DeleteDutyServlet</servlet-name>
         <servlet-class>org.kgc.controller.DeleteDutyServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddRecruitServlet</servlet-name>
+        <servlet-class>org.kgc.controller.AddRecruitServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RecruitManageServlet</servlet-name>
+        <servlet-class>org.kgc.controller.RecruitManageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RecruitManageServlet</servlet-name>
+        <url-pattern>/recruitManage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddRecruitServlet</servlet-name>
+        <url-pattern>/addRecruit</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DeleteDutyServlet</servlet-name>
         <url-pattern>/deleteDuty</url-pattern>
@@ -383,6 +372,54 @@
         <servlet-name>CureServlet</servlet-name>
         <servlet-class>org.kgc.controller.CureServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DoctorPersonalCenterServlet</servlet-name>
+        <servlet-class>org.kgc.controller.DoctorPersonalCenterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateStafinfoServlet</servlet-name>
+        <servlet-class>org.kgc.controller.UpdateStafinfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowAgoCaseinfoServlet</servlet-name>
+        <servlet-class>org.kgc.controller.ShowAgoCaseinfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetCaseinfoByServlet</servlet-name>
+        <servlet-class>org.kgc.controller.GetCaseinfoByServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetStafinfosBystafstateServlet</servlet-name>
+        <servlet-class>org.kgc.controller.GetStafinfosByStafstateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ToSickViewServlet</servlet-name>
+        <servlet-class>org.kgc.controller.ToSickViewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ToSickViewServlet</servlet-name>
+        <url-pattern>/toSickView</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetStafinfosBystafstateServlet</servlet-name>
+        <url-pattern>/getStafinfosBystafstate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetCaseinfoByServlet</servlet-name>
+        <url-pattern>/getCaseinfoBy</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowAgoCaseinfoServlet</servlet-name>
+        <url-pattern>/showAgoCaseinfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateStafinfoServlet</servlet-name>
+        <url-pattern>/updateStafinfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DoctorPersonalCenterServlet</servlet-name>
+        <url-pattern>/doctorPersonalCenter</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CureServlet</servlet-name>
         <url-pattern>/cure</url-pattern>

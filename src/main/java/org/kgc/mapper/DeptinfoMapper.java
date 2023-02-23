@@ -21,4 +21,6 @@ public interface DeptinfoMapper {
     int addDeptinfo(String deptname);
     int getDeptidByDeptname(@Param("deptname") String deptname);
     List<Deptinfo> getDeptinfoByPostid(@Param("postid") int postid);
+
+
 }

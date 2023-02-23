@@ -17,6 +17,15 @@ public class Stafinfo {
   public Stafinfo() {
   }
 
+  public Stafinfo(Integer stafid, String stafintro, String stafphone, String username, String email, String password) {
+    this.stafid = stafid;
+    this.stafintro = stafintro;
+    this.stafphone = stafphone;
+    this.username = username;
+    this.email = email;
+    this.password = password;
+  }
+
   public Stafinfo(Integer postid, Integer deptid, String stafcard, String stafname, Integer rankid, String stafintro, Integer stafstate, String stafphone, String username, String email, String password) {
     this.postid = postid;
     this.deptid = deptid;

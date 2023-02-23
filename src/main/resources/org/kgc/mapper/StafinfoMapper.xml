@@ -17,7 +17,10 @@
                 password=#{password},
             </if>
             <if test="email!=null and email!=''">
-                email=#{email}
+                email=#{email},
+            </if>
+            <if test="stafintro!=null and stafintro!=''">
+                stafintro=#{stafintro}
             </if>
         </set>
         where stafid = #{stafid}
@@ -45,16 +48,30 @@
         </choose>
     </select>
     <insert id="addStafInfo" >
-        insert into stafinfo values(default,#{postid},#{deptid},#{stafcard},#{stafname},#{rankid},#{stafintro},#{stafstate},#{stafphone},#{username},#{email},#{password})
+        insert into stafinfo values(default,#{postid},#{deptid},#{stafcard},#{stafname},#{rankid},#{stafintro},#{stafstate},#{stafphone},default,#{email},#{password})
     </insert>
+
+
     <select id="getStafinfos" resultType="HashMap">
         select stafid,postname,deptname,stafcard,stafname,rankname,stafstate,stafphone,username,email
         from stafinfo,deptinfo,postinfo,rankinfo
         where stafinfo.deptid = deptinfo.deptid
         and stafinfo.postid = postinfo.postid
         and stafinfo.rankid = rankinfo.rankid
-        and stafinfo.stafstate = 1
+        and stafstate=1;
     </select>
+
+    <select id="getStafinfosByStafstate" resultType="HashMap">
+        select stafid,postname,deptname,stafcard,stafname,rankname,stafstate,stafphone,username,email
+        from stafinfo,deptinfo,postinfo,rankinfo
+        where stafinfo.deptid = deptinfo.deptid
+          and stafinfo.postid = postinfo.postid
+          and stafinfo.rankid = rankinfo.rankid
+          and stafstate=0;
+    </select>
+
+
+
     <select id="getStafinfoLikeDeptnameOrPostnameOrStafname" resultType="HashMap">
         select stafid,postname,deptname,stafcard,stafname,rankname,stafstate,stafphone,username,email
         from stafinfo,deptinfo,postinfo,rankinfo
@@ -62,11 +79,12 @@
             stafinfo.deptid = deptinfo.deptid and
             stafinfo.postid = postinfo.postid and
             stafinfo.rankid = rankinfo.rankid and
+            stafinfo.stafstate = #{stafstate}
             <choose>
                 <when test="deptname!=null and deptname!=''">
                     deptname like concat ("%",#{deptname},"%")
                 </when>
-                <when test="postname!=null and postname!=;;">
+                <when test="postname!=null and postname!=''">
                     postname like concat ("%",#{postname},"%")
                 </when>
                 <when test="stafname!=null and stafname!=''">
@@ -101,11 +119,22 @@
                 <foreach collection="ids" item="stafid" open="(" separator="," close=")" index="0">
                       #{stafid}
                 </foreach>
-
     </select>
     <select id="getAllStafinfos" resultType="stafinfo">
         select * from stafinfo
     </select>
 
+<!--    <update id="updateStafinfo">-->
+<!--        update stafinfo set stafintro=#{stafintro},stafphone=#{stafphone},username=#{username},email=#{email},password=#{password} where stafid=#{stafid}-->
+<!--    </update>-->
+
+    <select id="getAllByStafid" resultType="HashMap">
+        select *
+        from stafinfo,deptinfo,postinfo,rankinfo
+        where stafinfo.deptid = deptinfo.deptid
+        and stafinfo.postid = postinfo.postid
+        and stafinfo.rankid = rankinfo.rankid
+        and stafinfo.stafid = #{stafid}
+    </select>
 
 </mapper>

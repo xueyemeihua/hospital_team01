@@ -28,4 +28,8 @@ public interface CaseinfoMapper {
     /*医生添加诊断信息*/
     int updateCaseinfo(CaseInfo caseInfo);
 
+    List<HashMap> getCaseinfoByStafid(@Param("stafid")int stafid);
+
+    List<HashMap> getCaseinfoBy(@Param("sickname")String sickname,@Param("diagnosis")String diagnosis,@Param("curescheme")String curescheme);
+
 }

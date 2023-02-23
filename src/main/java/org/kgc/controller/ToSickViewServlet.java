@@ -1,40 +1,27 @@
-package org.kgc.controller; /**
- * @author 雪夜梅花香_ly
- * @create 2023-02-22-13:27
- */
+package org.kgc.controller;
 
-import org.kgc.pojo.Sickerinfo;
+import org.kgc.pojo.CaseResult;
+import org.kgc.service.CaseinfoService;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 public class ToSickViewServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request,response);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
-        response.setCharacterEncoding("utf-8");
-
-        /*获取登录的病人信息*/
-        Sickerinfo loginSicker = (Sickerinfo) request.getSession().getAttribute("loginSicker");
-
-        if (loginSicker!=null){
-            //登录过,直接进入个人中心
-            request.getRequestDispatcher("").forward(request,response);
-
-        } else {
-            //跳转登录界面
-            request.getRequestDispatcher("/xylq/sicker_login.html").forward(request,response);
-
-        }
-
-
-
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int sickid = Integer.parseInt(request.getParameter("sickid"));
+        CaseinfoService caseinfoService = new CaseinfoService();
+        List<CaseResult> caseResults = caseinfoService.getCaseinfoBySickid(sickid);
+        HttpSession session = request.getSession();
+        session.setAttribute("caseResults",caseResults);
+        response.sendRedirect("xylq/caselist.jsp");
     }
 }

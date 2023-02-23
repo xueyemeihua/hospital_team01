@@ -405,6 +405,7 @@
             </div>
             <div class="box-tools pull-right">
               <form action="/getStafinfoLikeDeptnameOrPostnameOrStafname">
+                <input type="hidden" name="stafstate" value="1">
                 科室名<input name="deptname">
                 岗位名<input name="postname">
                 员工姓名<input name="stafname">
@@ -457,27 +458,27 @@
                     <td>${stafinfo.username}</td>
                     <td>${stafinfo.email}</td>
                       <td>
-                        <button id="change" onclick="change()" >转岗</button>
-                        <form >
-                        <div id="contes" >
-                          <div>
-                            转岗
-                            <hr>
-                            岗位名称
-                            <select name="postid" id="post" onchange="selectDept()">
-                              <option value="0">请选择</option>
-                              <c:forEach items="${postinfos}" var="postinfo">
-                                <c:if test="${postinfo.postid!=12}">
-                                  <option value="${postinfo.postid}">${postinfo.postname}</option>
-                                </c:if>
-                              </c:forEach>
-                            </select><br>
-                            所属科室
-                            <select id="postinfos" name="postid"></select>
-                          </div>
-                        </div>
-                        <div id="all_light"></div>
-                        </form>
+<%--                        <button id="change" onclick="change()" >转岗</button>--%>
+<%--                        <form >--%>
+<%--                        <div id="contes" >--%>
+<%--                          <div>--%>
+<%--                            转岗--%>
+<%--                            <hr>--%>
+<%--                            岗位名称--%>
+<%--                            <select name="postid" id="post" onchange="selectDept()">--%>
+<%--                              <option value="0">请选择</option>--%>
+<%--                              <c:forEach items="${postinfos}" var="postinfo">--%>
+<%--                                <c:if test="${postinfo.postid!=12}">--%>
+<%--                                  <option value="${postinfo.postid}">${postinfo.postname}</option>--%>
+<%--                                </c:if>--%>
+<%--                              </c:forEach>--%>
+<%--                            </select><br>--%>
+<%--                            所属科室--%>
+<%--                            <select id="postinfos" name="postid"></select>--%>
+<%--                          </div>--%>
+<%--                        </div>--%>
+<%--                        <div id="all_light"></div>--%>
+<%--                        </form>--%>
                         <input type="button" onclick="void fired(${stafinfo.stafid})" value="开除">
                       </td>
 

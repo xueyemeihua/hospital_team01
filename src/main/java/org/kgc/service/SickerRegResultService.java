@@ -1,5 +1,6 @@
 package org.kgc.service;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.kgc.mapper.SickerRegResultMapper;
 import org.kgc.pojo.SickerRegResult;
@@ -16,7 +17,7 @@ public class SickerRegResultService {
     SqlSession session = SqlSessionUtil.getSqlSession();
     SickerRegResultMapper mapper = session.getMapper(SickerRegResultMapper.class);
 
-    public List<SickerRegResult> getSrrByStafid(String date,int stafid) {
+    public List<SickerRegResult> getSrrByStafid(@Param("date") String date, @Param("stafid") int stafid) {
         List<SickerRegResult> regResults = mapper.getSrrByStafid(date,stafid);
         session.close();
         return regResults;

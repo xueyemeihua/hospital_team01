@@ -17,7 +17,7 @@
 <ul class="sidebar-menu">
     <li class="header">菜单</li>
 
-    <li id="admin-index"><a href="index.jsp"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
+    <li id="admin-index"><a href="/xylq/hospital_main.jsp"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
 
 
     <li class="treeview">
@@ -39,7 +39,11 @@
                     <i class="fa fa-circle-o"></i> 医生管理
                 </a>
             </li>
-
+            <li>
+                <a href="/getStafinfosBystafstate">
+                    <i class="fa fa-circle-o"></i> 离职医生
+                </a>
+            </li>
             <li id="charts-inline">
                 <a href="/cgq&yjf/paiban.jsp">
                     <i class="fa fa-circle-o"></i> 排班管理

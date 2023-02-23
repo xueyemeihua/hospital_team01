@@ -20,8 +20,9 @@ public class GetStafinfoLikeDeptnameOrPostnameOrStafnameServlet extends HttpServ
         String deptname = request.getParameter("deptname");
         String postname = request.getParameter("postname");
         String stafname = request.getParameter("stafname");
+        int stafstate = Integer.parseInt(request.getParameter("stafstate"));
         StafinfoService stafinfoService = new StafinfoService();
-        List<HashMap> stafinfoLikeDeptnameOrPostnameOrStafname = stafinfoService.getStafinfoLikeDeptnameOrPostnameOrStafname(deptname, postname, stafname);
+        List<HashMap> stafinfoLikeDeptnameOrPostnameOrStafname = stafinfoService.getStafinfoLikeDeptnameOrPostnameOrStafname(deptname, postname, stafname,stafstate);
         HttpSession session = request.getSession();
         session.setAttribute("stafinfos",stafinfoLikeDeptnameOrPostnameOrStafname);
         request.getRequestDispatcher("/cgq&yjf/getAllDoctor.jsp").forward(request,response);

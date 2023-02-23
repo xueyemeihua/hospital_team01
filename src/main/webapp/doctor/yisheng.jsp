@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" language="java" %>
 <html>
 
 <head>
@@ -147,50 +147,39 @@
             </div>
 
             <!-- sidebar menu: : style can be found in sidebar.less -->
-            <ul class="sidebar-menu">
-                <li class="header">菜单</li>
 
-                <li id="admin-index"><a href="all-admin-index.html"><i class="fa fa-dashboard"></i> <span>首页</span></a>
-                </li>
 
                 <!-- 菜单 -->
 
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-folder"></i> <span>功能</span>
-                        <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                    </a>
-                    <ul class="treeview-menu">
+            <ul class="sidebar-menu">
+                <li class="header">菜单</li>
 
-                        <li id="admin-login">
+                <li id="admin-index"><a href="index.jsp"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
+
+
+
+                <li id="admin-login">
                             <a href="/toDoctorManager">
                                 <i class="fa fa-circle-o"></i> 病人列表
                             </a>
                         </li>
 
                         <li id="admin-register">
-                            <a href="all-admin-register.html">
-                                <i class="fa fa-circle-o"></i> 注册
+                            <a href="/doctorPersonalCenter?stafid=${loginUser.stafid}">
+                                <i class="fa fa-circle-o"></i> 个人中心
                             </a>
                         </li>
 
-                        <li id="admin-404">
-                            <a href="all-admin-404.html">
-                                <i class="fa fa-circle-o"></i> 404页
+                        <li id="admin-show">
+                            <a href="/showAgoCaseinfo?stafid=${loginUser.stafid}">
+                                <i class="fa fa-circle-o"></i> 过往病例
                             </a>
                         </li>
 
-                        <li id="admin-500">
-                            <a href="all-admin-500.html">
-                                <i class="fa fa-circle-o"></i> 500页
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
             </ul>
+
+
+
         </section>
         <!-- /.sidebar -->
     </aside>
@@ -254,9 +243,10 @@
                 </table>
             </div>
 
-
             <div align="center">
                 <h2>病例列表</h2>
+            </div>
+            <div align="center">
                 <table border="1px" cellpadding="0px" cellspacing="0px" id="casetb">
 
                 </table>
@@ -274,15 +264,6 @@
                 </form>
             </div>
 
-            <%--为了给药品表提供病例编号--%>
-            <input id="caseiddiv" value="" hidden>
-            <div align="center" id="mohus" hidden="hidden">
-                <form action="javascript: mohusearch($('#drugname').val(),$('#drugfunc').val())">
-                    <input id="drugname" name='drugname' placeholder='模糊药品名'>
-                    <input id="drugfunc" name='drugfunc' placeholder='模糊药品功能'>
-                    <input type='submit' value='查询'>
-                </form>
-            </div>
             <div align="center" id='drugtb'>
 
             </div>
@@ -291,98 +272,12 @@
     </div>
     <!-- 内容区域 /-->
 </div>
-
 <script>
-    /*模糊查询药品*/
-    function mohusearch(drugname,drugfunc) {
-        if (drugname==undefined||drugfunc==null){
-            drugname=''
-        }
-        if (drugfunc==undefined||drugfunc==null){
-            drugfunc=''
-        }
-        $.get("http://localhost:8080/mohusearchdrug","drugname="+drugname+"&drugfunc="+drugfunc,function (data){$("#cureform").attr("hidden",true)
-            /*弹出药品列表,将处方单表隐藏,将模糊查询显示*/
-            $("#mohus").attr("hidden",false)
-            var jdata = JSON.parse(data)
-            var s = ''
-            if (jdata.length == 0) {
-                $("#drugtb").children().remove()
-                $("#durgList").html("没有数据")
-            } else {
-                $("#drugList").html("")
-                $("#drugtb").children().remove()
-                var caseid = $("#caseiddiv").val()
-                s = "<div align='center'> <h2>药品表</h2> </div>" +
-                    "<table border='1px' cellpadding='0px' cellspacing='0px'><tr><th align='center'>药品编号</th><th align='center' width='150px'>药品名称</th><th align='center' width='150px'>药品功能</th><th align='center'>药品规格</th><th align='center' width='150px'>操作</th></tr>"
-
-                for (let i = 0; i < jdata.length; i++) {
-                    var drugcout = 'dcout' + i
-                    s +=
-                        "<tr>" +
-                        "<td align='center'>" + jdata[i].drugid + "</td>" +
-                        "<td align='center' width='150px'>" + jdata[i].drugname + "</td>" +
-                        "<td align='center' width='150px'>" + jdata[i].drugfunc + "</td>" +
-                        "<td align='center' width='150px'>" + jdata[i].drugspeci + "</td>" +
-                        "<td align='center' width='150px'>" +
-                        "<input type='number' id='dcout" + i + "' name='dcout' placeholder='开药数量'><br>" +
-                        "<a href='javascript:void (0)' onclick='addDrugToPresc(" + jdata[i].drugid + "," + caseid + "," + drugcout + ")'>开药</a><br>" +
-                        "</td></tr>"
-                }
-                s += "</table><p id='drugList'></p>"
-                $("#drugtb").append(s)
-            }
-        })
-    }
-
-    /*开处方单*/
-    function toPrescribe(caseid) {
-        $.get("http://localhost:8080/getDrugs", "caseid=" + caseid, function (data) {
-            $("#cureform").attr("hidden",true)
-            /*弹出药品列表,将处方单表隐藏,将模糊查询显示*/
-            $("#mohus").attr("hidden",false)
-
-            $("#caseiddiv").attr("value",caseid)
-            var jdata = JSON.parse(data)
-            var s = ''
-            if (jdata.length == 0) {
-                $("#drugtb").children().remove()
-                $("#durgList").html("没有数据")
-            } else {
-                $("#drugList").html("")
-                $("#drugtb").children().remove()
-
-                s = "<div align='center'> <h2>药品表</h2> </div>" +
-                    "<table border='1px' cellpadding='0px' cellspacing='0px'><tr><th align='center'>药品编号</th><th align='center' width='150px'>药品名称</th><th align='center' width='150px'>药品功能</th><th align='center'>药品规格</th><th align='center' width='150px'>操作</th></tr>"
-
-                for (let i = 0; i < jdata.length; i++) {
-                    var drugcout = 'dcout' + i
-                    s +=
-                        "<tr>" +
-                        "<td align='center'>" + jdata[i].drugid + "</td>" +
-                        "<td align='center' width='150px'>" + jdata[i].drugname + "</td>" +
-                        "<td align='center' width='150px'>" + jdata[i].drugfunc + "</td>" +
-                        "<td align='center' width='150px'>" + jdata[i].drugspeci + "</td>" +
-                        "<td align='center' width='150px'>" +
-                        "<input type='number' id='dcout" + i + "' name='dcout' placeholder='开药数量'><br>" +
-                        "<a href='javascript:void (0)' onclick='addDrugToPresc(" + jdata[i].drugid + "," + caseid + "," + drugcout + ")'>开药</a><br>" +
-                        "</td></tr>"
-                }
-                s += "</table><p id='drugList'></p>"
-                $("#drugtb").append(s)
-            }
-        })
-    }
-</script>
-
-<script>
-    /*填写诊断信息*/
     function curefromDoctor(curecaseid,diagnosis,curescheme){
         $.get("http://localhost:8080/cure","caseid="+curecaseid+"&diagnosis="+diagnosis+"&curescheme="+curescheme,function (data){
             if (data==1){
                 alert("诊断信息提交成功")
                 $("#cureform").attr("hidden",true)
-
             }else {
                 alert("诊断信息提交失败")
             }
@@ -394,7 +289,6 @@
     /*根据病人编号,挂号编号和医生编号(登录信息中获取)查询该医生名下该病人的病例信息*/
     function getCaseForDoctor(regid, sickid) {
         $.get("http://localhost:8080/getCaSeByStafidAndSickidAndRegid", "regid=" + regid + "&sickid=" + sickid, function (data) {
-            $("#mohus").attr("hidden",true)
             $("#cureform").attr("hidden",true)
             var jdata = JSON.parse(data)
             var s = ''
@@ -407,14 +301,14 @@
                 $("#drugtb").children().remove()
                 for (let i = 0; i < jdata.length; i++) {
                     $("#casetb").children().remove()
-                    $("#casetb").append("<tr><th align='center' hidden>病例编号</th><th align='center' width='150px'>诊断结果</th><th align='center' width='150px'>治疗方案</th><th align='center' hidden>病例状态</th>" +
+                    $("#casetb").append("<tr><th align='center' >病例编号</th><th align='center' width='150px'>诊断结果</th><th align='center' width='150px'>治疗方案</th><th align='center'>病例状态</th>" +
                         "<th align='center' width='150px'>诊断时间</th><th align='center' hidden>医生编号</th><th align='center' hidden>病人编号</th><th align='center' width='150px'>操作</th></tr>")
 
                     s += "<tr>" +
-                        "<td align='center' hidden>" + jdata[i].caseid + "</td>" +
+                        "<td align='center' >" + jdata[i].caseid + "</td>" +
                         "<td align='center' width='150px'>" + jdata[i].diagnosis + "</td>" +
                         "<td align='center' width='150px'>" + jdata[i].curescheme + "</td>" +
-                        "<td align='center' hidden>" + jdata[i].casestate + "</td>" +
+                        "<td align='center'>" + jdata[i].casestate + "</td>" +
                         "<td align='center' width='150px'>" + jdata[i].curetime + "</td>" +
                         "<td align='center' hidden>" + jdata[i].stafid + "</td>" +
                         "<td align='center' hidden>" + jdata[i].sickid + "</td>" +
@@ -436,8 +330,6 @@
     /*诊断信息填写*/
     function cure(caseid,casestate) {
         if (casestate==0){
-
-            $("#mohus").attr("hidden",true)
             $("#drugtb").children().remove()
             $("#cureform").attr("hidden",false)
             $("#curecaseid").val(caseid)
@@ -446,10 +338,50 @@
             alert("病例已诊断")
             // getCaseForDoctor(regid,sickid)
         }
+
+
     }
 </script>
 
+<script>
+    /*开处方单*/
+    function toPrescribe(caseid) {
+        $.get("http://localhost:8080/getDrugs", "caseid=" + caseid, function (data) {
+            $("#cureform").attr("hidden",true)
+            var jdata = JSON.parse(data)
+            var s = ''
+            if (jdata.length == 0) {
+                $("#drugtb").children().remove()
 
+                $("#durgList").html("没有数据")
+            } else {
+
+                $("#drugList").html("")
+                $("#drugtb").children().remove()
+
+                s = "<div align='center'> <h2>药品表</h2> </div>" +
+
+                    "<table border='1px' cellpadding='0px' cellspacing='0px'><tr><th align='center'>药品编号</th><th align='center' width='150px'>药品名称</th><th align='center' width='150px'>药品功能</th><th align='center'>药品规格</th><th align='center' width='150px'>操作</th></tr>"
+
+                for (let i = 0; i < jdata.length; i++) {
+                    var drugcout = 'dcout' + i
+                    s +=
+                        "<tr>" +
+                        "<td align='center'>" + jdata[i].drugid + "</td>" +
+                        "<td align='center' width='150px'>" + jdata[i].drugname + "</td>" +
+                        "<td align='center' width='150px'>" + jdata[i].drugfunc + "</td>" +
+                        "<td align='center' width='150px'>" + jdata[i].drugspeci + "</td>" +
+                        "<td align='center' width='150px'>" +
+                        "<input type='number' id='dcout" + i + "' name='dcout' placeholder='开药数量'><br>" +
+                        "<a href='javascript:void (0)' onclick='addDrugToPresc(" + jdata[i].drugid + "," + caseid + "," + drugcout + ")'>开药</a><br>" +
+                        "</td></tr>"
+                }
+                s += "</table><p id='drugList'></p>"
+                $("#drugtb").append(s)
+            }
+        })
+    }
+</script>
 
 <script>
     /*医生开药方*/
@@ -471,7 +403,6 @@
     /*查看处方单*/
     function showPresic(caseid) {
         $.get("http://localhost:8080/showPresic", "caseid=" + caseid, function (data) {
-            $("#mohus").attr("hidden",true)
             $("#cureform").attr("hidden",true)
             var jdata = JSON.parse(data)
             var s = ''
@@ -485,7 +416,7 @@
                 $("#drugtb").children().remove()
                 s = "<div align='center'> <h2>处方单</h2> </div>" +
                     "<table border='1px' cellpadding='0px' cellspacing='0px'>" +
-                    "<tr><th align='center' hidden>病例编号</th><th align='center' hidden>处方单序号</th><th align='center'>药品名称</th><th align='center'>药品数量</th><th align='center'>药品价格</th><th align='center'>药品规格</th><th align='center' hidden>抓药状态</th></tr>"
+                    "<tr><th align='center' hidden>病例编号</th><th align='center' hidden>处方单序号</th><th align='center'>药品名称</th><th align='center'>药品数量</th><th align='center'>药品价格</th><th align='center'>药品规格</th><th align='center'>抓药状态</th></tr>"
 
                 for (let i = 0; i < jdata.length; i++) {
                     s += "<tr>" +
@@ -495,7 +426,7 @@
                         "<td align='center' width='150px'>" + jdata[i].drugcount + "</td>" +
                         "<td align='center' width='150px'>" + jdata[i].drugprice + "</td>" +
                         "<td align='center' width='150px'>" + jdata[i].drugspeci + "</td>" +
-                        "<td align='center' width='150px' hidden>" + jdata[i].prescstate + "</td>" +
+                        "<td align='center' width='150px'>" + jdata[i].prescstate + "</td>" +
                         "</td></tr>"
                 }
                 s += "</table>"

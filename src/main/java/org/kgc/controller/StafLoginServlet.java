@@ -50,7 +50,7 @@ public class StafLoginServlet extends HttpServlet {
             //员工表有信息,登录信息也存在,接下来判断是不是管理员
             if(loginUser.getUsername().equals("sroot")){
                 //超级管理员
-                request.getSession().setAttribute("loginUser", loginUser);
+                request.getSession().setAttribute("managerUser", loginUser);
                 response.sendRedirect("cgq&yjf/managerindex.jsp");
             }else if (loginUser.getUsername().equals("yf")){
                 request.getSession().setAttribute("loginUser", loginUser);
@@ -62,6 +62,7 @@ public class StafLoginServlet extends HttpServlet {
                 response.sendRedirect("toDoctorManager");
             }
         } else {
+
             request.setAttribute("stafLoginMsg", "用户名或密码错误");
             request.getRequestDispatcher("/cgq&yjf/stafLogin.jsp").forward(request, response);
         }
