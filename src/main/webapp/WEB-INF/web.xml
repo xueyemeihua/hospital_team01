@@ -14,7 +14,32 @@
 
     <!--    查询已经通过申请的人员-->
 
+    <servlet>
+        <servlet-name>ToSickViewServlet</servlet-name>
+        <servlet-class>org.kgc.controller.ToSickViewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ToSickViewServlet</servlet-name>
+        <url-pattern>/toSickView</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>GetDataForShowServlet</servlet-name>
+        <servlet-class>org.kgc.controller.GetDataForShowServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetDataForShowServlet</servlet-name>
+        <url-pattern>/getDataForShow</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>GetStafinfosByStafstateServlet</servlet-name>
+        <servlet-class>org.kgc.controller.GetStafinfosByStafstateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetStafinfosByStafstateServlet</servlet-name>
+        <url-pattern>/getStafinfosBystafstate</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>NotifyServlet</servlet-name>
         <servlet-class>org.kgc.controller.NotifyServlet</servlet-class>

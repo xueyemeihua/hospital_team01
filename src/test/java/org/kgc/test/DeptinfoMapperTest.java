@@ -47,7 +47,7 @@ public class DeptinfoMapperTest {
     @Test
     public void test03() {
 
-        drugInfoMapper.mohuSearchDrug("方", "解").forEach(map -> System.out.println(map));
+//        drugInfoMapper.mohuSearchDrug("方", "解").forEach(map -> System.out.println(map));
 
     }
 

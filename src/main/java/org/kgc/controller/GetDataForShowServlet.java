@@ -5,7 +5,6 @@ package org.kgc.controller; /**
 
 import org.kgc.pojo.CaseNumByDoctor;
 import org.kgc.pojo.HotDrug;
-import org.kgc.pojo.MCNDD;
 import org.kgc.service.DataForShowService;
 
 import javax.servlet.ServletException;

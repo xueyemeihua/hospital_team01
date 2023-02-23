@@ -9,11 +9,12 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ApplicantidService {
-    SqlSession sqlSession = SqlSessionUtil.getSqlSession();
-    ApplicantidMapper mapper = sqlSession.getMapper(ApplicantidMapper.class);
 
 
     public int insertApplicantid(Applicant applicant){
+        SqlSession sqlSession = SqlSessionUtil.getSqlSession();
+        ApplicantidMapper mapper = sqlSession.getMapper(ApplicantidMapper.class);
+
 
         int i = mapper.insertApplicant(applicant);
         if(i!=0){
@@ -27,6 +28,9 @@ public class ApplicantidService {
 
     //根据id查科室
     public String selectDeptName(int deptid){
+        SqlSession sqlSession = SqlSessionUtil.getSqlSession();
+        ApplicantidMapper mapper = sqlSession.getMapper(ApplicantidMapper.class);
+
         String s = mapper.selectDeptName(deptid);
         sqlSession.close();
         return s;
@@ -34,6 +38,9 @@ public class ApplicantidService {
 
     //查所有应聘信息
     public List<Applicant> selectApplicants(){
+        SqlSession sqlSession = SqlSessionUtil.getSqlSession();
+        ApplicantidMapper mapper = sqlSession.getMapper(ApplicantidMapper.class);
+
         List<Applicant> applicants = mapper.selectApplicants();
         sqlSession.close();
         return applicants;
@@ -41,6 +48,9 @@ public class ApplicantidService {
 
 
     public int selectCarid(String carid){
+        SqlSession sqlSession = SqlSessionUtil.getSqlSession();
+        ApplicantidMapper mapper = sqlSession.getMapper(ApplicantidMapper.class);
+
         int i = mapper.selectCarid(carid);
         sqlSession.close();
         return i;
@@ -49,17 +59,26 @@ public class ApplicantidService {
 
     //根据岗位id查询应聘人信息
     public List<Applicant> selectDeptApplicants(int postid){
+        SqlSession sqlSession = SqlSessionUtil.getSqlSession();
+        ApplicantidMapper mapper = sqlSession.getMapper(ApplicantidMapper.class);
+
         List<Applicant> applicants = mapper.selectDeptApplicants(postid);
         sqlSession.close();
         return applicants;
     }
     public List<HashMap> selectApplicantsBystate(){
+        SqlSession sqlSession = SqlSessionUtil.getSqlSession();
+        ApplicantidMapper mapper = sqlSession.getMapper(ApplicantidMapper.class);
+
         List<HashMap> applicants = mapper.selectApplicantsBystate();
         sqlSession.close();
         return applicants;
     }
 
     public int updateApplicantstatus(int applicantid){
+        SqlSession sqlSession = SqlSessionUtil.getSqlSession();
+        ApplicantidMapper mapper = sqlSession.getMapper(ApplicantidMapper.class);
+
         int i = mapper.updateApplicantstatus(applicantid);
         if(i!=0){
             sqlSession.commit();

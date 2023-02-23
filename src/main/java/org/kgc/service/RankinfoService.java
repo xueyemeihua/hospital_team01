@@ -11,10 +11,11 @@ import java.util.HashMap;
  * @create 2023-02-06-19:14
  */
 public class RankinfoService {
-    SqlSession session = SqlSessionUtil.getSqlSession();
-    RankinfoMapper mapper = session.getMapper(RankinfoMapper.class);
+
 
     public HashMap getRegfeeidByRankid(Integer rankid) {
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        RankinfoMapper mapper = session.getMapper(RankinfoMapper.class);
         HashMap regfeeidByRankid = mapper.getRegfeeidByRankid(rankid);
         session.close();
         return regfeeidByRankid ;

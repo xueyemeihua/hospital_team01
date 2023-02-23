@@ -85,9 +85,7 @@ String basePath = request.getScheme() + "://"
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="bread_nav">
-                        <span>您的位置：</span><a href="/">首 页</a> &gt; <a href="">关于我们</a>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -134,22 +132,13 @@ String basePath = request.getScheme() + "://"
                             <ul class="left_snav_ul menu_body"></ul>
                         </li>
 
-                        <li><a class="biglink" href="leaveword.jsp">留言反馈</a>
+                        <li><a class="biglink" href="/getLeaveWord">留言反馈</a>
                             <ul class="left_snav_ul menu_body"></ul>
                         </li>
 
                     </ul>
                 </div>
-                <div class="left_news">
-                    <h3 class="left_h3"><span>通知公告</span></h3>
 
-                    <ul class="left_news">
-
-                        <li><a href="detail1.html" title="标题">通知公告的内容</a></li>
-
-                    </ul>
-
-                </div>
 
 
             </div>

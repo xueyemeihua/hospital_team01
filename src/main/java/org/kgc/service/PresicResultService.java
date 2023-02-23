@@ -13,10 +13,11 @@ import java.util.List;
  */
 public class PresicResultService {
 
-    SqlSession session = SqlSessionUtil.getSqlSession();
-    PresicResultMapper mapper = session.getMapper(PresicResultMapper.class);
+
 
     public List<PresicResult> getPresicByCaseid(int caseid) {
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        PresicResultMapper mapper = session.getMapper(PresicResultMapper.class);
         List<PresicResult> presicByCaseid = mapper.getPresicByCaseid(caseid);
         session.close();
         return presicByCaseid;

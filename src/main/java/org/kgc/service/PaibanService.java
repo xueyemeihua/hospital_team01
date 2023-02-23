@@ -16,15 +16,18 @@ import java.util.List;
  */
 public class PaibanService {
 
-    SqlSession session = SqlSessionUtil.getSqlSession();
-    PaibanMapper mapper = session.getMapper(PaibanMapper.class);
+
 
     public List<HashMap> getPaibanStafByDate(@Param("date") String date){
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        PaibanMapper mapper = session.getMapper(PaibanMapper.class);
         List<HashMap> paibanStafByDate = mapper.getPaibanStafByDate(date);
         session.close();
         return paibanStafByDate;
     }
     public int addDuty(@Param("stafid")int stafid,@Param("date")String date){
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        PaibanMapper mapper = session.getMapper(PaibanMapper.class);
         int i = mapper.addDuty(stafid, date);
         if (i!=0){
             session.commit();
@@ -36,6 +39,8 @@ public class PaibanService {
     }
 
     public int deleteDuty(@Param("stafid")int stafid,@Param("date")String date){
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        PaibanMapper mapper = session.getMapper(PaibanMapper.class);
         int i = mapper.deleteDuty(stafid, date);
         if (i!=0){
             session.commit();
@@ -47,6 +52,8 @@ public class PaibanService {
     }
 
     public List<HashMap> selectDoctorByDateAndByDeptid(@Param("date")String date,@Param("deptid")int deptid){
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        PaibanMapper mapper = session.getMapper(PaibanMapper.class);
         List<HashMap> hashMaps = mapper.selectDoctorByDateAndByDeptid(date, deptid);
         session.close();
         return hashMaps;

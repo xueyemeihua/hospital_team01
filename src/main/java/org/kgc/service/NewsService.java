@@ -12,12 +12,13 @@ import java.util.List;
  * @create 2023-02-04-11:59
  */
 public class NewsService implements NewsMapper{
-    SqlSession session = SqlSessionUtil.getSqlSession();
-    NewsMapper mapper = session.getMapper(NewsMapper.class);
+
 
 
     @Override
     public int addNews(News news) {
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        NewsMapper mapper = session.getMapper(NewsMapper.class);
         int i = mapper.addNews(news);
         if(i!=0){
             session.commit();
@@ -31,6 +32,8 @@ public class NewsService implements NewsMapper{
 
     @Override
     public List<News> getNewsByNewsstate() {
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        NewsMapper mapper = session.getMapper(NewsMapper.class);
         List<News> newsByNewsstate = mapper.getNewsByNewsstate();
         session.close();
         return newsByNewsstate;
@@ -38,6 +41,8 @@ public class NewsService implements NewsMapper{
 
     @Override
     public News getNewsByNewsid(int newsid) {
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        NewsMapper mapper = session.getMapper(NewsMapper.class);
         News newsByNewsid = mapper.getNewsByNewsid(newsid);
         session.close();
         return newsByNewsid;
@@ -45,6 +50,8 @@ public class NewsService implements NewsMapper{
 
     @Override
     public int updateNews(News news) {
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        NewsMapper mapper = session.getMapper(NewsMapper.class);
         int i = mapper.updateNews(news);
         if(i!=0){
             session.commit();

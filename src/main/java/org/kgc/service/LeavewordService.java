@@ -15,10 +15,11 @@ import java.util.List;
 public class LeavewordService {
 
 
-    SqlSession sqlSession = SqlSessionUtil.getSqlSession();
-    LeavewordMapper mapper = sqlSession.getMapper(LeavewordMapper.class);
+
 
     public int addLeaveWord(Leaveword leaveword) {
+        SqlSession sqlSession = SqlSessionUtil.getSqlSession();
+        LeavewordMapper mapper = sqlSession.getMapper(LeavewordMapper.class);
         int i = mapper.addLeaveWord(leaveword);
         if (i == 1){
             sqlSession.commit();
@@ -30,6 +31,8 @@ public class LeavewordService {
     }
 
     public List<HashMap> getAllLeavewords() {
+        SqlSession sqlSession = SqlSessionUtil.getSqlSession();
+        LeavewordMapper mapper = sqlSession.getMapper(LeavewordMapper.class);
         List<HashMap> allLeavewords = mapper.getAllLeavewords();
         sqlSession.close();
         return allLeavewords;

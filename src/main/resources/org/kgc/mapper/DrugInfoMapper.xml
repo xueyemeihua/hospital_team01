@@ -75,4 +75,20 @@
         select * from druginfo,fac where druginfo.drugfac = fac.drugfac and drugindate &lt; #{format}
     </select>
 
+
+
+    <select id="mohuSearchDrug" resultType="java.util.HashMap">
+        select *
+        from druginfo,
+        fac
+        where druginfo.drugfac = fac.drugfac
+        <if test="drugname!='' and drugname!=null">
+            and druginfo.drugname like concat("%", #{drugname}, "%")
+        </if>
+        <if test="drugfunc!='' and drugfunc!=null">
+            and druginfo.drugfunc like concat("%", #{drugfunc}, "%")
+        </if>
+
+    </select>
+
 </mapper>

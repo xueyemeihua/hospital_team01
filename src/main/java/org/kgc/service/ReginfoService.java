@@ -13,12 +13,13 @@ import org.kgc.utils.SqlSessionUtil;
 public class ReginfoService {
 
 
-    SqlSession session = SqlSessionUtil.getSqlSession();
-    ReginfoMapper mapper = session.getMapper(ReginfoMapper.class);
-    CaseinfoMapper caseinfoMapper = session.getMapper(CaseinfoMapper.class);
+
 
     /*根据挂号信息添加病例信息*/
     public int addReginfo(Reginfo reginfo) {
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        ReginfoMapper mapper = session.getMapper(ReginfoMapper.class);
+        CaseinfoMapper caseinfoMapper = session.getMapper(CaseinfoMapper.class);
         int i = 0;
         try {
             i = mapper.addReginfo(reginfo);

@@ -11,10 +11,11 @@ import org.kgc.utils.SqlSessionUtil;
  */
 public class PrescinfoService {
 
-    SqlSession session = SqlSessionUtil.getSqlSession();
-    PrescinfoMapper mapper = session.getMapper(PrescinfoMapper.class);
+
 
     public int insertPresc(Prescinfo pre){
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        PrescinfoMapper mapper = session.getMapper(PrescinfoMapper.class);
         int i = mapper.insertPresc(pre);
         session.commit();
         session.close();

@@ -443,8 +443,11 @@
             (data) {
             if (data == 1) {
                 alert("开药成功")
-            } else {
-                alert("开药失败")
+            } else if (data == -1){
+                alert("库存不足,开药失败")
+            }
+            else {
+                alert("其他原因,开药失败")
             }
         })
     }

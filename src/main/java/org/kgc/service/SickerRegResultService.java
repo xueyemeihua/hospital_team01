@@ -14,10 +14,11 @@ import java.util.List;
  */
 public class SickerRegResultService {
 
-    SqlSession session = SqlSessionUtil.getSqlSession();
-    SickerRegResultMapper mapper = session.getMapper(SickerRegResultMapper.class);
+
 
     public List<SickerRegResult> getSrrByStafid(@Param("date") String date, @Param("stafid") int stafid) {
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        SickerRegResultMapper mapper = session.getMapper(SickerRegResultMapper.class);
         List<SickerRegResult> regResults = mapper.getSrrByStafid(date,stafid);
         session.close();
         return regResults;

@@ -10,8 +10,7 @@ import java.util.List;
 
 public class DrugInfoService {
 
-    SqlSession session = SqlSessionUtil.getSqlSession();
-    DrugInfoMapper mapper = session.getMapper(DrugInfoMapper.class);
+
 
     //查询所有
     public List<HashMap> selectAll() {
@@ -79,6 +78,8 @@ public class DrugInfoService {
     }
 //模糊查询
     public List<HashMap> selectDrugInfo(String drugname) {
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        DrugInfoMapper mapper = session.getMapper(DrugInfoMapper.class);
         List<HashMap> drugs = mapper.selectDrugInfo(drugname);
         session.close();
         return drugs;
@@ -87,14 +88,28 @@ public class DrugInfoService {
 
     //过期药品查询
     public List<HashMap> date(String drugindate) {
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        DrugInfoMapper mapper = session.getMapper(DrugInfoMapper.class);
         List<HashMap> drugsindate = mapper.selectDateDrugInfo(drugindate);
         session.close();
         return drugsindate;
     }
 
     public List<HashMap> getDate(String format) {
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        DrugInfoMapper mapper = session.getMapper(DrugInfoMapper.class);
         List<HashMap> maps = mapper.SelectUnDateDrugInfo(format);
         session.close();
         return maps;
     }
+
+    public List<HashMap> mohuSearchDrug(String drugname,String drugfunc) {
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        DrugInfoMapper mapper = session.getMapper(DrugInfoMapper.class);
+        List<HashMap> drugs = mapper.mohuSearchDrug(drugname, drugfunc);
+        session.close();
+        return drugs;
+    }
+
+
 }

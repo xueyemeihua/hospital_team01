@@ -12,11 +12,12 @@ import org.kgc.utils.SqlSessionUtil;
  */
 public class SickerinfoService {
 
-    SqlSession session = SqlSessionUtil.getSqlSession();
-    SickerinfoMapper mapper = session.getMapper(SickerinfoMapper.class);
+
 
     public Sickerinfo getSickerBySickUnameOrSickPhoneOrCardIdOrSickEmailAndPassword(Sickerinfo loginInfo) {
 
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        SickerinfoMapper mapper = session.getMapper(SickerinfoMapper.class);
         Sickerinfo result = mapper.getSickerBySickUnameOrSickPhoneOrCardIdOrSickEmailAndPassword(loginInfo);
 
         session.close();
@@ -24,6 +25,8 @@ public class SickerinfoService {
     }
 
     public int updateSickerInfo(Sickerinfo sickerinfo) {
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        SickerinfoMapper mapper = session.getMapper(SickerinfoMapper.class);
         int result = mapper.updateSickerInfo(sickerinfo);
         if (result==1){
             session.commit();
@@ -35,6 +38,8 @@ public class SickerinfoService {
     }
 
     public int addSickerInfo(Sickerinfo sickerinfo) {
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        SickerinfoMapper mapper = session.getMapper(SickerinfoMapper.class);
         int result = mapper.addSickerInfo(sickerinfo);
         if (result == 1){
             session.commit();
@@ -46,6 +51,8 @@ public class SickerinfoService {
     }
 
     public int insertSicker(Sickerinfo sickerinfo) {
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        SickerinfoMapper mapper = session.getMapper(SickerinfoMapper.class);
         int result = mapper.insertSicker(sickerinfo);
         if (result == 1){
             session.commit();
@@ -57,6 +64,8 @@ public class SickerinfoService {
     }
 
     public int selectSickidBySickuname(@Param("sickuname") String sickuname){
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        SickerinfoMapper mapper = session.getMapper(SickerinfoMapper.class);
         int sickid = mapper.selectSickidBySickuname(sickuname);
         session.close();
         return sickid;

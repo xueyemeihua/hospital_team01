@@ -68,25 +68,10 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class=""><a href="index.html">首 页</a>
-                    <li class="dropdown "><a href="aboutus.html">关于我们</a>
-                        <a href="#" id="app_menudown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-menu-down btn-xs"></span></a>
-                        <ul class='dropdown-menu nav_small' role='menu'>
-
-                            <li><a href="aboutus.html">公司简介</a></li>
-
-                            <li><a href="contact.html">联系我们</a></li>
-
-                            <!--<li><a href="detail1.html">终端页面</a></li>
-                            <li><a href="category-2.html">两栏图文</a></li>
-                            <li><a href="category-4.html">四列图文</a></li>-->
-                        </ul>
-                    </li>
-                    <li><a href="category-3.html">产品展示</a></li>
-                    <li><a href="news.html">新闻资讯</a></li>
-                    <li><a href="category-4.html">案例展示</a></li>
-                    <li><a href="article.html">招贤纳士</a></li>
+                    <li><a href="/selectNews" >新闻资讯</a></li>
+                    <li><a href="article.jsp">招贤纳士</a></li>
                     <li><a href="contact.html">联系我们</a></li>
-                    <li><a href="feedback.html">留言反馈</a></li>
+                    <li><a href="/getLeaveWord">留言反馈</a></li>
                 </ul>
             </div>
         </div>
@@ -96,11 +81,7 @@
 <div class="bread_bg">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="bread_nav">
-                    <span>您的位置：</span><a href="/">首 页</a> &gt; <a href="">关于我们</a>
-                </div>
-            </div>
+
         </div>
     </div>
 </div>
@@ -139,8 +120,8 @@
 <%--                </p>--%>
             </div>
             <div class="point">
-                <span class="to_next col-xs-12 col-sm-6 col-md-6">上一个：<a href=""></a></span>
-                <span class="to_next col-xs-12 col-sm-6 col-md-6">下一个：<a href=""></a></span>
+<%--                <span class="to_next col-xs-12 col-sm-6 col-md-6">上一个：<a href=""></a></span>--%>
+<%--                <span class="to_next col-xs-12 col-sm-6 col-md-6">下一个：<a href=""></a></span>--%>
             </div>
 
         </div>
@@ -159,49 +140,15 @@
                         <ul class="left_snav_ul menu_body"></ul>
                     </li>
 
-                    <li><a class="biglink" href="feedback.html">留言反馈</a>
+                    <li><a class="biglink" href="/getLeaveWord">留言反馈</a>
                         <ul class="left_snav_ul menu_body"></ul>
                     </li>
 
                 </ul>
             </div>
-            <div class="left_news">
-                <h3 class="left_h3"><span>通知公告</span></h3>
 
-                <ul class="left_news">
 
-                    <li><a href="detail1.html" title="新版护理进修报到通知">新版护理进修报到通知</a></li>
 
-                    <li><a href="detail1.html" title="新版护理进修申请鉴定表">新版护理进修申请鉴定表</a></li>
-
-                    <li><a href="detail1.html" title="深圳市人民医院院周会请假登记表">深圳市人民医院院周会请假登记表</a></li>
-
-                    <li><a href="detail1.html" title="进修人员申请鉴定表">进修人员申请鉴定表</a></li>
-
-                    <li><a href="detail1.html" title="深圳市人民医院医师医技人员进修须知">深圳市人民医院医师医技人员进修须知</a></li>
-
-                </ul>
-
-            </div>
-
-            <div class="left_news">
-                <h3 class="left_h3"><span>医院动态</span></h3>
-
-                <ul class="left_news">
-
-                    <li><a href="detail1.html" title="新版护理进修报到通知">新版护理进修报到通知</a></li>
-
-                    <li><a href="detail1.html" title="新版护理进修申请鉴定表">新版护理进修申请鉴定表</a></li>
-
-                    <li><a href="detail1.html" title="深圳市人民医院院周会请假登记表">深圳市人民医院院周会请假登记表</a></li>
-
-                    <li><a href="detail1.html" title="进修人员申请鉴定表">进修人员申请鉴定表</a></li>
-
-                    <li><a href="detail1.html" title="深圳市人民医院医师医技人员进修须知">深圳市人民医院医师医技人员进修须知</a></li>
-
-                </ul>
-
-            </div>
         </div>
     </div>
 </div>
@@ -226,18 +173,7 @@
         </div>
     </div>
 </footer>
-<div class="link_box" style="background-image: url()">
-    <div class="container">
-        <span class="link_title">友情链接</span><button id="link_btn" class="glyphicon glyphicon-plus" aria-hidden="true"></button>
-        <span class="link_list">
-                        <a href="javascript:;" target="_self">济南邦哲雕塑艺术有限公司</a>
-                        <a href="javascript:;" target="_self">武汉贝升科技有限公司</a>
-                        <a href="javascript:;" target="_self">蚂蚁搬家运输有限公司昆明分公司</a>
-                        <a href="javascript:;" target="_self">朝阳钢材市场洪源保温材料加工厂</a>
-                        <a href="javascript:;" target="_self">芜湖艾尚新材料科技有限公司</a>
-                  </span>
-    </div>
-</div>
+
 <script src="src/js/common.js"></script>
 <script src="src/js/bootstrap.js"></script>
 <script src="src/js/countUp.min.js"></script>

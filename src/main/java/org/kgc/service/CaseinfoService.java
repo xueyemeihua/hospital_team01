@@ -18,22 +18,27 @@ import java.util.List;
  */
 public class CaseinfoService {
 
-    SqlSession session = SqlSessionUtil.getSqlSession();
-    CaseinfoMapper mapper = session.getMapper(CaseinfoMapper.class);
+
 
     public List<CaseResult> getCaseinfoBySickid(int sickid) {
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        CaseinfoMapper mapper = session.getMapper(CaseinfoMapper.class);
         List<CaseResult> caseinfoBySickid = mapper.getCaseinfoBySickid(sickid);
         session.close();
         return caseinfoBySickid;
     }
 
     public List<CaseInfo> getCaSeByStafidAndSickidAndRegid(int regid,int sickid,int stafid){
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        CaseinfoMapper mapper = session.getMapper(CaseinfoMapper.class);
         List<CaseInfo> caseinfos = mapper.getCaSeByStafidAndSickidAndRegid(regid, sickid, stafid);
         session.close();
         return caseinfos;
     }
 
     public int updateCaseinfo(CaseInfo caseInfo){
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        CaseinfoMapper mapper = session.getMapper(CaseinfoMapper.class);
         int i = 0;
         try {
             i = mapper.updateCaseinfo(caseInfo);
@@ -47,12 +52,16 @@ public class CaseinfoService {
     }
 
     public List<HashMap> getCaseinfoByStafid(@Param("stafid")int stafid){
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        CaseinfoMapper mapper = session.getMapper(CaseinfoMapper.class);
         List<HashMap> caseinfo = mapper.getCaseinfoByStafid(stafid);
         session.close();
         return caseinfo;
     }
 
     public List<HashMap> getCaseinfoBy(@Param("sickname")String sickname,@Param("diagnosis")String diagnosis,@Param("curescheme")String curescheme){
+        SqlSession session = SqlSessionUtil.getSqlSession();
+        CaseinfoMapper mapper = session.getMapper(CaseinfoMapper.class);
         List<HashMap> caseinfo = mapper.getCaseinfoBy(sickname, diagnosis, curescheme);
         session.close();
         return caseinfo;
