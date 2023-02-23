@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ly
-  Date: 2023/2/9
-  Time: 21:41
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="zh-CN">
@@ -120,7 +113,7 @@
                                 <td>${cr.regdesc}</td>
                                 <td>${cr.regfee}</td>
                                 <td>
-                                    <a onclick="getPresicByCaseid(${cr.caseid},)">查看药品详情</a>
+                                    <a onclick="getPresicByCaseid(${cr.caseid})">查看药品详情</a>
                                     <a onclick="leaveWords(${cr.caseid})">评价</a></td>
                             </tr>
                         </c:forEach>

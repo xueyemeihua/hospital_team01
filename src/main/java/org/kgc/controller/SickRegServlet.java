@@ -78,7 +78,7 @@ public class SickRegServlet extends HttpServlet {
         if (regfee_id!=null){
             regfeeid = (Integer) regfee_id.get("regfeeid");
         }
-        Reginfo reginfo = new Reginfo(null, deptid, date, regfeeid, sickid,stafid, 0);
+        Reginfo reginfo = new Reginfo(null, deptid, date, regfeeid, sickid,stafid, 1);
         ReginfoService reginfoService = new ReginfoService();
         int result = reginfoService.addReginfo(reginfo);
         String money="0";

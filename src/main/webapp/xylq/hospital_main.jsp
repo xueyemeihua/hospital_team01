@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -47,9 +48,11 @@
                         <img src="src/picture/tel.jpg" alt="服务热线">
                         <span>全国服务热线：</span>
                         <p>000-00008888</p>
-                    </div>
+                        <br>
+
+                    </div><p>${loginSicker.sickname}</p>
                 </div>
-                <div class="col-xs-12 col-sm-2 col-md-3 tel_box2">
+                <div class="col-xs-12 col-sm-2 col-md-3 tel_box2" align="right">
                     <a href="/cgq&yjf/stafLogin.jsp">工作人员登录</a>
                 </div>
             </div>
@@ -70,7 +73,9 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class=""><a href="hospital_main.jsp">首 页</a></li>
-                        <li><a href="/toSickView">个人中心</a><li>
+                        <c:if test="${loginSicker!=null}">
+                          <li><a href="/toSickView?sickid=${loginSicker.sickid}">个人中心</a><li>
+                        </c:if>
                         <li><a href="/selectNews" >新闻资讯</a></li>
                         <li><a href="article.jsp">招贤纳士</a></li>
                         <li><a href="contact.html">联系我们</a></li>
@@ -158,17 +163,25 @@
                         <div class="col-sm-4 col-md-4 col-mm-6">
                             <a href="/getCaseinfo" class="about_btn">报告查询</a>
                         </div>
-
-<%--                        <div class="col-sm-4 col-md-4 col-mm-6">--%>
-<%--                            <a href="/getDoctorPaiban" class="about_btn">门诊排班</a>--%>
-<%--                        </div>--%>
-
+                        <div class="col-sm-4 col-md-4 col-mm-6">
+                            <a href="detail1.html" class="about_btn">就医指南</a>
+                        </div>
+                        <div class="col-sm-4 col-md-4 col-mm-6">
+                            <a href="/getDoctorPaiban" class="about_btn">门诊排班</a>
+                        </div>
+                        <div class="col-sm-4 col-md-4 col-mm-6">
+                            <a href="detail1.html" class="about_btn">患者服务</a>
+                        </div>
+                        <div class="col-sm-4 col-md-4 col-mm-6">
+                            <a href="detail1.html" class="about_btn">健康科普</a>
+                        </div>
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
+
 
 
     <nav class="navbar navbar-default navbar-fixed-bottom mfoot_box">

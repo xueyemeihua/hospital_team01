@@ -39,8 +39,8 @@ public class StafinfoService {
         return i;
     }
 
-    public List<HashMap> getStafinfoLikeDeptnameOrPostnameOrStafname(@Param("deptname")String deptname,@Param("postname")String postname,@Param("stafname")String stafname){
-        List<HashMap> stafinfoLikeDeptnameOrPostnameOrStafname = mapper.getStafinfoLikeDeptnameOrPostnameOrStafname(deptname, postname, stafname);
+    public List<HashMap> getStafinfoLikeDeptnameOrPostnameOrStafname(@Param("deptname")String deptname,@Param("postname")String postname,@Param("stafname")String stafname,@Param("stafstate")int stafstate){
+        List<HashMap> stafinfoLikeDeptnameOrPostnameOrStafname = mapper.getStafinfoLikeDeptnameOrPostnameOrStafname(deptname,postname,stafname,stafstate);
         return stafinfoLikeDeptnameOrPostnameOrStafname;
     }
     public int firedStafinfo(@Param("stafid") int stafid){
@@ -52,7 +52,11 @@ public class StafinfoService {
         }
         return i;
     }
-
+    public List<HashMap> getStafinfosByStafstate(){
+        List<HashMap> stafinfosByStafstate = mapper.getStafinfosByStafstate();
+        session.close();
+        return stafinfosByStafstate;
+    }
 
 
 //    public int updateSickerInfo(Sickerinfo sickerinfo) {
@@ -87,6 +91,22 @@ public class StafinfoService {
         List<Stafinfo> allStafinfos = mapper.getAllStafinfos();
         session.close();
         return allStafinfos;
+    }
+    public int updateStafinfo(Stafinfo stafinfo){
+        int i = mapper.updateStafinfo(stafinfo);
+        if (i!=0){
+            session.commit();
+        }else {
+            session.rollback();
+        }
+        session.close();
+        return i;
+    }
+
+    public HashMap getAllByStafid(@Param("stafid")int stafid){
+        HashMap allByStafid = mapper.getAllByStafid(stafid);
+        session.close();
+        return allByStafid;
     }
 
 }

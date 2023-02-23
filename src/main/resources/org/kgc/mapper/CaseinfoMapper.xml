@@ -86,5 +86,33 @@
           AND stafinfo.stafid = #{stafid}
     </select>
 
+    <select id="getCaseinfoByStafid" resultType="HashMap">
+        select * from caseinfo,sickerinfo where caseinfo.sickid = sickerinfo.sickid and caseinfo.stafid = #{stafid} and caseinfo.casestate = 1
+    </select>
+
+    <select id="getCaseinfoBy" resultType="HashMap">
+        select *
+        from caseinfo,sickerinfo
+        <where>
+            caseinfo.sickid = sickerinfo.sickid and
+            <choose>
+                <when test="sickname!=null and sickname!=''">
+                    sickname like concat ("%",#{sickname},"%")
+                </when>
+                <when test="diagnosis!=null and diagnosis!=''">
+                    diagnosis like concat ("%",#{diagnosis},"%")
+                </when>
+                <when test="curescheme!=null and curescheme!=''">
+                    curescheme like concat ("%",#{curescheme},"%")
+                </when>
+                <otherwise>
+                    1=1
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+
+
 
 </mapper>

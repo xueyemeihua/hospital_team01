@@ -25,10 +25,11 @@
           AND stafinfo.stafid = reginfo.stafid
           AND reginfo.regfeeid = regfeestander.regfeeid
           AND stafinfo.stafid = #{stafid}
-          AND reginfo.date = #{date}
-          AND reginfo.regstate = 0
+          and reginfo.date = #{date}
+          and reginfo.regstate = 0
         ORDER BY reginfo.date DESC
     </select>
+
 
 
 </mapper>

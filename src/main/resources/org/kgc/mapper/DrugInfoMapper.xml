@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kgc.mapper.DrugInfoMapper">
+
 
     <!--添加药品信息-->
     <insert id="add">
-        insert into druginfo
-        values (#{drugid}, #{drugname}, #{druginven},
-                #{drugprice}, #{drugindate}, #{drugprodate}, #{drugfac}, #{facphone},
-                #{drugfunc}, #{drugspeci})
+        insert into druginfo values (#{drugid},#{drugname},#{druginven},
+        #{drugprice},#{drugindate},#{drugprodate},#{drugfac},#{facphone},
+        #{drugfunc},#{drugspeci})
     </insert>
     <!--修改药品信息-->
     <update id="update">
@@ -47,68 +47,32 @@
     </update>
     <!--根据 drugid 删除-->
     <delete id="deleteById">
-        delete
-        from druginfo
-        where drugid = #{drugid}
+        delete from druginfo where drugid = #{drugid}
     </delete>
     <!--查询所有-->
     <select id="selectAll" resultType="HashMap">
-        select *
-        from druginfo,
-             fac
-        where druginfo.drugfac = fac.drugfac
+        select * from druginfo,fac where druginfo.drugfac = fac.drugfac
     </select>
 
 
     <!--根据 drugid 查询-->
     <select id="selectById" resultType="org.kgc.pojo.DrugInfo">
-        select *
-        from druginfo,
-             fac
-        where druginfo.drugfac = fac.drugfac
-          and drugid = #{drugid}
+        select * from druginfo,fac where druginfo.drugfac = fac.drugfac and drugid = #{drugid}
     </select>
 
-    <!--    模糊查询-->
+<!--    模糊查询-->
     <select id="selectDrugInfo" resultType="HashMap">
-        select *
-        from druginfo,
-             fac
-        where druginfo.drugfac = fac.drugfac
-          and druginfo.drugname like concat("%", #{drugname}, "%")
+        select * from druginfo,fac where druginfo.drugfac = fac.drugfac and druginfo.drugname like concat("%",#{drugname},"%")
     </select>
 
-    <!--    查询过期药品-->
+<!--    查询过期药品-->
     <select id="selectDateDrugInfo" resultType="HashMap">
-        select *
-        from druginfo,
-             fac
-        where druginfo.drugfac = fac.drugfac
-          and drugindate &lt; #{drugindate}
+        select * from druginfo,fac where druginfo.drugfac = fac.drugfac and drugindate &lt; #{drugindate}
     </select>
 
-    <!--    根据当前日期查询过期药品-->
+<!--    根据当前日期查询过期药品-->
     <select id="SelectUnDateDrugInfo" resultType="HashMap">
-        select *
-        from druginfo,
-             fac
-        where druginfo.drugfac = fac.drugfac
-          and drugindate &lt; #{format}
+        select * from druginfo,fac where druginfo.drugfac = fac.drugfac and drugindate &lt; #{format}
     </select>
-
-    <select id="mohuSearchDrug" resultType="java.util.HashMap">
-        select *
-        from druginfo,
-        fac
-        where druginfo.drugfac = fac.drugfac
-        <if test="drugname!='' and drugname!=null">
-            and druginfo.drugname like concat("%", #{drugname}, "%")
-        </if>
-        <if test="drugfunc!='' and drugfunc!=null">
-            and druginfo.drugfunc like concat("%", #{drugfunc}, "%")
-        </if>
-
-    </select>
-
 
 </mapper>

@@ -3,6 +3,7 @@ package org.kgc.mapper;
 import org.apache.ibatis.annotations.Param;
 import org.kgc.pojo.Applicant;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -23,14 +24,7 @@ public interface ApplicantidMapper {
 //根据岗位编号查应聘者
     public List<Applicant> selectDeptApplicants(int postid);
 
+    List<HashMap> selectApplicantsBystate();
 
-
-
-    //查询所有
-    List<Applicant> SelectSuccessfulApplications();
-
-    //模糊查询
-    List<Applicant> FuzzySearchSuccessfulApplicationServlet(@Param("name") String name, @Param("email") String email);
-
-
+    int updateApplicantstatus(@Param("applicantid")int applicantid);
 }

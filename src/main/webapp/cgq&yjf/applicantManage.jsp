@@ -2,7 +2,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-  <!-- 页面meta -->
+
+  <title>js实现弹出提交表单 </title>
   <meta charset="utf-8">
   <style type="text/css">
     #all_light { /*整个弹窗的页面*/
@@ -33,10 +34,12 @@
     }
 
   </style>
+  <!-- 页面meta -->
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>药品信息</title>
-  <meta name="description" content="药品信息">
-  <meta name="keywords" content="药品信息">
+  <meta name="description" content="招聘人员信息">
+  <meta name="keywords" content="招聘人员信息">
 
   <!-- 告诉浏览器响应屏幕宽度 -->
   <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
@@ -337,6 +340,7 @@
 
   <!-- 导航侧栏 -->
   <aside class="main-sidebar">
+
     <!-- 侧边栏：样式可以在sidebar.less中找到 -->
     <section class="sidebar">
       <!-- 侧边栏用户面板 -->
@@ -353,8 +357,8 @@
       <!-- 搜索表单 -->
 
       <!-- 侧边栏菜单：：style可以在sidebar.les中找到 -->
-        <!-- 菜单 -->
-        <jsp:include page="/cgq&yjf/manager_left_menu.jsp"/>
+
+      <jsp:include page="/cgq&yjf/manager_left_menu.jsp"/>
     </section>
     <!-- /.侧边栏 -->
   </aside>
@@ -369,13 +373,13 @@
     <!-- 内容头部 -->
     <section class="content-header">
       <h1>
-        员工管理
-        <small>员工列表</small>
+        招聘管理
+        <small>应聘人员列表</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-        <li><a href="#">员工管理</a></li>
-        <li class="active">员工列表</li>
+        <li><a href="managerindex.jsp"><i class="fa fa-dashboard"></i> 首页</a></li>
+        <li><a href="#">招聘管理</a></li>
+        <li class="active">应聘人员列表</li>
       </ol>
     </section>
     <!-- 内容头部 /-->
@@ -395,20 +399,34 @@
           <div class="table-box">
 
             <!--工具栏-->
-            <div class="pull-left">
-              <div class="form-group form-inline">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default" title="新建" id="add" ><i class="fa fa-file-o"></i> 新建</button>
-                  <button type="button" class="btn btn-default" title="刷新"><i class="fa fa-refresh"></i> 刷新</button>
-                </div>
-              </div>
-            </div>
+<%--            <div class="pull-left">--%>
+<%--              <div class="form-group form-inline">--%>
+<%--                <div class="btn-group">--%>
+
+<%--                  <button type="button" class="btn btn-default" title="新建" id="add" onclick="add()"><i class="fa fa-file-o" ></i> 新建</button>--%>
+<%--                  <!--  弹框的div -->--%>
+
+<%--&lt;%&ndash;                  <div id="contes" style="">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                    <div style="width:500px;height:40px;">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                      添加科室&ndash;%&gt;--%>
+<%--&lt;%&ndash;                      <hr>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                      <form style=" margin-left: 50px;"  >&ndash;%&gt;--%>
+<%--&lt;%&ndash;                        科室名称：<input type="text" id="checkDeptname" name="deptname" value="" width="60px" ><br>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                        <font id="deptFont"></font><br>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                        <input style=" margin-left: 50px;" type="submit" value="提交" id="stamp" onclick="javascript:this.form.action='/addDeptinfo'">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                        <input type="submit" value="取消" >&ndash;%&gt;--%>
+<%--&lt;%&ndash;                      </form>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                    </div>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                  </div>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                  <div id="all_light"></div>&ndash;%&gt;--%>
+
+<%--                  <button type="button" class="btn btn-default" title="刷新" onclick="window.location.href='/getDeptinfoAndForward'"><i class="fa fa-refresh"></i> 刷新</button>--%>
+<%--                </div>--%>
+<%--              </div>--%>
+<%--            </div>--%>
             <div class="box-tools pull-right">
-              <form action="/getStafinfoLikeDeptnameOrPostnameOrStafname">
-                <input type="hidden" name="stafstate" value="1">
-                科室名<input name="deptname">
-                岗位名<input name="postname">
-                员工姓名<input name="stafname">
+              <form action="/getDeptinfoLikeDeptname">
+                输入查询科室名称:<input name="deptname">
                 <input type="submit" value="查询">
               </form>
 <%--              <div class="has-feedback">--%>
@@ -419,75 +437,46 @@
             <!--工具栏/-->
 
             <!--数据列表-->
-            <table id="dataList" class="table table-bordered table-striped table-hover dataTable" width="900px">
-
+            <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
+              <thead>
               <tr>
-                <th>医院工作人员编号</th>
-                <th>岗位名称</th>
-                <th>科室名称</th>
-                <th>身份证</th>
-                <th>姓名</th>
-                <th>职称</th>
-                <th>职员状态</th>
-                <th>手机号</th>
-                <th>登录名</th>
-                <th>邮箱</th>
-                <th>
-                    操作
-                </th>
-              </tr>
-
-
-                <c:forEach items="${stafinfos}" var="stafinfo">
-                    <tr >
-                    <td>${stafinfo.stafid}</td>
-                    <td>${stafinfo.postname}</td>
-                    <td>${stafinfo.deptname}</td>
-                    <td>${stafinfo.stafcard}</td>
-                    <td>${stafinfo.stafname}</td>
-                    <td>${stafinfo.rankname}</td>
-                    <td>
-                      <c:if test="${stafinfo.stafstate==1}">
-                        在职
-                      </c:if>
-                      <c:if test="${stafinfo.stafstate==0}">
-                        离职
-                      </c:if>
-                    </td>
-                    <td>${stafinfo.stafphone}</td>
-                    <td>${stafinfo.username}</td>
-                    <td>${stafinfo.email}</td>
-                      <td>
-<%--                        <button id="change" onclick="change()" >转岗</button>--%>
-<%--                        <form >--%>
-<%--                        <div id="contes" >--%>
-<%--                          <div>--%>
-<%--                            转岗--%>
-<%--                            <hr>--%>
-<%--                            岗位名称--%>
-<%--                            <select name="postid" id="post" onchange="selectDept()">--%>
-<%--                              <option value="0">请选择</option>--%>
-<%--                              <c:forEach items="${postinfos}" var="postinfo">--%>
-<%--                                <c:if test="${postinfo.postid!=12}">--%>
-<%--                                  <option value="${postinfo.postid}">${postinfo.postname}</option>--%>
-<%--                                </c:if>--%>
-<%--                              </c:forEach>--%>
-<%--                            </select><br>--%>
-<%--                            所属科室--%>
-<%--                            <select id="postinfos" name="postid"></select>--%>
-<%--                          </div>--%>
-<%--                        </div>--%>
-<%--                        <div id="all_light"></div>--%>
-<%--                        </form>--%>
-                        <input type="button" onclick="void fired(${stafinfo.stafid})" value="开除">
-                      </td>
-
+                <th>编号</th>
+                <th>应聘人姓名</th>
+                <th>年龄</th>
+                <th>应聘岗位</th>
+                <th hidden>期望薪资</th>
+                <th hidden>邮箱</th>
+                <th hidden>电话</th>
+                <th hidden>工作经历</th>
+                <th hidden>自我介绍</th>
+                <th hidden>科室编号</th>
+                <th hidden>岗位编号</th>
+                <th>操作</th>
 
               </tr>
+              </thead>
+              <tbody>
+                <c:forEach items="${applicants}" var="applicant">
+                    <tr align="center">
+                       <td>${applicant.applicantid}</td>
+                       <td>${applicant.applicantname}</td>
+                       <td>${applicant.applicantage}</td>
+                       <td>${applicant.postname}</td>
+                       <td hidden>${applicant.salary}</td>
+                       <td hidden>${applicant.email}</td>
+                       <td hidden>${applicant.applicantphone}</td>
+                       <td hidden>${applicant.agowork}</td>
+                       <td hidden>${applicant.myself}</td>
+                       <td hidden>${applicant.deptid}</td>
+                       <td hidden>${applicant.postid}</td>
+                       <td>
+                         <button id="open_btn" class="btn" onclick="show(${applicant.applicantid},'${applicant.applicantname}',${applicant.applicantage},'${applicant.postname}','${applicant.email}',${applicant.salary},'${applicant.applicantphone}','${applicant.agowork}','${applicant.myself}')">详情</button>
+                         <button class="btn" onclick="window.location.href='/addRecruit?applicantid=${applicant.applicantid}&postid=${applicant.postid}&deptid=${applicant.deptid}&stafcard=${applicant.applicantcarid}&stafname=${applicant.applicantname}&stafintro=${applicant.myself}&stafphone=${applicant.applicantphone}&email=${applicant.email}'">招聘</button>
+                       </td>
+
+                    </tr>
               </c:forEach>
-              <a href="/getAllStafinfo">显示所有</a>
-
-<%--              <a href="/deleteDrugInfoServlet?drugid=${druginfo.drugid}">删除</a>--%>
+              </tbody>
             </table>
             <!--数据列表/-->
 
@@ -600,25 +589,29 @@
 <script src="../plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
 <script src="../plugins/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 
-<script>
-  function fired(stafid){
-    var flag = window.confirm("是否开除该员工？")
-    if (flag){
-      window.location='/firedStafinfo?stafid='+stafid
-    }
+<script >
+  function show(applicantid,applicantname,applicantage,postname,email,salary,phone,agowork,myself){
+    alert("编        号:    "+applicantid+"\n"
+            +"姓        名:    "+applicantname+"\n"
+            +"年        龄:    "+applicantage+"\n"
+            +"应聘岗位:    "+postname+"\n"
+            +"邮        箱:    "+email+"\n"
+            +"期望薪资:    "+salary+"\n"
+            +"电        话:    "+phone+"\n"
+            +"工作经历:    "+agowork+"\n"
+            +"自我介绍:    "+myself+"\n"
+            );
   }
 
-  function change() {
-    document.getElementById('all_light').style.display = 'block';
-    document.getElementById('contes').style.display = 'block';
-  }
 
 
 
-  document.getElementById("add").onclick=function () {
-    location.href="cgq&yjf/addStafInfo.jsp";
-  }
 
+
+
+  // document.getElementById("add").onclick=function () {
+  //   location.href="/doctor/addDrugInfos.jsp";
+  // }
   $(document).ready(function() {
     // 选择框
     $(".select2").select2();
@@ -628,26 +621,7 @@
       locale: 'zh-CN'
     });
   });
-//ajax科室和岗位的二级联动
-  function selectDept() {
-    $.get("http://localhost:8080/getDeptinfoByPostid","postid="+$("#post").val(),function (data){
-      var jsonData=eval("("+data+")")
-      var s = ''
-      if (jsonData.length != 0) {
-        for (var i = 0; i < jsonData.length; i++) {
-          $("#deptinfos").children().remove();
-          s += "<option value='" +
-                  jsonData[i].deptid +
-                  "'>" +
-                  jsonData[i].deptname +
-                  "</option>"
-        }
-        $("#deptinfos").append(s)
-      } else {
-        $("#deptinfos").children().remove();
-      }
-    })
-  }
+
 
   // 设置激活菜单
   function setSidebarActive(tagUri) {

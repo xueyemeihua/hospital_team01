@@ -46,4 +46,18 @@ public class CaseinfoService {
         return i;
     }
 
+    public List<HashMap> getCaseinfoByStafid(@Param("stafid")int stafid){
+        List<HashMap> caseinfo = mapper.getCaseinfoByStafid(stafid);
+        session.close();
+        return caseinfo;
+    }
+
+    public List<HashMap> getCaseinfoBy(@Param("sickname")String sickname,@Param("diagnosis")String diagnosis,@Param("curescheme")String curescheme){
+        List<HashMap> caseinfo = mapper.getCaseinfoBy(sickname, diagnosis, curescheme);
+        session.close();
+        return caseinfo;
+
+    }
+
+
 }
