@@ -355,6 +355,14 @@
         <servlet-name>CureServlet</servlet-name>
         <servlet-class>org.kgc.controller.CureServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MohusearchdrugServlet</servlet-name>
+        <servlet-class>org.kgc.controller.MohusearchdrugServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MohusearchdrugServlet</servlet-name>
+        <url-pattern>/mohusearchdrug</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CureServlet</servlet-name>
         <url-pattern>/cure</url-pattern>

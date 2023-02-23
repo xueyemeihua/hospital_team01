@@ -97,4 +97,11 @@ public class DrugInfoService {
         session.close();
         return maps;
     }
+
+    public List<HashMap> mohuSearchDrug(String drugname,String drugfunc) {
+        List<HashMap> drugs = mapper.mohuSearchDrug(drugname, drugfunc);
+        session.close();
+        return drugs;
+    }
+
 }

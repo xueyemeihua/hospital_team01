@@ -35,4 +35,9 @@ public interface DrugInfoMapper {
     List<HashMap> selectDateDrugInfo(String drugindate);
 
     List<HashMap> SelectUnDateDrugInfo(String format);
+
+    /*根据药品名和功能模糊查询*/
+    List<HashMap> mohuSearchDrug(@Param("drugname") String drugname, @Param("drugfunc") String drugfunc);
+
+
 }
