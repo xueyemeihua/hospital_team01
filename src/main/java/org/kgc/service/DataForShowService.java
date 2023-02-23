@@ -2,7 +2,9 @@ package org.kgc.service;
 
 import org.apache.ibatis.session.SqlSession;
 import org.kgc.mapper.DataForShowMapper;
+import org.kgc.pojo.CaseNumByDoctor;
 import org.kgc.pojo.HotDrug;
+import org.kgc.pojo.MCNDD;
 import org.kgc.utils.SqlSessionUtil;
 
 import java.util.HashMap;
@@ -14,14 +16,12 @@ import java.util.List;
  */
 public class DataForShowService {
 
-    SqlSession session = SqlSessionUtil.getSqlSession();
-    DataForShowMapper mapper = session.getMapper(DataForShowMapper.class);
 
     /*每个医生接诊的病例数*/
-    public List<HashMap> getCaseNumByDoctor() {
+    public List<CaseNumByDoctor> getCaseNumByDept() {
         SqlSession session = SqlSessionUtil.getSqlSession();
         DataForShowMapper mapper = session.getMapper(DataForShowMapper.class);
-        List<HashMap> caseNumByDoctor = mapper.getCaseNumByDoctor();
+        List<CaseNumByDoctor> caseNumByDoctor = mapper.getCaseNumByDept();
         session.close();
         return caseNumByDoctor;
     }
@@ -45,10 +45,10 @@ public class DataForShowService {
     }
 
     /*每个部门接诊病例最多的医生*/
-    public List<HashMap> getMostCaseNumForDoctorByDept(){
+    public List<MCNDD> getMostCaseNumForDoctorByDept(){
         SqlSession session = SqlSessionUtil.getSqlSession();
         DataForShowMapper mapper = session.getMapper(DataForShowMapper.class);
-        List<HashMap> mostCase = mapper.getMostCaseNumForDoctorByDept();
+        List<MCNDD> mostCase = mapper.getMostCaseNumForDoctorByDept();
         session.close();
         return mostCase;
     }

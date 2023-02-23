@@ -4,14 +4,16 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kgc.mapper.DataForShowMapper">
 
-
-    <select id="getCaseNumByDoctor" resultType="java.util.HashMap">
-        SELECT COUNT(0) AS casenum, stafinfo.stafname
+    <select id="getCaseNumByDept" resultType="CaseNumByDoctor">
+        SELECT COUNT(0) AS casenum, deptinfo.deptname
         FROM caseinfo,
-             stafinfo
+             stafinfo,
+             deptinfo
         WHERE caseinfo.stafid = stafinfo.stafid
+          and deptinfo.deptid = stafinfo.deptid
           AND caseinfo.casestate = 1
-        GROUP BY stafinfo.stafid
+        GROUP BY deptinfo.deptid
+        ORDER BY casenum DESC
     </select>
     <select id="getDoctorNumByDept" resultType="java.util.HashMap">
         SELECT COUNT(0) as stafnum, deptinfo.deptname
@@ -29,7 +31,7 @@
         ORDER BY drugnum DESC
     </select>
 
-    <select id="getMostCaseNumForDoctorByDept" resultType="java.util.HashMap">
+    <select id="getMostCaseNumForDoctorByDept" resultType="MCNDD">
         SELECT COUNT(0) AS mostcasenum, stafinfo.stafname
         FROM caseinfo,
              stafinfo,

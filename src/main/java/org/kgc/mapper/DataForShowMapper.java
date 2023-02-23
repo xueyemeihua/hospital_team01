@@ -1,6 +1,8 @@
 package org.kgc.mapper;
 
+import org.kgc.pojo.CaseNumByDoctor;
 import org.kgc.pojo.HotDrug;
+import org.kgc.pojo.MCNDD;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +14,7 @@ import java.util.List;
 public interface DataForShowMapper {
 
     /*每个医生接诊的病例数*/
-    List<HashMap> getCaseNumByDoctor();
+    List<CaseNumByDoctor> getCaseNumByDept();
 
     /*每个科室的医生人数*/
     List<HashMap> getDoctorNumByDept();
@@ -22,6 +24,6 @@ public interface DataForShowMapper {
 
     /*每个部门接诊病例最多的医生*/
 
-    List<HashMap> getMostCaseNumForDoctorByDept();
+    List<MCNDD> getMostCaseNumForDoctorByDept();
 
 }
