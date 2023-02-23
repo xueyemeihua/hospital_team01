@@ -6,12 +6,14 @@ package org.kgc.controller; /**
 import org.kgc.pojo.SickerRegResult;
 import org.kgc.pojo.Stafinfo;
 import org.kgc.service.SickerRegResultService;
+import org.kgc.utils.DateUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 
@@ -27,9 +29,9 @@ public class ToDoctorManagerServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         Stafinfo loginUser = (Stafinfo) request.getSession().getAttribute("loginUser");
         int stafid = loginUser.getStafid();
-
+        String date = DateUtil.format(new Date(), "yyyy-MM-dd");
         SickerRegResultService service = new SickerRegResultService();
-        List<SickerRegResult> regResults = service.getSrrByStafid(stafid);
+        List<SickerRegResult> regResults = service.getSrrByStafid(date,stafid);
         request.setAttribute("regResults",regResults);
         request.getRequestDispatcher("/doctor/yisheng.jsp").forward(request,response);
 

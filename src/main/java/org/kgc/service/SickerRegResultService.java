@@ -16,8 +16,8 @@ public class SickerRegResultService {
     SqlSession session = SqlSessionUtil.getSqlSession();
     SickerRegResultMapper mapper = session.getMapper(SickerRegResultMapper.class);
 
-    public List<SickerRegResult> getSrrByStafid(int stafid) {
-        List<SickerRegResult> regResults = mapper.getSrrByStafid(stafid);
+    public List<SickerRegResult> getSrrByStafid(String date,int stafid) {
+        List<SickerRegResult> regResults = mapper.getSrrByStafid(date,stafid);
         session.close();
         return regResults;
     }

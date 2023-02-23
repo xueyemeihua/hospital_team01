@@ -11,6 +11,6 @@ import java.util.List;
  */
 public interface SickerRegResultMapper {
 
-    List<SickerRegResult> getSrrByStafid(@Param("stafid") int stafid);
+    List<SickerRegResult> getSrrByStafid(@Param("date") String date, @Param("stafid") int stafid);
 
 }
