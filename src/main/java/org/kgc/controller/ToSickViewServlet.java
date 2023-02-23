@@ -25,7 +25,7 @@ public class ToSickViewServlet extends HttpServlet {
 
         if (loginSicker!=null){
             //登录过,直接进入个人中心
-            request.getRequestDispatcher("").forward(request,response);
+            request.getRequestDispatcher("/xylq/hospital_main.jsp").forward(request,response);
 
         } else {
             //跳转登录界面

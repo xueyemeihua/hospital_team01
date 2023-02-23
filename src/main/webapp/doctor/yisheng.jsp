@@ -150,7 +150,7 @@
             <ul class="sidebar-menu">
                 <li class="header">菜单</li>
 
-                <li id="admin-index"><a href="all-admin-index.html"><i class="fa fa-dashboard"></i> <span>首页</span></a>
+
                 </li>
 
                 <!-- 菜单 -->
@@ -170,23 +170,7 @@
                             </a>
                         </li>
 
-                        <li id="admin-register">
-                            <a href="all-admin-register.html">
-                                <i class="fa fa-circle-o"></i> 注册
-                            </a>
-                        </li>
 
-                        <li id="admin-404">
-                            <a href="all-admin-404.html">
-                                <i class="fa fa-circle-o"></i> 404页
-                            </a>
-                        </li>
-
-                        <li id="admin-500">
-                            <a href="all-admin-500.html">
-                                <i class="fa fa-circle-o"></i> 500页
-                            </a>
-                        </li>
 
                     </ul>
                 </li>

@@ -9,7 +9,7 @@
         select * from deptinfo
     </select>
     <select id="getDeptinfo" resultType="Deptinfo">
-        select * from deptinfo
+        select * from deptinfo where deptid!=13
     </select>
     <select id="getDeptCount" resultType="HashMap">
         select count(*) from deptinfo,stafinfo,rankid

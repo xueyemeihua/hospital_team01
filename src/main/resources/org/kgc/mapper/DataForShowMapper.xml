@@ -23,10 +23,11 @@
         GROUP BY deptinfo.deptid
     </select>
     <select id="getHotDrug" resultType="hotDrug">
-        SELECT COUNT(0) as drugnum, druginfo.drugname
+        SELECT druginfo.drugname,
+               SUM(prescinfo.drugcount) as drugnum
         FROM druginfo,
              prescinfo
-        where druginfo.drugid = prescinfo.drugid
+        WHERE druginfo.drugid = prescinfo.drugid
         GROUP BY druginfo.drugid
         ORDER BY drugnum DESC
     </select>

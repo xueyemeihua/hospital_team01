@@ -14,6 +14,16 @@
 
     <!--    查询已经通过申请的人员-->
 
+
+    <servlet>
+        <servlet-name>NotifyServlet</servlet-name>
+        <servlet-class>org.kgc.controller.NotifyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NotifyServlet</servlet-name>
+        <url-pattern>/notify</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>MohusearchdrugServlet</servlet-name>
         <servlet-class>org.kgc.controller.MohusearchdrugServlet</servlet-class>

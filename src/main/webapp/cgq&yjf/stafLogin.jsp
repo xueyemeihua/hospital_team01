@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
-    <title>病人 | 登录</title>
+    <title>工作人员 | 登录</title>
 
 
     <!-- Tell the browser to be responsive to screen width -->
