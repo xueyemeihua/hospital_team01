@@ -6,9 +6,11 @@ import org.kgc.mapper.CaseinfoMapper;
 import org.kgc.mapper.DeptinfoMapper;
 import org.kgc.mapper.DrugInfoMapper;
 import org.kgc.pojo.CaseInfo;
+import org.kgc.service.DataForShowService;
 import org.kgc.utils.DateUtil;
 import org.kgc.utils.SqlSessionUtil;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -48,4 +50,16 @@ public class DeptinfoMapperTest {
         drugInfoMapper.mohuSearchDrug("方", "解").forEach(map -> System.out.println(map));
 
     }
+
+    @Test
+    public void test04(){
+        DataForShowService service = new DataForShowService();
+//        List<HashMap> hot_Drug = service.getHotDrug();
+//        List<HashMap> hotDrug = new ArrayList<>();
+//        for (int i = 0; i < 8; i++) {
+//            hotDrug.add(hot_Drug.get(i));
+//        }
+//        System.out.println(hotDrug);
+    }
+
 }

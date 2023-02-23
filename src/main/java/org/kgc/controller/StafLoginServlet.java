@@ -51,7 +51,7 @@ public class StafLoginServlet extends HttpServlet {
             if(loginUser.getUsername().equals("sroot")){
                 //超级管理员
                 request.getSession().setAttribute("loginUser", loginUser);
-                response.sendRedirect("cgq&yjf/managerindex.jsp");
+                response.sendRedirect("getDataForShow");
             }else if (loginUser.getUsername().equals("yf")){
                 request.getSession().setAttribute("loginUser", loginUser);
                 response.sendRedirect("selectAllDrugInfo");

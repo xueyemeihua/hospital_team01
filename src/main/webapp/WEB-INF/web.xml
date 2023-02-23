@@ -383,6 +383,14 @@
         <servlet-name>CureServlet</servlet-name>
         <servlet-class>org.kgc.controller.CureServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetDataForShowServlet</servlet-name>
+        <servlet-class>org.kgc.controller.GetDataForShowServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetDataForShowServlet</servlet-name>
+        <url-pattern>/getDataForShow</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CureServlet</servlet-name>
         <url-pattern>/cure</url-pattern>
