@@ -53,6 +53,7 @@
         where stafinfo.deptid = deptinfo.deptid
         and stafinfo.postid = postinfo.postid
         and stafinfo.rankid = rankinfo.rankid
+        and stafinfo.stafstate = 1
     </select>
     <select id="getStafinfoLikeDeptnameOrPostnameOrStafname" resultType="HashMap">
         select stafid,postname,deptname,stafcard,stafname,rankname,stafstate,stafphone,username,email

@@ -93,66 +93,62 @@ String basePath = request.getScheme() + "://"
         </div>
     </div>
     <div class="container">
-        <div class="row">
+        <div class="container">
+            <div class="row">
 
-            <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
-                <div class="right_head">
-                    <h2><span>人才招聘</span></h2>
-                </div>
-                <div>
-                    <h3>这里有适合你的,=></h3>
+                <div class="col-xs-12 col-sm-8 col-md-9" style="float:right">
+                    <div class="right_head">
+                        <h2><span>通过应聘者名单</span></h2> &nbsp
+                        <form action="/fuzzySearchSuccessfulApplication">
+                            <input name="applicantName" placeholder="姓名">
+                            <input name="email" placeholder="邮箱">
+                            <input type="submit" value="查询">
+                        </form>
+                        &nbsp
+                    </div>
+                    &nbsp
 
-                    &nbsp;  &nbsp;  &nbsp;  &nbsp; <p>薪资3500-100000</p> &nbsp;  &nbsp;  &nbsp;  &nbsp;最低学历: 本科
-                    &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;
-                    <a href="/getDeptInfoServletForwardStafentry">立即申请</a>
-
-                </div>
-                <div>
-                    <h2>管理员功能:查询所有应聘者</h2>
-                    <a href="/selectApplicants">查询</a>
-                </div>
-                <div>
-                    <h3>下拉框查询需求科室对应的应聘人</h3>
-                    -----------------------------------
-                    <a href="/getDeptApplicant">下拉框查询需求科室对应的应聘人</a>
-                    <br>
+                    <from>
+                        <table>
+                            <tr>
+                                <td>编号</td>
+                                <td>姓名</td>
+                                <td>邮箱</td>
+                                <td>期望薪资</td>
+                                <td>自我介绍</td>
+                                <td>工作经验</td>
+                            </tr>
+                            <c:forEach items="${applicants}" var="a">
+                                <tr>
+                                    <td>${a.applicantId}</td>
+                                    <td>${a.applicantName}</td>
+                                    <td>${a.email}</td>
+                                    <td>${a.salary}</td>
+                                    <td>${a.myself}</td>
+                                    <td>${a.agowork}</td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </from>
 
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-4 col-md-3">
-                <h3 class="left_h3"><span>导航栏目</span></h3>
+                <h3 class="left_h3"><span>人才招聘</span></h3>
                 <div class="left_column">
 
                     <ul class="left_nav_ul" id="firstpane">
 
-                        <li><a class="biglink" href="aboutus.html">公司简介</a>
+                        <li><a class="biglink" href="/getDeptInfoServletForwardStafentry">立即申请</a>
                             <ul class="left_snav_ul menu_body"></ul>
                         </li>
 
-                        <li><a class="biglink" href="contact.html">联系我们</a>
-                            <ul class="left_snav_ul menu_body"></ul>
-                        </li>
-
-                        <li><a class="biglink" href="leaveword.jsp">留言反馈</a>
-                            <ul class="left_snav_ul menu_body"></ul>
-                        </li>
 
                     </ul>
                 </div>
-                <div class="left_news">
-                    <h3 class="left_h3"><span>通知公告</span></h3>
-
-                    <ul class="left_news">
-
-                        <li><a href="detail1.html" title="标题">通知公告的内容</a></li>
-
-                    </ul>
-
-                </div>
-
-
             </div>
+        </div>
         </div>
     </div>
     <footer style="background-image: url()">

@@ -11,7 +11,26 @@
     <!--        <filter-name>LoginFilter</filter-name>-->
     <!--        <url-pattern>/*</url-pattern>-->
     <!--    </filter-mapping>-->
-    
+
+    <!--    查询已经通过申请的人员-->
+    <servlet>
+        <servlet-name>SelectSuccessfulApplicationsServlet</servlet-name>
+        <servlet-class>org.kgc.controller.SelectSuccessfulApplicationsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FuzzySearchSuccessfulApplicationServlet</servlet-name>
+        <servlet-class>org.kgc.controller.FuzzySearchSuccessfulApplicationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FuzzySearchSuccessfulApplicationServlet</servlet-name>
+        <url-pattern>/fuzzySearchSuccessfulApplication</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SelectSuccessfulApplicationsServlet</servlet-name>
+        <url-pattern>/selectSuccessfulApplications</url-pattern>
+    </servlet-mapping>
+
+
     <servlet>
         <servlet-name>SelectDoctorServlet</servlet-name>
         <servlet-class>org.kgc.controller.SelectDoctorServlet</servlet-class>
@@ -355,14 +374,6 @@
         <servlet-name>CureServlet</servlet-name>
         <servlet-class>org.kgc.controller.CureServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>MohusearchdrugServlet</servlet-name>
-        <servlet-class>org.kgc.controller.MohusearchdrugServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>MohusearchdrugServlet</servlet-name>
-        <url-pattern>/mohusearchdrug</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CureServlet</servlet-name>
         <url-pattern>/cure</url-pattern>

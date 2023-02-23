@@ -171,7 +171,6 @@
     </div>
 
 
-
     <nav class="navbar navbar-default navbar-fixed-bottom mfoot_box">
         <div class="mfoot_nav"><a href=""><span class="glyphicon glyphicon-home btn-lg" aria-hidden="true"></span>首页</a>
         </div>

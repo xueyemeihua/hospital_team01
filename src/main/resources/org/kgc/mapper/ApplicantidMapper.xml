@@ -5,53 +5,67 @@
 <mapper namespace="org.kgc.mapper.ApplicantidMapper">
     <insert id="insertApplicant">
         INSERT INTO applicant
-        (
-            applicantid,
-            applicantname,
-            applicantsex,
-            applicantcarid,
-            applicantphone,
-            email,
-            deptname,
-            applicantage,
-            salary,
-            myself,
-            agowork,
-            deptid,
-            postid,
-            postname,
-            applicantstatus
-        )
-        VALUES
-	    (
-            default ,
-            #{applicantName},
-            #{applicantSex},
-            #{applicantCarid},
-            #{applicantPhone},
-            #{email},
-            #{deptname},
-            #{applicantAge},
-            #{salary},
-            #{myself},
-            #{agowork},
-            #{deptid},
-            #{postid},
-            #{postname},
-            #{applicantstatus}
-	    )
+        (applicantid,
+         applicantname,
+         applicantsex,
+         applicantcarid,
+         applicantphone,
+         email,
+         applicantage,
+         salary,
+         myself,
+         agowork,
+         deptid,
+         postid,
+         applicantstatus)
+        VALUES (default,
+                #{applicantName},
+                #{applicantSex},
+                #{applicantCarid},
+                #{applicantPhone},
+                #{email},
+                #{applicantAge},
+                #{salary},
+                #{myself},
+                #{agowork},
+                #{deptid},
+                #{postid},
+                #{applicantstatus})
     </insert>
     <select id="selectDeptName" resultType="String">
-        select deptname from deptinfo where deptid=#{deptid}
+        select deptname
+        from deptinfo
+        where deptid = #{deptid}
     </select>
     <select id="selectApplicants" resultType="org.kgc.pojo.Applicant">
-        select * from applicant
+        select *
+        from applicant
     </select>
     <select id="selectCarid" resultType="int">
-        SELECT COUNT(*) FROM applicant WHERE applicantCarid=#{applicantcarid}
+        SELECT COUNT(*)
+        FROM applicant
+        WHERE applicantCarid = #{applicantcarid}
     </select>
     <select id="selectDeptApplicants" resultType="Applicant">
-        select * from applicant where postid=#{postid}
+        select *
+        from applicant
+        where postid = #{postid}
+    </select>
+    <select id="SelectSuccessfulApplications" resultType="Applicant">
+        select *
+        from applicant
+        where applicantstatus = 1
+    </select>
+    <select id="FuzzySearchSuccessfulApplicationServlet" resultType="Applicant">
+        select * from applicant
+        <where>
+            <if test="name != null and name != ''">
+                applicantName like concat("%",#{name},"%")
+            </if>
+            <if test="email != null and email != ''">
+                and email = #{email}
+            </if>
+        </where>
     </select>
 </mapper>
 

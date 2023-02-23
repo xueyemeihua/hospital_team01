@@ -13,7 +13,7 @@ String basePath = request.getScheme() + "://"
 	<head>
 		<meta charset="UTF-8">
 		<title>简历申请表</title>
-		<script src="xylq/src/js/jquery1.12.4.js"></script>
+		<script src="js/jquery1.12.4.js"></script>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
@@ -43,7 +43,7 @@ String basePath = request.getScheme() + "://"
 
 				<tr>
 					<td><label for="myEmail">电子邮箱:</label></td>
-					<td><input type="email" name="myEmail" id="myEmail" onblur="blur()"/><span id="span"></span></td>
+					<td><input type="email" name="myEmail" id="myEmail" onblur="blur()"/><span id="span" required="required"></span></td>
 				</tr>
 				<tr>
 					<td><label>性别:</label></td>
@@ -56,7 +56,7 @@ String basePath = request.getScheme() + "://"
 				<tr>
 					<td> <label>科室:</label></td>
 					<td>
-						<select name="deptid" id="dept" onchange="getPost()">
+						<select name="deptid" id="dept" onchange="getPost()" required="required">
 							<option value="0">请选择</option>
 							<c:forEach items="${deptinfos}" var="deptinfo">
 								<c:if test="${deptinfo.deptid!=12}">
@@ -67,29 +67,29 @@ String basePath = request.getScheme() + "://"
 				<tr>
 					<td align="right">岗位:</td>
 					<td>
-						<select id="postinfos" name="postid"></select>
+						<select id="postinfos" name="postid" required="required"></select>
 					</td>
 				</tr>
 					</td>
 				</tr>
 				<tr>
 					<td>期望薪资:</td>
-					<td><input type="number" maxlength="5" name="salary"/></td>
+					<td><input type="number" maxlength="5" name="salary" required="required"/></td>
 				</tr>
 
 				<tr>
 					<td>自我介绍:</td>
-					<td><textarea cols="40" rows="10" name="myself"></textarea></td>
+					<td><textarea cols="40" rows="10" name="myself" required="required"></textarea></td>
 				</tr>
 
 				<tr>
 					<td>工作经历:</td>
-					<td><textarea cols="40" rows="10" name="agowork"></textarea></td>
+					<td><textarea cols="40" rows="10" name="agowork" required="required"></textarea></td>
 				</tr>
 
 			</table>
-			<input type="submit" id="stamp" value="提交"/>
-			<input type="image" onclick="reset();return false;" value="重填" />
+			<input type="submit" id="stamp" value="提交" disabled="disabled"/>
+			<button onclick="reset();return false;" >重填</button>
 		</form>
 	</center>
 
@@ -180,12 +180,12 @@ String basePath = request.getScheme() + "://"
 			//获得用户输入的邮箱内容
 			var email = $("#myEmail").val()
 
-			for(var i = 0; i < email.length; i++) {
-				if(str1.indexOf(email.charAt(i)) == -1) {
-					flag = 0
-					break
-				}
-			}
+			// for(var i = 0; i < email.length; i++) {
+			// 	if(str1.indexOf(email.charAt(i)) == -1) {
+			// 		flag = 0
+			// 		break
+			// 	}
+			// }
 			if(flag == 1 && str.indexOf(email.substring(0, 1)) != -1 && email.substring(email.length - 4) == ".com"  && email.indexOf(".") == email.lastIndexOf(".") && email.indexOf("@") == email.lastIndexOf("@") && email.indexOf("@") != -1) {
 				$("#span").html("<font color='greenyellow'>输入合理√</font>")
 				youemail = 1;

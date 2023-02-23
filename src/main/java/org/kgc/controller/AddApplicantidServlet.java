@@ -44,21 +44,15 @@ public class AddApplicantidServlet extends HttpServlet {
         applicant.setPostid(postid);
 
 
-        //根据科室id查出科室名
-        //根据岗位id查找岗位名,并存入
-        ApplicantidService addApplicantidService = new ApplicantidService();
-        PostinfoService postinfoService = new PostinfoService();
-        String deptname = addApplicantidService.selectDeptName(deptid);
-        String postname = postinfoService.getPostNameByPostid(postid);
-        //将科室存入    //将岗位存入
-        applicant.setDeptname(deptname);
-        applicant.setPostname(postname);
+
 
         System.out.println(applicant);
         System.out.println("上面是对象");
-        System.out.println(postname);
 
-        int i = addApplicantidService.insertApplicantid(applicant);
+        ApplicantidService service = new ApplicantidService();
+
+        int i = service.insertApplicantid(applicant);
+
 
 
         if (i == 1){
